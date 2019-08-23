@@ -21,6 +21,7 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
         flexGrow: 1,
+        fontFamily: 'Montserrat, sans-serif',
     },
     navBar: {
         background: primary,
@@ -50,7 +51,7 @@ const NavBar = () => {
                         <MenuIcon/>
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        Chordilicious
+                        CHORDILICIOUS
                     </Typography>
                     <div>
                         <IconButton
