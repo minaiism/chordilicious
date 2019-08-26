@@ -1,5 +1,5 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -10,82 +10,102 @@ import FormGroup from '@material-ui/core/FormGroup';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import red from '@material-ui/core/colors/red';
+import MusicNoteIcon from '@material-ui/icons/MusicNote';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import Facebook from '../Facebook/Facebook';
 
 const primary = red[700];
 const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-    },
-    menuButton: {
-        marginRight: theme.spacing(2),
-    },
-    title: {
-        flexGrow: 1,
-        fontFamily: 'Montserrat, sans-serif',
-    },
-    navBar: {
-        background: primary,
-    }
+  root: {
+    flexGrow: 1
+  },
+  menuButton: {
+    marginRight: theme.spacing(2)
+  },
+  title: {
+    flexGrow: 1,
+    fontFamily: 'Montserrat, sans-serif'
+  },
+  navBar: {
+    background: primary
+  }
 }));
 
 const NavBar = () => {
-    const classes = useStyles();
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
 
-    const handleMenu = event => {
-        setAnchorEl(event.currentTarget);
-    };
+  const handleMenu = event => {
+    setAnchorEl(event.currentTarget);
+  };
 
-    const handleClose = () => {
-        setAnchorEl(null);
-    };
-
-    return (
-        <div className={classes.root}>
-            <FormGroup>
-            </FormGroup>
-            <AppBar position="static" className={classes.navBar}>
-                <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <MenuIcon/>
-                    </IconButton>
-                    <Typography variant="h6" className={classes.title}>
-                        CHORDILICIOUS
-                    </Typography>
-                    <div>
-                        <IconButton
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleMenu}
-                            color="inherit"
-                        >
-                            <AccountCircle/>
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorEl}
-                            anchorOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'right',
-                            }}
-                            open={open}
-                            onClose={handleClose}
-                        >
-                            <MenuItem onClick={handleClose}>My Account</MenuItem>
-                            <MenuItem onClick={handleClose}>Favorites</MenuItem>
-                        </Menu>
-                    </div>
-                </Toolbar>
-            </AppBar>
-        </div>
-    );
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+  //TODO: get rid of all the warnings below
+  return (
+    <div className={classes.root}>
+      <FormGroup></FormGroup>
+      <AppBar position="static" className={classes.navBar}>
+        <Toolbar>
+          <IconButton
+            edge="start"
+            className={classes.menuButton}
+            color="inherit"
+            aria-label="menu"
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+            CHORDILICIOUS
+            <MusicNoteIcon />
+          </Typography>
+          <div>
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              color="inherit"
+            >
+              <FavoriteIcon />
+            </IconButton>
+            <IconButton
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right'
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right'
+              }}
+              open={open}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>
+                {' '}
+                <Facebook />
+              </MenuItem>
+              <MenuItem onClick={handleClose}>Favorites</MenuItem>
+            </Menu>
+          </div>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
 };
 
 export default NavBar;
