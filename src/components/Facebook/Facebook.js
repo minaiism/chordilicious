@@ -27,7 +27,6 @@ class Facebook extends Component {
 
   render() {
     let facebookContent;
-
     //TODO: get rid of inline styling (convert to styled components instead)
     if (this.state.isLoggedIn) {
       facebookContent = (
@@ -45,7 +44,25 @@ class Facebook extends Component {
             src={this.state.picture}
             alt={this.state.name}
           />
-          <h5 style={{ padding: '0.5rem' }}>My Account</h5>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexDirection: 'column'
+            }}
+          >
+            <h5
+              style={{
+                padding: '0.3rem',
+                fontFamily: 'Montserrat, sans-serif',
+                fontWeight: '100'
+              }}
+            >
+              <span style={{ fontWeight: 900 }}>{this.state.name}</span>'s
+              account
+            </h5>
+          </div>
         </div>
       );
     } else {
