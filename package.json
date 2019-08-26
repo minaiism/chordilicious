@@ -7,6 +7,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-facebook-login": "^4.1.1",
     "react-scripts": "3.1.1"
   },
   "scripts": {
@@ -41,6 +42,9 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
     "prettier": "^1.18.2"
+  },
+  "prettier": {
+    "singleQuote": true
   },
   "author": "",
   "license": "ISC"
