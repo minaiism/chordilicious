@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "antd": "^3.22.0",
+    "@material-ui/core": "^4.3.3",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
+    "react-facebook-login": "^4.1.1",
     "react-scripts": "3.1.1"
   },
   "scripts": {
@@ -33,6 +34,7 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "devDependencies": {
+    "@material-ui/icons": "^4.2.1",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
@@ -40,6 +42,9 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
     "prettier": "^1.18.2"
+  },
+  "prettier": {
+    "singleQuote": true
   },
   "author": "",
   "license": "ISC"
