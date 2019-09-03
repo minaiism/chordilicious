@@ -1,16 +1,11 @@
 import React from 'react';
 import NavBar from './components/NavBar/NavBar';
-import SearchBar from './components/SearchBar/SearchBar';
-import Footer from './components/Footer/Footer';
-import './App.css';
-import FBUserProfile from './components/FBUserProfile/FBUserProfile';
+import Footer from "./components/Footer/Footer";
 
 const App = () => (
-  <div className={App}>
-    <NavBar />
-    {/*<SearchBar />*/}
-    <FBUserProfile />
-    {/*<Footer />*/}
+  <div>
+      <NavBar />
+    <Footer />
   </div>
 );
 
