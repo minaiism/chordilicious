@@ -1,7 +1,7 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core';
 
-const Favorites = props => {
+const Home = props => {
     const useStyles = makeStyles(theme => ({
         container: {
             display: 'flex',
@@ -13,9 +13,9 @@ const Favorites = props => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
-
+            <h1>Top 10 Charts</h1>
         </div>
     );
 };
 
-export default Favorites;
+export default Home;

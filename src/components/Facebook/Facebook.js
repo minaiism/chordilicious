@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import FacebookLogin from 'react-facebook-login';
 import {makeStyles} from "@material-ui/core";
+import Button from "@material-ui/core/Button";
 
 const Facebook = () => {
     const useStyles = makeStyles(theme => ({
@@ -27,6 +28,10 @@ const Facebook = () => {
         },
         span: {
             fontWeight: 900
+        },
+        button: {
+            width: '100%',
+            marginBottom: '1.5rem'
         }
     }));
 
@@ -55,7 +60,13 @@ const Facebook = () => {
         />
     );
 
-    return <div>{facebookContent}</div>;
+    return userSession.id === undefined ? <div>{facebookContent}</div> :
+        (<div>
+            {facebookContent}
+            <Button variant="contained" color="primary" className={classes.button}>Log out</Button>
+        </div>)
 };
 
 export default Facebook;
+
+
