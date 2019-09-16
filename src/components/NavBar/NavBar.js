@@ -31,7 +31,7 @@ import Home from "../Routing/Home/Home";
 import Top from "../Routing/Top/Top";
 
 const routes = {
-    '/': () => "Nothing much",
+    '/': () => <Home/>,
     '/about': () => <About/>,
     '/favorites': () => <Favorites/>,
     '/user-profile': () => <FBUserProfile/>,
