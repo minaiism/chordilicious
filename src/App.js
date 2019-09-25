@@ -3,10 +3,10 @@ import NavBar from './components/NavBar/NavBar';
 import Footer from "./components/Footer/Footer";
 
 const App = () => (
-  <div>
-      <NavBar />
-    <Footer />
-  </div>
+    <article>
+        <NavBar/>
+        <Footer/>
+    </article>
 );
 
 export default App;

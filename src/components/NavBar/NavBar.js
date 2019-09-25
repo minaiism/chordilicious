@@ -29,15 +29,7 @@ import VerticalAlignTopIcon from '@material-ui/icons/VerticalAlignTop';
 import {SocialIcon} from 'react-social-icons';
 import Home from "../Routing/Home/Home";
 import Top from "../Routing/Top/Top";
-
-const routes = {
-    '/': () => <Home/>,
-    '/about': () => <About/>,
-    '/favorites': () => <Favorites/>,
-    '/user-profile': () => <FBUserProfile/>,
-    '/home': () => <Home/>,
-    '/top': () => <Top/>
-};
+import Link from "@material-ui/core/Link";
 
 const drawerWidth = 230;
 const primary = red[700];
@@ -115,11 +107,22 @@ const useStyles = makeStyles(theme => ({
         }),
         marginLeft: 0,
     },
-    listIcon:{
+    listIcon: {
         fontFamily: 'Montserrat, sans-serif',
         margin: '0.2rem'
+    },
+    facebookButton:{
+        margin: '0.5rem'
     }
 }));
+const routes = {
+    '/': () => <Home/>,
+    '/about': () => <About/>,
+    '/favorites': () => <Favorites/>,
+    '/user-profile': () => <FBUserProfile/>,
+    '/home': () => <Home/>,
+    '/top': () => <Top/>
+};
 
 const NavBar = () => {
     const classes = useStyles();
@@ -145,7 +148,7 @@ const NavBar = () => {
     };
 
     const routeResult = useRoutes(routes);
-    return (<div className={classes.container}>
+    return (<article className={classes.container}>
             <AppBar position="static" className={classes.navBar}>
                 <Toolbar>
                     <IconButton
@@ -159,12 +162,12 @@ const NavBar = () => {
                     </IconButton>
 
                     <Typography variant="h6" className={classes.title}>
-                        <a href="home" className={classes.anchor}>
+                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="home" className={classes.anchor}>
                             CHORDILICIOUS
-                        </a>
+                        </Link>
                         <MusicNoteIcon/>
                     </Typography>
-                    <div>
+                    <article>
                         <IconButton
                             aria-label="account of current user"
                             aria-controls="menu-appbar"
@@ -189,20 +192,20 @@ const NavBar = () => {
                             open={open}
                             onClose={handleClose}
                         >
-                            <a href="user-profile" className={classes.anchor}>
+                            <Link style={{textDecoration: 'none', color: 'inherit'}} className={classes.anchor}>
                                 <MenuItem onClick={handleClose}>
-                                    <Facebook/>
+                                    <Facebook className={classes.facebookButton}/>
                                 </MenuItem>
-                            </a>
+                            </Link>
 
-                            <a href="favorites" className={classes.anchor}>
+                            <Link style={{textDecoration: 'none', color: 'inherit'}} href="favorites" className={classes.anchor}>
                                 <MenuItem onClick={handleFavorites} className={classes.favorites}>
                                     <FavoriteIcon className={classes.anchor}/>
                                     My Favorites
                                 </MenuItem>
-                            </a>
+                            </Link>
                         </Menu>
-                    </div>
+                    </article>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -214,51 +217,57 @@ const NavBar = () => {
                     paper: classes.drawerPaper,
                 }}
             >
-                <div className={classes.drawerHeader}>
+                <article className={classes.drawerHeader}>
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'ltr' ? <KeyboardBackspaceIcon/> : <ArrowRightAltIcon/>}
                     </IconButton>
-                </div>
+                </article>
                 <Divider/>
                 <List>
                     <ListItem className={classes.listIcon}>
                         <QueueMusicIcon/>
-                        <a href="about" className={classes.anchor}>
-                        About Chordilicious
-                        </a>
+                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="about" className={classes.anchor}>
+                            About Chordilicious
+                        </Link>
                     </ListItem>
                     <ListItem className={classes.listIcon}>
                         <FavoriteIcon/>
-                        <a href="favorites" className={classes.anchor}>
-                        My Favorites
-                        </a>
+                        <Link style={{textDecoration: 'none', color: 'inherit'}}  href="favorites" className={classes.anchor}>
+                            My Favorites
+                        </Link>
                     </ListItem>
                     <ListItem className={classes.listIcon}>
                         <VerticalAlignTopIcon/>
-                        <a href="top" className={classes.anchor}>
-                        Top 10 Lyrics
-                        </a>
+                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="top" className={classes.anchor}>
+                            Top 10 Lyrics
+                        </Link>
                     </ListItem>
                 </List>
                 <Divider/>
                 <List>
                     <ListItem className={classes.listIcon}>
-                        <SocialIcon url="http://instagram.com/"  network="instagram" style={{ height: 35, width: 35, margin: '0.2rem'}} />
-                        <a href="http://instagram.com/" className={classes.anchor} target="_blank" rel="noopener noreferrer">
+                        <SocialIcon url="http://instagram.com/" network="instagram"
+                                    style={{height: 35, width: 35, margin: '0.2rem'}}/>
+                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="http://instagram.com/" className={classes.anchor} target="_blank"
+                           rel="noopener noreferrer">
                             Instagram
-                        </a>
+                        </Link>
                     </ListItem>
                     <ListItem className={classes.listIcon}>
-                        <SocialIcon url="http://facebook.com/"  network="facebook" style={{ height: 35, width: 35, margin: '0.2rem'}} />
-                        <a href="http://facebook.com/" className={classes.anchor} target="_blank" rel="noopener noreferrer">
+                        <SocialIcon url="http://facebook.com/" network="facebook"
+                                    style={{height: 35, width: 35, margin: '0.2rem'}}/>
+                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="http://facebook.com/" className={classes.anchor} target="_blank"
+                           rel="noopener noreferrer">
                             Facebook
-                        </a>
+                        </Link>
                     </ListItem>
                     <ListItem className={classes.listIcon}>
-                        <SocialIcon url="http://github.com/"  network="github" style={{ height: 35, width: 35, margin: '0.2rem'}} bgColor="#000" />
-                        <a href="http://github.com/" className={classes.anchor} target="_blank" rel="noopener noreferrer">
+                        <SocialIcon url="http://github.com/" network="github"
+                                    style={{height: 35, width: 35, margin: '0.2rem'}} bgColor="#000"/>
+                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="http://github.com/" className={classes.anchor} target="_blank"
+                           rel="noopener noreferrer">
                             Github
-                        </a>
+                        </Link>
                     </ListItem>
                 </List>
             </Drawer>
@@ -267,12 +276,11 @@ const NavBar = () => {
                     [classes.contentShift]: opened,
                 })}
             >
-                <div className={classes.drawerHeader}/>
-                <Typography paragraph>
+                <Typography variant="body1">
                     {routeResult}
                 </Typography>
             </main>
-        </div>
+        </article>
     );
 };
 

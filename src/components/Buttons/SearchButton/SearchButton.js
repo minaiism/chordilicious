@@ -25,11 +25,11 @@ const SearchButton = () => {
     const classes = useStyles();
 
     return (
-        <div>
+        <article>
             <SearchingButton variant="contained" color="primary" className={classes.margin}>
                 Search Lyrics
             </SearchingButton>
-        </div>
+        </article>
     );
 };
 

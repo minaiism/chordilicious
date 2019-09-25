@@ -4,6 +4,7 @@ import red from '@material-ui/core/colors/red';
 import FaceIcon from '@material-ui/icons/Face';
 import EmailIcon from '@material-ui/icons/Email';
 import InfoIcon from '@material-ui/icons/Info';
+import Typography from "@material-ui/core/Typography";
 
 const FBUserProfile = props => {
   const primary = red[700];
@@ -59,7 +60,7 @@ const FBUserProfile = props => {
   }));
   const classes = useStyles();
   return (
-    <div className={classes.container}>
+    <article className={classes.container}>
       <section className={classes.profileContainer}>
         <figure className={classes.imgContainer}>
           <img
@@ -71,19 +72,19 @@ const FBUserProfile = props => {
         <section className={classes.fieldContainer}>
           <article className={classes.textContainer}>
             <FaceIcon />
-            <p className={classes.field}>Name {props.name} </p>
+            <Typography variant="body2" className={classes.field}>Name {props.name} </Typography>
           </article>
           <article className={classes.textContainer}>
             <EmailIcon />
-            <p className={classes.field}>Email {props.email} </p>
+            <Typography variant="body2" className={classes.field}>Email {props.email} </Typography>
           </article>
           <article className={classes.textContainer}>
             <InfoIcon />
-            <p className={classes.field}>About me {props.email} </p>
+            <Typography variant="body2" className={classes.field}>About me {props.email} </Typography>
           </article>
         </section>
       </section>
-    </div>
+    </article>
   );
 };
 

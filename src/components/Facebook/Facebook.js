@@ -2,15 +2,18 @@ import React, {useState} from 'react';
 import FacebookLogin from 'react-facebook-login';
 import {makeStyles} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import Link from "@material-ui/core/Link";
+import Typography from "@material-ui/core/Typography";
 
-const Facebook = () => {
+const FacebookContext = React.createContext();
+const Facebook = (props) => {
     const useStyles = makeStyles(theme => ({
         container: {
-            width: '100%',
             padding: '1rem',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
+            flexDirection: 'column'
         },
         img: {
             borderRadius: '50%'
@@ -24,47 +27,74 @@ const Facebook = () => {
         header: {
             padding: '0.3rem',
             fontFamily: 'Montserrat, sans-serif',
-            fontWeight: '100'
+            fontWeight: '100',
+            textDecoration: 'none',
+            color: 'inherit'
         },
         span: {
             fontWeight: 900
         },
         button: {
             width: '100%',
-            marginBottom: '1.5rem'
-        }
+            margin: '0.5rem'
+        },
+        anchor: {
+            textDecoration: 'none',
+            color: 'inherit',
+        },
     }));
 
-    const [userSession, setUserSession] = useState({});
-
+    const [userSession, setUserSession] = useState(null);
     const classes = useStyles();
-    const facebookContent = userSession.id ? (
-        <div className={classes.container}>
+    const {children} = props;
+    const facebookUserSession = userSession && userSession.id;
+
+    const facebookLogOut = () => {
+       setUserSession(null);
+   };
+
+    const facebookContent = facebookUserSession ? (
+        <section className={classes.container}>
             <img
                 src={userSession.picture.data.url}
                 alt={userSession.name}
                 className={classes.img}
             />
-            <div className={classes.headContainer}>
-                <h5 className={classes.header}>
+            <article className={classes.headContainer}>
+                <Typography variant="subtitle2" className={classes.header}>
                     <span className={classes.span}>{userSession.name}</span>'s
                     account
-                </h5>
-            </div>
-        </div>
+                </Typography>
+            </article>
+            <Button variant="contained" color="primary" className={classes.button} onClick={facebookLogOut}>
+                <Link href="home"
+                      style={{
+                          textDecoration: 'none',
+                          color: 'inherit',
+                          fontFamily: 'Montserrat, sans-serif'
+                      }}>Log out
+                </Link>
+            </Button>
+        </section>
+
     ) : (<FacebookLogin
             appId="2473947552663016"
-            autoLoad={true}
+            autoLoad={false}
             fields="name,email,picture"
             callback={setUserSession}
         />
     );
 
-    return userSession.id === undefined ? <div>{facebookContent}</div> :
-        (<div>
+    return (<FacebookContext.Provider
+        value={{
+            userSession: userSession,
+            setUserSession: setUserSession
+        }}>
+        <div>
             {facebookContent}
-            <Button variant="contained" color="primary" className={classes.button}>Log out</Button>
-        </div>)
+            {children}
+        </div>
+    </FacebookContext.Provider>)
 };
 
 export default Facebook;

@@ -1,5 +1,6 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core';
+import Typography from "@material-ui/core/Typography";
 
 const Home = props => {
     const useStyles = makeStyles(theme => ({
@@ -13,7 +14,7 @@ const Home = props => {
     const classes = useStyles();
     return (
         <div className={classes.container}>
-            <h1>Top 10 Charts</h1>
+            <Typography varian="h1">Top Lyrics</Typography>
         </div>
     );
 };
