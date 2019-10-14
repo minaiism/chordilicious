@@ -28,6 +28,7 @@ const DrawerList = () => {
 
     return (<article>
             <Divider/>
+            {/** Material UI's Drawer List **/}
             <List>
                     <ListItem className={classes.listIcon}>
                         <QueueMusicIcon/>
@@ -81,6 +82,7 @@ const DrawerList = () => {
                         </Link>
                     </ListItem>
                 </List>
+            {/** The End of the List **/}
         </article>
     );
 };

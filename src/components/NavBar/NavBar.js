@@ -140,6 +140,7 @@ const NavBar = () => {
 
     const routeResult = useRoutes(routes);
     return (<article className={classes.container}>
+        {/** Material UI's Menu **/}
             <AppBar position="static" className={classes.navBar}>
                 <Toolbar>
                     <IconButton
@@ -184,12 +185,15 @@ const NavBar = () => {
                             open={open}
                             onClose={handleClose}
                         >
+                            {/**Appbar Links**/}
+                            {/**First Link **/}
                             <Link style={{textDecoration: 'none', color: 'inherit'}} className={classes.anchor}>
                                 <MenuItem onClick={handleClose}>
+                                    {/**Facebook Authentication Component**/}
                                     <Facebook className={classes.facebookButton}/>
                                 </MenuItem>
                             </Link>
-
+                            {/**Second Link **/}
                             <Link style={{textDecoration: 'none', color: 'inherit'}} href="favorites"
                                   className={classes.anchor}>
                                 <MenuItem onClick={handleFavorites} className={classes.favorites}>
@@ -197,10 +201,14 @@ const NavBar = () => {
                                     My Favorites
                                 </MenuItem>
                             </Link>
+                            {/**The End of Links**/}
                         </Menu>
                     </article>
                 </Toolbar>
             </AppBar>
+            {/** End of Material UI's Menu**/}
+
+        {/** Material UI's Side Drawer**/}
             <Drawer
                 className={classes.drawer}
                 variant="persistent"
@@ -215,14 +223,17 @@ const NavBar = () => {
                         {theme.direction === 'ltr' ? <KeyboardBackspaceIcon/> : <ArrowRightAltIcon/>}
                     </IconButton>
                 </article>
+                {/** Link Drawer's List [separate component]**/}
                 <DrawerList/>
             </Drawer>
+            {/** End of Material UI's Drawer **/}
             <main
                 className={clsx(classes.content, {
                     [classes.contentShift]: opened,
                 })}
             >
                 <Typography variant="body1">
+                    {/** dynamically rendered component **/}
                     {routeResult}
                 </Typography>
             </main>
