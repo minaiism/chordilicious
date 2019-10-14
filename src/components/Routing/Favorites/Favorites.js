@@ -1,7 +1,7 @@
 import React from 'react';
 import {makeStyles} from '@material-ui/core';
 
-const Favorites = props => {
+const Favorites = (props) => {
     const useStyles = makeStyles(theme => ({
         container: {
             display: 'flex',
@@ -10,6 +10,7 @@ const Favorites = props => {
             flexDirection: 'column'
         }
     }));
+
     const classes = useStyles();
     return (
         <div className={classes.container}>

@@ -17,19 +17,14 @@ import FBUserProfile from "../Routing/FBUserProfile/FBUserProfile";
 import {useRoutes} from "hookrouter";
 import clsx from 'clsx';
 import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
 import useTheme from "@material-ui/core/styles/useTheme";
-import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import BlurOnIcon from '@material-ui/icons/BlurOn';
-import VerticalAlignTopIcon from '@material-ui/icons/VerticalAlignTop';
-import {SocialIcon} from 'react-social-icons';
 import Home from "../Routing/Home/Home";
 import Top from "../Routing/Top/Top";
 import Link from "@material-ui/core/Link";
+import DrawerList from "./DrawerList";
 
 const drawerWidth = 230;
 const primary = red[700];
@@ -107,11 +102,7 @@ const useStyles = makeStyles(theme => ({
         }),
         marginLeft: 0,
     },
-    listIcon: {
-        fontFamily: 'Montserrat, sans-serif',
-        margin: '0.2rem'
-    },
-    facebookButton:{
+    facebookButton: {
         margin: '0.5rem'
     }
 }));
@@ -162,7 +153,8 @@ const NavBar = () => {
                     </IconButton>
 
                     <Typography variant="h6" className={classes.title}>
-                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="home" className={classes.anchor}>
+                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="home"
+                              className={classes.anchor}>
                             CHORDILICIOUS
                         </Link>
                         <MusicNoteIcon/>
@@ -198,7 +190,8 @@ const NavBar = () => {
                                 </MenuItem>
                             </Link>
 
-                            <Link style={{textDecoration: 'none', color: 'inherit'}} href="favorites" className={classes.anchor}>
+                            <Link style={{textDecoration: 'none', color: 'inherit'}} href="favorites"
+                                  className={classes.anchor}>
                                 <MenuItem onClick={handleFavorites} className={classes.favorites}>
                                     <FavoriteIcon className={classes.anchor}/>
                                     My Favorites
@@ -222,54 +215,7 @@ const NavBar = () => {
                         {theme.direction === 'ltr' ? <KeyboardBackspaceIcon/> : <ArrowRightAltIcon/>}
                     </IconButton>
                 </article>
-                <Divider/>
-                <List>
-                    <ListItem className={classes.listIcon}>
-                        <QueueMusicIcon/>
-                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="about" className={classes.anchor}>
-                            About Chordilicious
-                        </Link>
-                    </ListItem>
-                    <ListItem className={classes.listIcon}>
-                        <FavoriteIcon/>
-                        <Link style={{textDecoration: 'none', color: 'inherit'}}  href="favorites" className={classes.anchor}>
-                            My Favorites
-                        </Link>
-                    </ListItem>
-                    <ListItem className={classes.listIcon}>
-                        <VerticalAlignTopIcon/>
-                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="top" className={classes.anchor}>
-                            Top 10 Lyrics
-                        </Link>
-                    </ListItem>
-                </List>
-                <Divider/>
-                <List>
-                    <ListItem className={classes.listIcon}>
-                        <SocialIcon url="http://instagram.com/" network="instagram"
-                                    style={{height: 35, width: 35, margin: '0.2rem'}}/>
-                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="http://instagram.com/" className={classes.anchor} target="_blank"
-                           rel="noopener noreferrer">
-                            Instagram
-                        </Link>
-                    </ListItem>
-                    <ListItem className={classes.listIcon}>
-                        <SocialIcon url="http://facebook.com/" network="facebook"
-                                    style={{height: 35, width: 35, margin: '0.2rem'}}/>
-                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="http://facebook.com/" className={classes.anchor} target="_blank"
-                           rel="noopener noreferrer">
-                            Facebook
-                        </Link>
-                    </ListItem>
-                    <ListItem className={classes.listIcon}>
-                        <SocialIcon url="http://github.com/" network="github"
-                                    style={{height: 35, width: 35, margin: '0.2rem'}} bgColor="#000"/>
-                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="http://github.com/" className={classes.anchor} target="_blank"
-                           rel="noopener noreferrer">
-                            Github
-                        </Link>
-                    </ListItem>
-                </List>
+                <DrawerList/>
             </Drawer>
             <main
                 className={clsx(classes.content, {
