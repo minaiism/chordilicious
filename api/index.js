@@ -3,6 +3,10 @@ import Auth from "./routes/Auth";
 const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+dotenv.config();
+const mongoUri = process.env.MONGO_URI;
+
 const app = express();
 const port = process.env.PORT || 8080;
 
@@ -10,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 //Set up default mongoose connection
-mongoose.connect('mongodb://minaiism:Halapeno123!%40#@ds237588.mlab.com:37588/chordilicious', {
+mongoose.connect(mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
@@ -18,10 +22,10 @@ mongoose.connect('mongodb://minaiism:Halapeno123!%40#@ds237588.mlab.com:37588/ch
     .then(() => console.log('Now connected to MongoDB!'))
     .catch(error => { console.log('caught', error.message)});
 
-//Get the default connection
+/* Get the default connection */
 const db = mongoose.connection;
 
-//Bind connection to error event (to get notification of connection errors)
+/* Bind connection to error event (to get notification of connection errors) */
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 app.use(express.json());

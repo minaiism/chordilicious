@@ -2,11 +2,12 @@ const Joi = require('@hapi/joi');
 const mongoose = require('mongoose');
 
 const User = mongoose.model('User', new mongoose.Schema({
-    id:{
+    //TODO: connect frontend with backend
+    fbId:{
         type: String,
-        required: true,
-        minlength: 1,
-        maxlength: 1000000000,
+        // required: true,
+        minlength: 5,
+        maxlength: 255,
         unique: true
     },
     email: {
@@ -21,14 +22,20 @@ const User = mongoose.model('User', new mongoose.Schema({
         required: true,
         minlength: 5,
         maxlength: 1024
+    },
+    salt: {
+        type: String,
+        required: true,
+        minlength: 5,
+        maxlength: 1024,
+        unique: true
     }
 }));
 
 const validateUser = user => {
     const schema = {
-        id: Joi.string().min(1).max(1000000000).required(),
         email: Joi.string().min(5).max(255).required().email(),
-        password: Joi.string().min(5).max(1024).required()
+        password: Joi.string().min(5).max(1024).required(),
     };
     return Joi.validate(user, schema);
 };
