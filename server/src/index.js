@@ -1,16 +1,14 @@
 import Users from './routes/Users';
 import Auth from './routes/Auth';
 import config from 'config';
-const mongoose = require('mongoose');
-const express = require('express');
-const bodyParser = require('body-parser');
-/*dotenv config*/
+import mongoose from 'mongoose';
+import express from 'express';
+import bodyParser from 'body-parser';
+const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
-/*mongo env config */
-const mongoUri = process.env.MONGO_URI;
 
-const app = express();
+const mongoUri = process.env.MONGO_URI;
 const port = process.env.PORT || 8080;
 
 app.use(bodyParser.urlencoded({ extended: false }));

@@ -3,33 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/runtime": "^7.6.3",
-    "@hapi/joi": "^15.0.3",
-    "@material-ui/core": "^4.3.3",
-    "bcrypt": "^3.0.6",
-    "body-parser": "latest",
-    "config": "^3.2.4",
-    "dotenv": "^8.2.0",
-    "express": "latest",
-    "hookrouter": "^1.2.3",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.7.6",
-    "nodemon": "^1.19.4",
-    "prop-types": "^15.7.2",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
-    "react-facebook-login": "^4.1.1",
-    "react-scripts": "3.1.1",
-    "react-social-icons": "^4.1.0",
-    "router": "^1.3.3"
+    "concurrently": "^5.0.0"
   },
   "scripts": {
-    "start": "nodemon --exec babel-node api/index.js react-scripts start",
-    "startServer": "node build/api/index.js",
-    "build": "react-scripts build",
-    "runServer": "nodemon --exec babel-node api/index.js react-scripts start",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "clientBuild": "cd client && npm run build",
+    "clientStart": "cd client && npm run start",
+    "clientTest": "cd client && npm run test",
+    "serverStart": "cd server && npm run start",
+    "start": "concurrently \"npm run serverStart\" \" npm run clientStart\""
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -48,23 +29,7 @@
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
-  "devDependencies": {
-    "@babel/cli": "^7.6.4",
-    "@babel/core": "^7.6.4",
-    "@babel/node": "^7.6.3",
-    "@babel/plugin-transform-runtime": "^7.6.2",
-    "@babel/preset-env": "^7.6.3",
-    "@material-ui/icons": "^4.2.1",
-    "eslint": "^6.1.0",
-    "eslint-config-airbnb": "^18.0.1",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "genius-api": "^0.4.1",
-    "js-cookie": "^2.2.1",
-    "prettier": "^1.18.2"
-  },
+  "devDependencies": {},
   "prettier": {
     "singleQuote": true
   },
