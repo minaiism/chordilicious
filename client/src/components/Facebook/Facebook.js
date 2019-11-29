@@ -41,18 +41,23 @@ const Facebook = () => {
     anchor: {
       textDecoration: 'none',
       color: 'inherit'
+    },
+    buttonsContainer: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+    },
+    buttonItem: {
+      padding: '0.3rem',
+      margin: '0.3rem'
     }
   }));
 
   const classes = useStyles();
 
-  const responseFacebook = () => {
-
-  };
-
   const facebookContent = (
     <FacebookContext.Consumer>
-      {({ userSession, setUserSession, facebookLogOut }) => userSession != null ? (
+      {({ userSession, signInCallback, signUpCallback, facebookLogOut }) => userSession != null ? (
           <section className={classes.container}>
             <img
               src={userSession.picture.data.url}
@@ -76,12 +81,27 @@ const Facebook = () => {
             </Button>
           </section>
         ) :
-        (<FacebookLogin
-          appId="2473947552663016"
-          autoLoad={false}
-          fields="name,email,picture"
-          callback={setUserSession}
-        />)
+        (<section className={classes.buttonsContainer}>
+          <article className={classes.buttonItem}>
+            <FacebookLogin
+              appId="2473947552663016"
+              autoLoad={false}
+              fields="name,email,picture"
+              callback={signInCallback}
+              icon="fa-facebook"
+              textButton={<span>Sign in</span>}
+            />
+          </article>
+          <article className={classes.buttonItem}>
+            <FacebookLogin
+              appId="2473947552663016"
+              autoLoad={false}
+              fields="name,email,picture"
+              callback={signUpCallback}
+              icon="fa-facebook"
+              textButton={<span>Sign up</span>}
+            /></article>
+        </section>)
       }
     </FacebookContext.Consumer>);
 

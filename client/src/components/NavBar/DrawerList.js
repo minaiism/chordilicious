@@ -12,7 +12,15 @@ import Link from "@material-ui/core/Link";
 const useStyles = makeStyles(() => ({
     listIcon: {
         fontFamily: 'Montserrat, sans-serif',
-        margin: '0.2rem'
+        margin: '0.2rem',
+        padding: '0.4rem'
+    },
+    listContainer:{
+        display: 'flex',
+        padding: 0
+    },
+    listSocialIcon:{
+        margin: 0
     },
     facebookButton: {
         margin: '0.5rem'
@@ -41,7 +49,7 @@ const DrawerList = () => {
                         <FavoriteIcon/>
                         <Link style={{textDecoration: 'none', color: 'inherit'}} href="favorites"
                               className={classes.anchor}>
-                            My Favorites
+                            Top 10 Chords
                         </Link>
                     </ListItem>
                     <ListItem className={classes.listIcon}>
@@ -53,32 +61,29 @@ const DrawerList = () => {
                     </ListItem>
                 </List>
             <Divider/>
-                <List>
-                    <ListItem className={classes.listIcon}>
+                <List className={classes.listContainer}>
+                    <ListItem className={classes.listSocialIcon}>
                         <SocialIcon url="http://instagram.com/" network="instagram"
                                     style={{height: 35, width: 35, margin: '0.2rem'}}/>
                         <Link style={{textDecoration: 'none', color: 'inherit'}} href="http://instagram.com/"
                               className={classes.anchor} target="_blank"
                               rel="noopener noreferrer">
-                            Instagram
                         </Link>
                     </ListItem>
-                    <ListItem className={classes.listIcon}>
+                    <ListItem className={classes.listSocialIcon}>
                         <SocialIcon url="http://facebook.com/" network="facebook"
                                     style={{height: 35, width: 35, margin: '0.2rem'}}/>
                         <Link style={{textDecoration: 'none', color: 'inherit'}} href="http://facebook.com/"
                               className={classes.anchor} target="_blank"
                               rel="noopener noreferrer">
-                            Facebook
                         </Link>
                     </ListItem>
-                    <ListItem className={classes.listIcon}>
+                    <ListItem className={classes.listSocialIcon}>
                         <SocialIcon url="http://github.com/" network="github"
                                     style={{height: 35, width: 35, margin: '0.2rem'}} bgColor="#000"/>
                         <Link style={{textDecoration: 'none', color: 'inherit'}} href="http://github.com/"
                               className={classes.anchor} target="_blank"
                               rel="noopener noreferrer">
-                            Github
                         </Link>
                     </ListItem>
                 </List>

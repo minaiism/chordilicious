@@ -1,6 +1,5 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core';
-import Typography from "@material-ui/core/Typography";
+import { makeStyles } from '@material-ui/core';
 
 const About = props => {
     const useStyles = makeStyles(theme => ({
@@ -9,12 +8,16 @@ const About = props => {
             alignItems: 'center',
             justifyContent: 'center',
             flexDirection: 'column'
+        },
+        img:{
+            width: '80%',
+            height: '80%',
         }
     }));
     const classes = useStyles();
     return (
         <article className={classes.container}>
-            <Typography variant="subtitle1">About us</Typography>
+            <img src="https://i.ytimg.com/vi/8OUSjuSSlts/maxresdefault.jpg" className={classes.img} alt="favorites"/>
         </article>
     );
 };
