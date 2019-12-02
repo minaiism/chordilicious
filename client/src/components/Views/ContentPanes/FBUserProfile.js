@@ -60,7 +60,7 @@ const FBUserProfile = props => {
   }));
   const classes = useStyles();
   return (
-    <article className={classes.container}>
+    <div className={classes.container}>
       <section className={classes.profileContainer}>
         <figure className={classes.imgContainer}>
           <img
@@ -70,21 +70,21 @@ const FBUserProfile = props => {
           />
         </figure>
         <section className={classes.fieldContainer}>
-          <article className={classes.textContainer}>
+          <div className={classes.textContainer}>
             <FaceIcon />
             <Typography variant="body2" className={classes.field}>Name {props.name} </Typography>
-          </article>
-          <article className={classes.textContainer}>
+          </div>
+          <div className={classes.textContainer}>
             <EmailIcon />
             <Typography variant="body2" className={classes.field}>Email {props.email} </Typography>
-          </article>
-          <article className={classes.textContainer}>
+          </div>
+          <div className={classes.textContainer}>
             <InfoIcon />
             <Typography variant="body2" className={classes.field}>About me {props.email} </Typography>
-          </article>
+          </div>
         </section>
       </section>
-    </article>
+    </div>
   );
 };
 

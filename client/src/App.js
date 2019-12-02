@@ -1,13 +1,11 @@
 import React from 'react';
-import NavBar from './components/NavBar/NavBar';
-import Footer from "./components/Footer/Footer";
-import FacebookProvider from "./components/Facebook/FacebookProvider";
+import MainView from './components/Views/MainView';
+import ContextProvider from './components/Context/ContextProvider';
 
 const App = () => (
-    <FacebookProvider>
-            <NavBar/>
-            <Footer/>
-    </FacebookProvider>
+    <ContextProvider>
+            <MainView/>
+    </ContextProvider>
 );
 
 export default App;

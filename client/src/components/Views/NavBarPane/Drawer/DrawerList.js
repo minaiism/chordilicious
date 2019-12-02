@@ -1,13 +1,13 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 import VerticalAlignTopIcon from '@material-ui/icons/VerticalAlignTop';
-import {SocialIcon} from 'react-social-icons';
-import Link from "@material-ui/core/Link";
+import { SocialIcon } from 'react-social-icons';
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles(() => ({
     listIcon: {
@@ -28,15 +28,14 @@ const useStyles = makeStyles(() => ({
     anchor: {
         textDecoration: 'none',
         color: 'inherit',
-    },
+    }
 }));
 
 const DrawerList = () => {
     const classes = useStyles();
 
-    return (<article>
+    return (<div>
             <Divider/>
-            {/** Material UI's Drawer List **/}
             <List>
                     <ListItem className={classes.listIcon}>
                         <QueueMusicIcon/>
@@ -87,8 +86,7 @@ const DrawerList = () => {
                         </Link>
                     </ListItem>
                 </List>
-            {/** The End of the List **/}
-        </article>
+        </div>
     );
 };
 

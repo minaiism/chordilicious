@@ -2,11 +2,10 @@ import React from 'react';
 import FacebookLogin from 'react-facebook-login';
 import { makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
-import FacebookContext from './FacebookContext';
+import Context from '../../../Context/Context';
 
-const Facebook = () => {
+const FacebookPane = () => {
   const useStyles = makeStyles(theme => ({
     container: {
       padding: '1rem',
@@ -56,35 +55,35 @@ const Facebook = () => {
   const classes = useStyles();
 
   const facebookContent = (
-    <FacebookContext.Consumer>
-      {({ userSession, signInCallback, signUpCallback, facebookLogOut }) => userSession != null ? (
-          <section className={classes.container}>
+    <Context.Consumer>
+      {({ FBUserSession, signInCallback, signUpCallback, facebookLogOut}) => FBUserSession != null ? (
+          <div className={classes.container}>
             <img
-              src={userSession.picture.data.url}
-              alt={userSession.name}
+              src={FBUserSession.picture.data.url}
+              alt={FBUserSession.name}
               className={classes.img}
             />
             <article className={classes.headContainer}>
-              <Typography variant="subtitle2" className={classes.header}>
-                <span className={classes.span}>{userSession.name}</span>'s
+              <Typography component={'span'} variant="subtitle2" className={classes.header}>
+                <span className={classes.span}>{FBUserSession.name}</span>'s
                 account
               </Typography>
             </article>
             <Button variant="contained" color="primary" className={classes.button} onClick={facebookLogOut}>
-              <Link href="home"
+              <Typography href="home"
                     style={{
                       textDecoration: 'none',
                       color: 'inherit',
                       fontFamily: 'Montserrat, sans-serif'
                     }}>Log out
-              </Link>
+              </Typography>
             </Button>
-          </section>
+          </div>
         ) :
-        (<section className={classes.buttonsContainer}>
+        (<div className={classes.buttonsContainer}>
           <article className={classes.buttonItem}>
             <FacebookLogin
-              appId="2473947552663016"
+              appId={process.env.REACT_APP_FB_APP_ID}
               autoLoad={false}
               fields="name,email,picture"
               callback={signInCallback}
@@ -94,24 +93,24 @@ const Facebook = () => {
           </article>
           <article className={classes.buttonItem}>
             <FacebookLogin
-              appId="2473947552663016"
+              appId={process.env.REACT_APP_FB_APP_ID}
               autoLoad={false}
               fields="name,email,picture"
               callback={signUpCallback}
               icon="fa-facebook"
               textButton={<span>Sign up</span>}
             /></article>
-        </section>)
+        </div>)
       }
-    </FacebookContext.Consumer>);
+    </Context.Consumer>);
 
   return (
-    <div>
+    <article>
       {facebookContent}
-    </div>
+    </article>
   );
 };
 
-export default Facebook;
+export default FacebookPane;
 
 

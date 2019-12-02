@@ -1,16 +1,16 @@
 import * as Cookies from "js-cookie";
 
-export const setSessionCookie = (userSession) => {
+export const setSessionCookie = (FBUserSession) => {
     removeSessionCookie();
-    Cookies.set("userSession", JSON.stringify(userSession));
+    Cookies.set("FBUserSession", JSON.stringify(FBUserSession));
 };
 
 export const removeSessionCookie = () => {
-    Cookies.remove("userSession");
+    Cookies.remove("FBUserSession");
 };
 
 export const getSessionCookie = () => {
-    const sessionCookie = Cookies.get("userSession");
+    const sessionCookie = Cookies.get("FBUserSession");
 
     if (sessionCookie === undefined) {
         return null;
