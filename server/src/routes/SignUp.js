@@ -9,7 +9,7 @@ router.post('/', async ({ body }, res) => {
   }
   let user = await User.findOne({ fbId: body.fbId });
   if (user) {
-    return res.status(400).send('User already exists!');
+    return res.send(user);
   }
   user = new User({ ...body });
   user.save().then(newUser => {
