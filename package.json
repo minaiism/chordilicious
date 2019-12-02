@@ -4,7 +4,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
-    "concurrently": "^5.0.0"
+    "concurrently": "^5.0.0",
+    "npm-upgrade": "^2.0.2"
   },
   "scripts": {
     "clientBuild": "cd client && npm run build",
