@@ -24,16 +24,24 @@ const ContextProvider = (props) => {
   const signInCallback = (FBUserSession) => {
     updateUserSession(FBUserSession);
     const facebookHeader = {
-      headers: { 'accessToken': FBUserSession.accessToken }
+      headers: {
+        'accessToken': FBUserSession.accessToken,
+      }
     };
     const userId = FBUserSession.id;
+    const expTime = FBUserSession.data_access_expiration_time;
 
     axios.get('http://localhost:8080/signin/' + userId, facebookHeader)
       .then((response) => {
-        console.log('signInCallback:axios', response)
+        if (expTime > Date.now()) {
+          facebookLogOut();
+        } else {
+          console.log('The expiration time is', expTime);
+        }
+        console.log('signInCallback:axios', response);
       })
       .catch(error => {
-        console.error('signInCallback:axios', error.response)
+        console.error('signInCallback:axios', error.response);
       });
   };
 
@@ -47,10 +55,10 @@ const ContextProvider = (props) => {
 
     axios.post('http://localhost:8080/signup', { fbId: userId }, facebookHeader)
       .then((response) => {
-        console.log('signUpCallback:axios', response)
+        console.log('signUpCallback:axios', response);
       })
       .catch(error => {
-        console.error('signUpCallback:axios', error.response)
+        console.error('signUpCallback:axios', error.response);
       });
   };
 

@@ -62,28 +62,16 @@ const DrawerList = () => {
             <Divider/>
                 <List className={classes.listContainer}>
                     <ListItem className={classes.listSocialIcon}>
-                        <SocialIcon url="http://instagram.com/" network="instagram"
+                        <SocialIcon url="http://instagram.com/" network="instagram" target="_blank"
                                     style={{height: 35, width: 35, margin: '0.2rem'}}/>
-                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="http://instagram.com/"
-                              className={classes.anchor} target="_blank"
-                              rel="noopener noreferrer">
-                        </Link>
                     </ListItem>
                     <ListItem className={classes.listSocialIcon}>
-                        <SocialIcon url="http://facebook.com/" network="facebook"
+                        <SocialIcon url="http://facebook.com/" network="facebook" target="_blank"
                                     style={{height: 35, width: 35, margin: '0.2rem'}}/>
-                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="http://facebook.com/"
-                              className={classes.anchor} target="_blank"
-                              rel="noopener noreferrer">
-                        </Link>
                     </ListItem>
                     <ListItem className={classes.listSocialIcon}>
-                        <SocialIcon url="http://github.com/" network="github"
+                        <SocialIcon url="http://github.com/" network="github" target="_blank"
                                     style={{height: 35, width: 35, margin: '0.2rem'}} bgColor="#000"/>
-                        <Link style={{textDecoration: 'none', color: 'inherit'}} href="http://github.com/"
-                              className={classes.anchor} target="_blank"
-                              rel="noopener noreferrer">
-                        </Link>
                     </ListItem>
                 </List>
         </div>
