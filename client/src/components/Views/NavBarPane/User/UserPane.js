@@ -6,7 +6,9 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import FacebookPane from './FacebookPane';
 import Link from '@material-ui/core/Link';
 import IconButton from '@material-ui/core/IconButton';
+import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import { AccountCircle } from '@material-ui/icons';
+import { Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
   anchor: {
@@ -16,12 +18,16 @@ const useStyles = makeStyles(() => ({
   facebookButton: {
     margin: '0.5rem'
   },
-  favorites: {
-    fontFamily: 'Montserrat, sans-serif',
-    padding: '1.5rem',
+  button: {
+    margin: '0.5rem',
     fontSize: 'inherit',
-    textAlign: 'center'
+    textAlign: 'left'
   },
+  text:{
+    fontFamily: 'Montserrat, sans-serif',
+    margin: '0.5rem',
+    fontSize: '0.95rem'
+  }
 }));
 
 const UserPane = () => {
@@ -72,11 +78,19 @@ const UserPane = () => {
           </MenuItem>
         </Link>
 
+        <Link style={{ textDecoration: 'none', color: 'inherit' }} href="user-profile"
+              className={classes.anchor}>
+          <MenuItem onClick={handleFavorites} className={classes.button}>
+            <EmojiPeopleIcon className={classes.anchor}/>
+            <Typography className={classes.text}>My Account</Typography>
+          </MenuItem>
+        </Link>
+
         <Link style={{ textDecoration: 'none', color: 'inherit' }} href="favorites"
               className={classes.anchor}>
-          <MenuItem onClick={handleFavorites} className={classes.favorites}>
+          <MenuItem onClick={handleFavorites} className={classes.button}>
             <FavoriteIcon className={classes.anchor}/>
-            My Favorites
+            <Typography className={classes.text}>My Favorites</Typography>
           </MenuItem>
         </Link>
 
@@ -86,3 +100,4 @@ const UserPane = () => {
 };
 
 export default UserPane;
+
