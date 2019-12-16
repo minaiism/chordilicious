@@ -17,6 +17,10 @@ const useStyles = makeStyles(theme => ({
         padding: theme.spacing(2),
         marginTop: 'auto',
         backgroundColor: primary,
+        color: 'white',
+        fontFamily: 'Montserrat, sans-serif',
+        display: 'flex',
+        justifyContent: 'flex-end'
     },
 }));
 
@@ -27,6 +31,7 @@ const Footer = () => {
         <div className={classes.root}>
             <CssBaseline />
             <footer className={classes.footer}>
+                Chordilicious &copy; Copyright 2019
             </footer>
         </div>
     );
