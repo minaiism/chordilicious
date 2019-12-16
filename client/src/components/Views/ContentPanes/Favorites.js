@@ -1,34 +1,48 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
+import Context from '../../Context/Context';
+import SnackBarPane from './SnackBarPane/SnackBarPane';
+import Typography from '@material-ui/core/Typography';
+import Avatar from '@material-ui/core/Avatar';
 
-const Favorites = (props) => {
-    const useStyles = makeStyles(theme => ({
-        container: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column'
-        },
-        img:{
-            width: '80%',
-            height: '80%',
-        },
-        text:{
-            fontFamily: 'Montserrat, sans-serif',
-            padding: '0.3rem',
-            textTransform: 'uppercase'
-        }
-    }));
+const Favorites = () => {
+  const useStyles = makeStyles(() => ({
+    container: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexDirection: 'row'
+    },
+    img: {
+      width: '80%',
+      height: '80%'
+    },
+    text: {
+      fontFamily: 'Montserrat, sans-serif',
+      padding: '0.3rem',
+      textTransform: 'uppercase'
+    }
+  }));
 
-    const classes = useStyles();
-    return (
-        <div className={classes.container}>
-            <h3 className={classes.text}>
-                Favorites
-            </h3>
-            <img src="https://occ-0-1723-92.1.nflxso.net/dnm/api/v6/E8vDc_W8CLv7-yMQu8KMEC7Rrr8/AAAABf3MbGlHM3bsMhmb2Ao5repTleZu7_vSgQrYg4nU-chXK8lxhe8HnRqdLGt0_6HKGJfjAIQuF6yEw9GIb_PAHy2xz8J3.jpg?r=c53" className={classes.img} alt="favorites"/>
-        </div>
-    );
+  const classes = useStyles();
+  return (
+    <Context.Consumer>
+      {({ FBUserSession }) => FBUserSession != null ? (
+          <article className={classes.container}>
+            <Avatar className={classes.text} src={FBUserSession.picture.data.url}>
+            </Avatar>
+            <Typography className={classes.text}>
+              {FBUserSession.name}'s Favorites
+            </Typography>
+            <Typography>{FBUserSession.favorites}</Typography>
+          </article>) :
+        (<article>
+          <SnackBarPane/>
+        </article>)
+      }
+    </Context.Consumer>
+  );
 };
+
 
 export default Favorites;
