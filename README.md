@@ -6,7 +6,7 @@
 
 #### Lyrics & Chords in one place :dizzy_face:
 
-#### Tools & Libraries :art: :
+#### Tools & Libs :art: :
 
 - React Hooks :heavy_check_mark:
 - Context API :heavy_check_mark:
@@ -22,10 +22,16 @@
 - MongoDB Compass :heavy_check_mark:
 - Postman :heavy_check_mark:
 
-#### APIS :art: :
+#### APIS :memo: :
 
 - Genius API :heavy_check_mark:
 - Chords API :heavy_check_mark:
+
+#### Animations && Audio Libs :rocket: :
+
+- React-spring :heavy_check_mark:
+- React-anime  :heavy_check_mark:
+- Howler.js :heavy_check_mark:
 
 #### If you play instruments and would love to have everything in :one: place only -> just take a look :eyes: :heavy_exclamation_mark:
 
