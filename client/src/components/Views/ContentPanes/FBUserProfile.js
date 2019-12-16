@@ -1,90 +1,90 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
-import red from '@material-ui/core/colors/red';
-import FaceIcon from '@material-ui/icons/Face';
-import EmailIcon from '@material-ui/icons/Email';
-import InfoIcon from '@material-ui/icons/Info';
-import Typography from "@material-ui/core/Typography";
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+import Context from '../../Context/Context';
+import SnackBarPane from './SnackBarPane/SnackBarPane';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
 
-const FBUserProfile = props => {
-  const primary = red[700];
-  const useStyles = makeStyles(theme => ({
-    container: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexDirection: 'column'
-    },
-    profileContainer: {
-      padding: '3rem'
-    },
-    textContainer: {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center'
-    },
-    fieldContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      fontFamily: 'Montserrat, sans-serif'
-    },
-    imgContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center'
-    },
-    img: {
-      width: '250px',
-      height: '150px',
-      opacity: '0.7',
-      padding: '1rem',
-      background: primary,
-      '&:hover': {
-        opacity: '1',
-        transition: 'opacity .4s ease-in',
-        '-webkit-transform': 'scale(1.1)',
-        '-ms-transform': 'scale(1.1)',
-        transform: 'scale(1.1)',
-        '-webkit-box-shadow': '3px 3px 5px 6px #ccc',
-        '-moz-box-shadow': '3px 3px 5px 6px #ccc',
-        'box-shadow': '3px 3px 5px 6px #ccc'
-      },
-      borderRadius: '50%'
-    },
-    field: {
-      padding: '0.2rem'
+const StyledTableCell = withStyles(theme => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white
+  },
+  body: {
+    fontSize: 14,
+  }
+}))(TableCell);
+
+const StyledTableRow = withStyles(theme => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.background.default
     }
-  }));
+  }
+}))(TableRow);
+
+const useStyles = makeStyles({
+  table: {
+    minWidth: 400,
+  },
+  tableItem:{
+    fontFamily: 'Montserrat, sans-serif',
+    textAlign: 'left'
+  },
+  avatar:{
+    display: 'flex',
+  },
+  favorites:{
+    textDecoration: 'none',
+    color: 'white',
+    fontFamily: 'Montserrat, sans-serif',
+    '&:hover, &:focus': {
+      textDecoration: 'none',
+    },
+  }
+});
+
+const FBUserProfile = () => {
   const classes = useStyles();
+
   return (
-    <div className={classes.container}>
-      <section className={classes.profileContainer}>
-        <figure className={classes.imgContainer}>
-          <img
-            src="https://i.ytimg.com/vi/GDA2CBvwdJQ/maxresdefault.jpg"
-            alt="avatar"
-            className={classes.img}
-          />
-        </figure>
-        <section className={classes.fieldContainer}>
-          <div className={classes.textContainer}>
-            <FaceIcon />
-            <Typography variant="body2" className={classes.field}>Name {props.name} </Typography>
-          </div>
-          <div className={classes.textContainer}>
-            <EmailIcon />
-            <Typography variant="body2" className={classes.field}>Email {props.email} </Typography>
-          </div>
-          <div className={classes.textContainer}>
-            <InfoIcon />
-            <Typography variant="body2" className={classes.field}>About me {props.email} </Typography>
-          </div>
-        </section>
-      </section>
-    </div>
+    <Context.Consumer>
+      {({ FBUserSession }) => FBUserSession != null ? (
+          <TableContainer component={Paper}>
+            <Table className={classes.table} aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell className={classes.tableItem}>My Favorites</StyledTableCell>
+                  <StyledTableCell align="right" className={classes.tableItem}>Name</StyledTableCell>
+                  <StyledTableCell align="right" className={classes.tableItem}>Email</StyledTableCell>
+                  <StyledTableCell align="right" className={classes.tableItem}>Avatar</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                <StyledTableRow>
+                  <StyledTableCell component="th" scope="row" className={classes.tableItem}>
+                   <Button variant="contained" color="primary"> <Link href="favorites" className={classes.favorites}>Favorites</Link></Button>
+                  </StyledTableCell>
+                  <StyledTableCell align="right" className={classes.tableItem}>{FBUserSession.name}</StyledTableCell>
+                  <StyledTableCell align="right" className={classes.tableItem}>{FBUserSession.email}</StyledTableCell>
+                  <StyledTableCell align="right" className={classes.tableItem}>
+                    <Avatar alt="avatar" src={FBUserSession.picture.data.url} className={classes.avatar}/>
+                  </StyledTableCell>
+                </StyledTableRow>
+              </TableBody>
+            </Table>
+          </TableContainer>) :
+        (<SnackBarPane/>)
+      }
+    </Context.Consumer>
   );
 };
 
