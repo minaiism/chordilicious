@@ -29,15 +29,9 @@ const ContextProvider = (props) => {
       }
     };
     const userId = FBUserSession.id;
-    const expTime = FBUserSession.data_access_expiration_time;
 
     axios.get('http://localhost:8080/signin/' + userId, facebookHeader)
       .then((response) => {
-        if (expTime > Date.now()) {
-          facebookLogOut();
-        } else {
-          console.log('The expiration time is', expTime);
-        }
         console.log('signInCallback:axios', response);
       })
       .catch(error => {
