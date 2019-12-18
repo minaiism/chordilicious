@@ -1,48 +1,58 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import AudiotrackIcon from '@material-ui/icons/Audiotrack';
+import { Typography } from '@material-ui/core';
 import Context from '../../Context/Context';
 import SnackBarPane from './SnackBarPane/SnackBarPane';
-import Typography from '@material-ui/core/Typography';
-import Avatar from '@material-ui/core/Avatar';
 
-const Favorites = () => {
-  const useStyles = makeStyles(() => ({
-    container: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexDirection: 'row'
-    },
-    img: {
-      width: '80%',
-      height: '80%'
-    },
-    text: {
-      fontFamily: 'Montserrat, sans-serif',
-      padding: '0.3rem',
-      textTransform: 'uppercase'
-    }
-  }));
+const useStyles = makeStyles(theme => ({
+  root: {
+    width: '100%',
+    maxWidth: 360,
+    backgroundColor: theme.palette.background.paper,
+    margin: '0 auto'
+  },
+  header: {
+    fontFamily: 'Montserrat, sans-serif',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    margin: '0.5rem',
+    padding: '0.5rem'
+  }
+}));
 
+const FavoritesPane = () => {
   const classes = useStyles();
+
   return (
     <Context.Consumer>
       {({ FBUserSession }) => FBUserSession != null ? (
-          <article className={classes.container}>
-            <Avatar className={classes.text} src={FBUserSession.picture.data.url}>
-            </Avatar>
-            <Typography className={classes.text}>
-              {FBUserSession.name}'s Favorites
-            </Typography>
-            <Typography>{FBUserSession.favorites}</Typography>
+          <article>
+            <Typography variant="h5" className={classes.header}>{FBUserSession.name}'s Favorites</Typography>
+            <List component="nav" className={classes.root} aria-label="favorites">
+              <ListItem button>
+                <ListItemIcon>
+                  <AudiotrackIcon/>
+                </ListItemIcon>
+                <ListItemText primary="Favorites1"/>
+              </ListItem>
+              <ListItem button>
+                <ListItemText inset primary="Favorites2"/>
+              </ListItem>
+              <ListItem button>
+                <ListItemText inset primary="Favorites3"/>
+              </ListItem>
+            </List>
           </article>) :
-        (<article>
-          <SnackBarPane/>
-        </article>)
+        (<SnackBarPane/>)
       }
     </Context.Consumer>
   );
 };
 
-
-export default Favorites;
+export default FavoritesPane;

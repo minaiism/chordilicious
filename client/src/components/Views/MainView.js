@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import Typography from '@material-ui/core/Typography';
 import { useRoutes } from 'hookrouter';
 import Home from './ContentPanes/Home';
-import About from './ContentPanes/About';
+import About from './ContentPanes/AboutPane/AboutPane';
 import Favorites from './ContentPanes/Favorites';
 import FBUserProfile from './ContentPanes/FBUserProfile';
 import Top from './ContentPanes/Top';
