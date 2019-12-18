@@ -12,7 +12,8 @@ import Divider from '@material-ui/core/Divider';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    background: 'white'
+    background: 'white',
+    border: '1px dashed #C19D4C'
   },
   icon: {
     fontSize: 70,
@@ -35,7 +36,7 @@ const useStyles = makeStyles(theme => ({
     fontSize: 17,
     fontFamily: 'Montserrat, sans-serif',
     textAlign: 'justify',
-    padding: '0 9rem 0 9rem'
+    padding: '0 9rem 2rem 9rem',
   },
   skillText: {
     textAlign: 'center',
@@ -62,7 +63,7 @@ const useStyles = makeStyles(theme => ({
     margin: '0 auto',
     width: '18rem',
     backgroundColor: '#D4AA50'
-  }
+  },
 }));
 
 const AboutPane = () => {
