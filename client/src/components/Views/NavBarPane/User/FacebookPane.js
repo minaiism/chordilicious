@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Context from '../../../Context/Context';
+import Link from '@material-ui/core/Link';
 
 const FacebookPane = () => {
   const useStyles = makeStyles(theme => ({
@@ -56,7 +57,7 @@ const FacebookPane = () => {
 
   const facebookContent = (
     <Context.Consumer>
-      {({ FBUserSession, signInCallback, signUpCallback, facebookLogOut}) => FBUserSession != null ? (
+      {({ FBUserSession, signInCallback, facebookLogOut}) => FBUserSession != null ? (
           <div className={classes.container}>
             <img
               src={FBUserSession.picture.data.url}
@@ -82,24 +83,8 @@ const FacebookPane = () => {
         ) :
         (<div className={classes.buttonsContainer}>
           <article className={classes.buttonItem}>
-            <FacebookLogin
-              appId={process.env.REACT_APP_FB_APP_ID}
-              autoLoad={false}
-              fields="name,email,picture"
-              callback={signInCallback}
-              icon="fa-facebook"
-              textButton={<span>Sign in</span>}
-            />
+            <Button color="primary"><Link href="http://localhost:8080/auth/facebook">Login with Facebook</Link></Button>
           </article>
-          <article className={classes.buttonItem}>
-            <FacebookLogin
-              appId={process.env.REACT_APP_FB_APP_ID}
-              autoLoad={false}
-              fields="name,email,picture"
-              callback={signUpCallback}
-              icon="fa-facebook"
-              textButton={<span>Sign up</span>}
-            /></article>
         </div>)
       }
     </Context.Consumer>);
