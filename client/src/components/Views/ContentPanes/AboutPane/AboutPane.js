@@ -13,7 +13,6 @@ const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
     background: 'white',
-    border: '1px dashed #C19D4C'
   },
   icon: {
     fontSize: 70,
@@ -37,6 +36,12 @@ const useStyles = makeStyles(theme => ({
     fontFamily: 'Montserrat, sans-serif',
     textAlign: 'justify',
     padding: '0 9rem 2rem 9rem',
+    '@media (min-device-width: 320px) and (max-device-width: 920px)':{
+      padding: '0 1.5rem'
+    },
+    '@media (min-device-width: 1024px) and (max-device-width: 1366px)':{
+      padding: '0 2rem'
+    }
   },
   skillText: {
     textAlign: 'center',
@@ -53,6 +58,16 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       transition: 'transform 0.5s ease 0s',
       transform: 'scale(0.95)'
+    },
+    '@media (min-device-width: 768px) and (max-device-width: 1024px)':{
+      width: '70%',
+      height: '70%',
+      margin: '0 auto'
+    },
+    '@media (min-device-width: 1024px) and (max-device-width: 1366px)':{
+      width: '70%',
+      height: '70%',
+      margin: '0 auto'
     }
   },
   skillPaneText: {
@@ -62,8 +77,24 @@ const useStyles = makeStyles(theme => ({
     height: '2.5px',
     margin: '0 auto',
     width: '18rem',
-    backgroundColor: '#D4AA50'
+    backgroundColor: '#D4AA50',
+    '@media (min-device-width: 320px) and (max-device-width: 480px)':{
+      width: '17rem'
+    },
+    '@media (min-device-width: 768px) and (max-device-width: 1024px)':{
+      width: '30rem'
+    },
+    '@media (min-device-width: 1024px) and (max-device-width: 1366px)':{
+      width: '45rem'
+    }
   },
+  gridContainer:{
+    display: 'flex',
+    flexDirection: 'row',
+    '@media (min-device-width: 320px) and (max-device-width: 1100px)':{
+      flexDirection: 'column'
+    },
+  }
 }));
 
 const AboutPane = () => {
@@ -86,6 +117,7 @@ const AboutPane = () => {
             React's passionate. Currently developing my very own musical design...and you're just looking at it.
           </Typography>
         </Grid>
+        <Grid className={classes.gridContainer}>
         <Grid item xs>
           <Typography className={classes.skillText}>
             <Avatar className={classes.owl} src={owl}>
@@ -104,6 +136,7 @@ const AboutPane = () => {
           <Divider className={classes.divider}/>
           <GoalsPaneList/>
         </Grid>
+      </Grid>
       </Grid>
     </div>
   );
