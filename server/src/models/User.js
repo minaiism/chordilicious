@@ -1,16 +1,21 @@
-const Joi = require('@hapi/joi');
-const mongoose = require('mongoose');
+import Joi from '@hapi/joi';
+import mongoose from 'mongoose';
+import findOrCreate from 'mongoose-findorcreate';
 
-const User = mongoose.model('User', new mongoose.Schema({
+let UserSchema = new mongoose.Schema({
   fbId: {
     type: String,
     required: true,
     unique: true
   },
   favorites: {
-    type: [String],
+    type: [String]
   }
-}));
+});
+
+UserSchema.plugin(findOrCreate);
+
+const User = mongoose.model('User', UserSchema);
 
 const validateUser = user => {
   const schema = {
