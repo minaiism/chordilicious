@@ -2,7 +2,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from './NavBarPane/NavBar';
 import clsx from 'clsx';
-import Typography from '@material-ui/core/Typography';
 import { useRoutes } from 'hookrouter';
 import Home from './ContentPanes/Home';
 import About from './ContentPanes/AboutPane/AboutPane';
@@ -50,20 +49,20 @@ const MainView = () => {
   const handleDrawerClose = () => {
     setDrawerOpen(false);
   };
-  return (<div className={classes.container}>
+  return (<article className={classes.container}>
       <NavBar opened={drawerOpen} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose}/>
       <main
         className={clsx(classes.content, {
           [classes.contentShift]: drawerOpen
         })}
       >
-        <Typography component={'span'} variant={'body2'}>
+        <article>
           {/** dynamically rendered component **/}
           {routeResult}
-        </Typography>
+        </article>
       </main>
       <Footer/>
-    </div>
+    </article>
   );
 };
 

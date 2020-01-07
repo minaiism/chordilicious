@@ -1,22 +1,21 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core';
-import Typography from "@material-ui/core/Typography";
+import { makeStyles } from '@material-ui/core/styles';
 
-const Home = () => {
-    const useStyles = makeStyles(theme => ({
-        container: {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            flexDirection: 'column'
-        }
-    }));
-    const classes = useStyles();
-    return (
-        <div className={classes.container}>
-            <Typography varian="h1">Top Lyrics</Typography>
-        </div>
-    );
+const useStyles = makeStyles(theme => ({
+  text: {
+    fontFamily: 'Montserrat, sans-serif',
+    padding: '0.5rem',
+  },
+}));
+
+const Top = () => {
+  const classes = useStyles();
+
+  return (
+    <div>
+      <h1 className={classes.text}>Top</h1>
+    </div>
+  );
 };
 
-export default Home;
+export default Top;

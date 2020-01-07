@@ -101,16 +101,16 @@ const AboutPane = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <article className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <Typography className={classes.header}>
+          <Typography className={classes.header} variant="h1">
             <DepartureBoardIcon className={classes.icon}/>
             Junior Frontend Developer looking for Real-World
             Experience</Typography>
         </Grid>
         <Grid item xs={12}>
-          <Typography className={classes.text}>
+          <Typography className={classes.text} variant="h5">
             A creative and hard-working person who decided to become a Front-End Developer from scratch.
             Moving towards Javascript frameworks and tools for the time being.
             Managing to contribute to all the projects I'm presently working on and will work on in the future.
@@ -119,7 +119,7 @@ const AboutPane = () => {
         </Grid>
         <Grid className={classes.gridContainer}>
         <Grid item xs>
-          <Typography className={classes.skillText}>
+          <Typography className={classes.skillText} variant={'h2'}>
             <Avatar className={classes.owl} src={owl}>
             </Avatar>
           </Typography>
@@ -138,7 +138,7 @@ const AboutPane = () => {
         </Grid>
       </Grid>
       </Grid>
-    </div>
+    </article>
   );
 };
 

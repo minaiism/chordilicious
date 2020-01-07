@@ -1,10 +1,9 @@
 import React from 'react';
-import FacebookLogin from 'react-facebook-login';
 import { makeStyles } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Context from '../../../Context/Context';
-import Link from '@material-ui/core/Link';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 const FacebookPane = () => {
   const useStyles = makeStyles(theme => ({
@@ -65,8 +64,8 @@ const FacebookPane = () => {
               className={classes.img}
             />
             <article className={classes.headContainer}>
-              <Typography component={'span'} variant="subtitle2" className={classes.header}>
-                <span className={classes.span}>{FBUserSession.name}</span>'s
+              <Typography component={'span'} variant={'subtitle2'} className={classes.header}>
+                <Typography component={'span'} className={classes.span}>{FBUserSession.name}</Typography>'s
                 account
               </Typography>
             </article>
@@ -82,9 +81,9 @@ const FacebookPane = () => {
           </div>
         ) :
         (<div className={classes.buttonsContainer}>
-          <article className={classes.buttonItem}>
-            <Button color="primary"><Link href="http://localhost:8080/auth/facebook">Login with Facebook</Link></Button>
-          </article>
+          <Typography variant={'h5'} className={classes.buttonItem}>
+            <ButtonGroup variant="contained" color="primary" href="http://localhost:8080/auth/facebook"><Button>Login with Facebook</Button></ButtonGroup>
+          </Typography>
         </div>)
       }
     </Context.Consumer>);

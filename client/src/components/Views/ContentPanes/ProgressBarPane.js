@@ -1,16 +1,19 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-import LinearProgress from '@material-ui/core/LinearProgress';
-import RowingIcon from '@material-ui/icons/Rowing';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import FlightLandIcon from '@material-ui/icons/FlightLand';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    width: '40%',
+    width: '50%',
     '& > * + *': {
-      marginTop: theme.spacing(2),
-      marginBottom: theme.spacing(4)
+      marginTop: theme.spacing(2)
     },
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
     margin: '0 auto'
   },
   progress: {
@@ -19,26 +22,29 @@ const useStyles = makeStyles(theme => ({
   },
   text: {
     fontFamily: 'Montserrat, sans-serif',
-    textAlign: 'center',
     padding: '0.5rem'
   },
-  icon:{
-    fontSize: '1.8rem'
+  icon: {
+    fontSize: '2.4rem',
+    margin: '0.4rem'
+  },
+  progressIcon:{
+    margin: '2rem'
   }
 }));
 
-const ProgressBarPane = () => {
+const Top = () => {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <Typography variant="body1" className={classes.text}>
+      <Typography variant={'h6'} className={classes.text}>
+        <FlightLandIcon className={classes.icon} color={'primary'}/>
         Hold on a sec...
-        <RowingIcon className={classes.icon}/>
       </Typography>
-      <LinearProgress color="primary"/>
+      <CircularProgress className={classes.progressIcon} color={'primary'} size={'3rem'} />
     </div>
   );
 };
 
-export default ProgressBarPane;
+export default Top;
