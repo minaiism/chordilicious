@@ -1,5 +1,9 @@
-import React from 'react';
+import { useState } from 'react';
+import createUseContext from 'constate';
 
-const Context = React.createContext();
-export default Context;
+const useUser = () => {
+  const [user, setUser] = useState(null);
+  return { user, setUser };
+};
 
+export const useUserContext = createUseContext(useUser);

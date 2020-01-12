@@ -7,11 +7,11 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Context from '../../Context/Context';
 import SnackBarPane from './SnackBarPane/SnackBarPane';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
+import { useUserContext } from '../../Context/Context';
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -54,10 +54,10 @@ const useStyles = makeStyles({
 
 const FBUserProfile = () => {
   const classes = useStyles();
+  const { user, setUser } = useUserContext();
 
   return (
-    <Context.Consumer>
-      {({ FBUserSession }) => FBUserSession != null ? (
+    user != null ? ( <article>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">
               <TableHead>
@@ -73,18 +73,17 @@ const FBUserProfile = () => {
                   <StyledTableCell component="th" scope="row" className={classes.tableItem}>
                    <Button variant="contained" color="primary"> <Link href="favorites" className={classes.favorites}>Favorites</Link></Button>
                   </StyledTableCell>
-                  <StyledTableCell align="right" className={classes.tableItem}>{FBUserSession.name}</StyledTableCell>
-                  <StyledTableCell align="right" className={classes.tableItem}>{FBUserSession.email}</StyledTableCell>
+                  <StyledTableCell align="right" className={classes.tableItem}>{user.name}</StyledTableCell>
+                  <StyledTableCell align="right" className={classes.tableItem}>{user.email}</StyledTableCell>
                   <StyledTableCell align="right" className={classes.tableItem}>
-                    <Avatar alt="avatar" src={FBUserSession.picture.data.url} className={classes.avatar}/>
+                    <Avatar alt="avatar" src={user.picture.data.url} className={classes.avatar}/>
                   </StyledTableCell>
                 </StyledTableRow>
               </TableBody>
             </Table>
-          </TableContainer>) :
-        (<SnackBarPane/>)
-      }
-    </Context.Consumer>
+          </TableContainer>
+        <SnackBarPane/>
+    </article>) :(<SnackBarPane/>)
   );
 };
 

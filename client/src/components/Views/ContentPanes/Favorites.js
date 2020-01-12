@@ -6,8 +6,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import AudiotrackIcon from '@material-ui/icons/Audiotrack';
 import { Typography } from '@material-ui/core';
-import Context from '../../Context/Context';
 import SnackBarPane from './SnackBarPane/SnackBarPane';
+import { useUserContext } from '../../../components/Context/Context';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -28,12 +28,13 @@ const useStyles = makeStyles(theme => ({
 
 const FavoritesPane = () => {
   const classes = useStyles();
+  const { user } = useUserContext();
 
   return (
-    <Context.Consumer>
-      {({ FBUserSession }) => FBUserSession != null ? (
+    user != null ? (
+      <article>
           <article>
-            <Typography variant="h5" className={classes.header}>{FBUserSession.name}'s Favorites</Typography>
+            <Typography variant="h5" className={classes.header}>{user.name}'s Favorites</Typography>
             <List component="nav" className={classes.root} aria-label="favorites">
               <ListItem button>
                 <ListItemIcon>
@@ -51,7 +52,7 @@ const FavoritesPane = () => {
           </article>) :
         (<SnackBarPane/>)
       }
-    </Context.Consumer>
+    </article>) : (<SnackBarPane/>)
   );
 };
 

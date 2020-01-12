@@ -9,6 +9,7 @@ import Favorites from './ContentPanes/Favorites';
 import FBUserProfile from './ContentPanes/FBUserProfile';
 import Top from './ContentPanes/Top';
 import Footer from './FooterPane/Footer';
+import SignInCallbackPane from './ContentPanes/SignInCallbackPane';
 
 
 const useStyles = makeStyles(theme => ({
@@ -35,7 +36,8 @@ const routes = {
   '/favorites': () => <Favorites/>,
   '/user-profile': () => <FBUserProfile/>,
   '/home': () => <Home/>,
-  '/top': () => <Top/>
+  '/top': () => <Top/>,
+  '/signing-in': () => <SignInCallbackPane/>
 };
 
 const MainView = () => {
