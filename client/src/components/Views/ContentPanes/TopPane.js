@@ -8,7 +8,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Top = () => {
+const TopPane = () => {
   const classes = useStyles();
 
   return (
@@ -18,4 +18,4 @@ const Top = () => {
   );
 };
 
-export default Top;
+export default TopPane;

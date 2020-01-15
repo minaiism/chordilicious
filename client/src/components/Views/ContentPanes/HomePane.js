@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
-const Home = () => {
+const HomePane = () => {
   const useStyles = makeStyles(theme => ({
     container: {
       display: 'flex',
@@ -39,4 +39,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePane;

@@ -52,7 +52,7 @@ const useStyles = makeStyles({
   }
 });
 
-const FBUserProfile = () => {
+const UserProfilePane = () => {
   const classes = useStyles();
   const { user, setUser } = useUserContext();
 
@@ -87,4 +87,4 @@ const FBUserProfile = () => {
   );
 };
 
-export default FBUserProfile;
+export default UserProfilePane;

@@ -3,14 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import NavBar from './NavBarPane/NavBar';
 import clsx from 'clsx';
 import { useRoutes } from 'hookrouter';
-import Home from './ContentPanes/Home';
+import HomePane from './ContentPanes/HomePane';
 import About from './ContentPanes/AboutPane/AboutPane';
-import Favorites from './ContentPanes/Favorites';
-import FBUserProfile from './ContentPanes/FBUserProfile';
-import Top from './ContentPanes/Top';
+import Favorites from './ContentPanes/FavoritesPane';
+import UserProfilePane from './ContentPanes/UserProfilePane';
+import TopPane from './ContentPanes/TopPane';
 import Footer from './FooterPane/Footer';
 import SignInCallbackPane from './ContentPanes/SignInCallbackPane';
-
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -31,13 +30,13 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const routes = {
-  '/': () => <Home/>,
+  '/': () => <HomePane/>,
   '/about': () => <About/>,
   '/favorites': () => <Favorites/>,
-  '/user-profile': () => <FBUserProfile/>,
-  '/home': () => <Home/>,
-  '/top': () => <Top/>,
-  '/signing-in': () => <SignInCallbackPane/>
+  '/user-profile': () => <UserProfilePane/>,
+  '/home': () => <HomePane/>,
+  '/top': () => <TopPane/>,
+  '/sign-in-callback': () => <SignInCallbackPane/>
 };
 
 const MainView = () => {
@@ -51,6 +50,7 @@ const MainView = () => {
   const handleDrawerClose = () => {
     setDrawerOpen(false);
   };
+
   return (<article className={classes.container}>
       <NavBar opened={drawerOpen} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose}/>
       <main
@@ -59,7 +59,6 @@ const MainView = () => {
         })}
       >
         <article>
-          {/** dynamically rendered component **/}
           {routeResult}
         </article>
       </main>

@@ -72,7 +72,7 @@ const UserPane = () => {
         onClose={handleClose}
       >
 
-        <Link style={{ textDecoration: 'none', color: 'inherit' }} className={classes.anchor}>
+        <Link style={{ textDecoration: 'none', color: 'inherit' }} className={classes.anchor} component={'div'}>
           <MenuItem onClick={handleClose}>
             <FacebookPane className={classes.facebookButton}/>
           </MenuItem>

@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import createUseContext from 'constate';
 
-const useUser = () => {
+const useUserInfo = () => {
   const [user, setUser] = useState(null);
-  return { user, setUser };
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  return { user, setUser, loading, setLoading, error, setError};
 };
 
-export const useUserContext = createUseContext(useUser);
+export const useUserContext = createUseContext(useUserInfo);
+
+

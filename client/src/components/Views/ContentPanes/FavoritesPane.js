@@ -7,7 +7,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import AudiotrackIcon from '@material-ui/icons/Audiotrack';
 import { Typography } from '@material-ui/core';
 import SnackBarPane from './SnackBarPane/SnackBarPane';
-import { useUserContext } from '../../../components/Context/Context';
+import { useUserContext } from '../../Context/Context';
 
 const useStyles = makeStyles(theme => ({
   root: {

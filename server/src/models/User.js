@@ -8,6 +8,18 @@ let UserSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
+  name: {
+    type: String,
+    required: true
+  },
+  email:{
+    type: String,
+    required: true
+  },
+  avatar:{
+    type: String,
+    required: true
+  },
   favorites: {
     type: [String]
   }
@@ -20,6 +32,9 @@ const User = mongoose.model('User', UserSchema);
 const validateUser = user => {
   const schema = {
     fbId: Joi.string(),
+    name: Joi.string(),
+    email: Joi.string(),
+    avatar: Joi.string(),
     favorites: Joi.array()
   };
   return Joi.validate(user, schema);

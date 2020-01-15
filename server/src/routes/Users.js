@@ -13,9 +13,11 @@ const getUser = (fbId) => {
   });
 };
 
-router.get('/:fbId', async (req, res) => {
-  getUser(req.params.fbId).then(user => res.send(user)).catch(err => res.status(404).send(err.message));
+router.get('/me', async (req, res) => {
+  getUser(req.user.fbId).then(user => res.send(user)).catch(err => res.status(404).send(err.message));
 });
+
+
 
 router.post('/', async ({ body }, res) => {
   /* First Validate The Request */
