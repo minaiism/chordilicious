@@ -58,7 +58,6 @@ const SignInCallbackPane = () => {
     }
   }, [user, setUser, setLoading, setError]);
 
-
   return loading ? (
     <div className={classes.root}>
       <Typography variant={'h6'} className={classes.text}>

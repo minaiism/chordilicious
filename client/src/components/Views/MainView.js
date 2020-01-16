@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import NavBar from './NavBarPane/NavBar';
+import NavBarPane from './NavBarPane/NavBarPane';
 import clsx from 'clsx';
 import { useRoutes } from 'hookrouter';
 import HomePane from './ContentPanes/HomePane';
@@ -52,7 +52,7 @@ const MainView = () => {
   };
 
   return (<article className={classes.container}>
-      <NavBar opened={drawerOpen} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose}/>
+      <NavBarPane opened={drawerOpen} handleDrawerOpen={handleDrawerOpen} handleDrawerClose={handleDrawerClose}/>
       <main
         className={clsx(classes.content, {
           [classes.contentShift]: drawerOpen

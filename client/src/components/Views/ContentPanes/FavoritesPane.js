@@ -30,30 +30,24 @@ const FavoritesPane = () => {
   const classes = useStyles();
   const { user } = useUserContext();
 
-  return (
-    user != null ? (
-      <article>
-          <article>
-            <Typography variant="h5" className={classes.header}>{user.name}'s Favorites</Typography>
-            <List component="nav" className={classes.root} aria-label="favorites">
-              <ListItem button>
-                <ListItemIcon>
-                  <AudiotrackIcon/>
-                </ListItemIcon>
-                <ListItemText primary="Favorites1"/>
-              </ListItem>
-              <ListItem button>
-                <ListItemText inset primary="Favorites2"/>
-              </ListItem>
-              <ListItem button>
-                <ListItemText inset primary="Favorites3"/>
-              </ListItem>
-            </List>
-          </article>) :
-        (<SnackBarPane/>)
-      }
-    </article>) : (<SnackBarPane/>)
-  );
+  return user != null ? (
+    <article>
+      <Typography variant="h5" className={classes.header}>{user.name}'s Favorites</Typography>
+      <List component="nav" className={classes.root} aria-label="favorites">
+        <ListItem button>
+          <ListItemIcon>
+            <AudiotrackIcon/>
+          </ListItemIcon>
+          <ListItemText primary="Favorites1"/>
+        </ListItem>
+        <ListItem button>
+          <ListItemText inset primary="Favorites2"/>
+        </ListItem>
+        <ListItem button>
+          <ListItemText inset primary="Favorites3"/>
+        </ListItem>
+      </List>
+    </article>) : (<article><SnackBarPane/></article>);
 };
 
 export default FavoritesPane;

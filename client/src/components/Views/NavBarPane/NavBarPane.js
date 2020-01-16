@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-const NavBar = ({opened, handleDrawerOpen, handleDrawerClose}) => {
+const NavBarPane = ({opened, handleDrawerOpen, handleDrawerClose}) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -84,4 +84,4 @@ const NavBar = ({opened, handleDrawerOpen, handleDrawerClose}) => {
   );
 };
 
-export default NavBar;
+export default NavBarPane;

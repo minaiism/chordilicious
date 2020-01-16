@@ -54,10 +54,9 @@ const useStyles = makeStyles({
 
 const UserProfilePane = () => {
   const classes = useStyles();
-  const { user, setUser } = useUserContext();
+  const { user } = useUserContext();
 
-  return (
-    user != null ? ( <article>
+  return user != null ?  (<article>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">
               <TableHead>
@@ -76,7 +75,7 @@ const UserProfilePane = () => {
                   <StyledTableCell align="right" className={classes.tableItem}>{user.name}</StyledTableCell>
                   <StyledTableCell align="right" className={classes.tableItem}>{user.email}</StyledTableCell>
                   <StyledTableCell align="right" className={classes.tableItem}>
-                    <Avatar alt="avatar" src={user.picture.data.url} className={classes.avatar}/>
+                    <Avatar alt="avatar" src={user.avatar} className={classes.avatar}/>
                   </StyledTableCell>
                 </StyledTableRow>
               </TableBody>
@@ -84,7 +83,6 @@ const UserProfilePane = () => {
           </TableContainer>
         <SnackBarPane/>
     </article>) :(<SnackBarPane/>)
-  );
 };
 
 export default UserProfilePane;
