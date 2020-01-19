@@ -52,13 +52,7 @@ const FacebookPane = () => {
     }
   }));
   const classes = useStyles();
-  const { user, setUser } = useUserContext();
-
-  const facebookLogOut = () => {
-    setUser(null);
-    // TODO: signOut using API
-    window.location.href = '/';
-  };
+  const { user } = useUserContext();
 
     const facebookContent = user != null ? (
       <article>
@@ -74,7 +68,7 @@ const FacebookPane = () => {
               account
             </Typography>
           </article>
-          <Button variant="contained" color="primary" className={classes.button} onClick={facebookLogOut}>
+          <Button variant="contained" color="primary" className={classes.button} href="http://localhost:8080/logout">
             <Typography href="home"
                         style={{
                           textDecoration: 'none',

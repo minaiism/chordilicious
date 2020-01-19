@@ -11,7 +11,7 @@ export default () => {
   });
 
   passport.deserializeUser((id, done) => {
-     console.log(id);
+    console.log(id);
     User.findById(id).then(user => {
       done(null, user);
     }).catch(err => {
@@ -41,9 +41,14 @@ export default () => {
     },
     (accessToken, refreshToken, profile, cb) => {
       console.log('profile', profile);
-      User.findOrCreate({ fbId: profile.id , avatar: `https://graph.facebook.com/${profile.id}/picture`, name: profile.displayName, email: `${profile.id}@facebook.com`}, (err, user) => {
+      User.findOrCreate({
+        fbId: profile.id,
+        avatar: `https://graph.facebook.com/${profile.id}/picture`,
+        name: profile.displayName,
+        email: `${profile.id}@facebook.com`
+      }, (err, user) => {
         console.log('findOrCreate', err, user);
-        cb(err, user)
+        cb(err, user);
       });
     }
   ));

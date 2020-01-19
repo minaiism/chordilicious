@@ -21,8 +21,8 @@ const port = process.env.PORT || 8080;
 app.use(
   cors({
     origin: 'http://localhost:3000',
-    credentials: true,
-  }),
+    credentials: true
+  })
 );
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -54,6 +54,11 @@ app.get('/auth/facebook', passport.authenticate('facebook'),
     res.cookie('jwt', token, { httpOnly: true });
     res.redirect('http://localhost:3000/sign-in-callback');
   });
+
+app.get('/logout', (req, res) => {
+  res.cookie('jwt', '', { expires: new Date(1), path: '/', httpOnly: true });
+  res.redirect('http://localhost:3000/')
+});
 
 app.use(express.json());
 app.use('/users', Auth, Users);
