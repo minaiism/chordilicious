@@ -7,7 +7,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import SnackBarPane from './SnackBarPane/SnackBarPane';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
@@ -56,7 +55,7 @@ const UserProfilePane = () => {
   const classes = useStyles();
   const { user } = useUserContext();
 
-  return user != null ?  (<article>
+  return (<article>
           <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="customized table">
               <TableHead>
@@ -81,8 +80,7 @@ const UserProfilePane = () => {
               </TableBody>
             </Table>
           </TableContainer>
-        <SnackBarPane/>
-    </article>) :(<SnackBarPane/>)
+    </article>)
 };
 
 export default UserProfilePane;
