@@ -11,6 +11,7 @@ import Footer from './FooterPane/Footer';
 import SignInCallbackPane from './ContentPanes/SignInCallbackPane';
 import AuthWrapper from '../Auth/AuthWrapper';
 import AboutPane from './ContentPanes/AboutPane/AboutPane';
+import GeniusLyricsPane from './ContentPanes/LyricsPane/LyricsPane';
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -39,7 +40,8 @@ const MainView = () => {
     '/user-profile': () => <AuthWrapper pane={<UserProfilePane/>}/>,
     '/home': () => <HomePane/>,
     '/top': () => <TopPane/>,
-    '/sign-in-callback': () => <SignInCallbackPane/>
+    '/sign-in-callback': () => <SignInCallbackPane/>,
+    '/lyrics': () => <AuthWrapper pane={<GeniusLyricsPane/>}/>
   };
 
   const routeResult = useRoutes(routes);

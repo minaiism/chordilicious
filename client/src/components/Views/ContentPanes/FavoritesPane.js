@@ -3,10 +3,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import AudiotrackIcon from '@material-ui/icons/Audiotrack';
+import PlaylistAddCheckIcon from '@material-ui/icons/PlaylistAddCheck';
 import { Typography } from '@material-ui/core';
 import { useUserContext } from '../../Context/Context';
+import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
+import Paper from '@material-ui/core/Paper';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,6 +24,13 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     margin: '0.5rem',
     padding: '0.5rem'
+  },
+  icon: {
+    fontFamily: 'Montserrat, sans-serif'
+  },
+  button: {
+    padding: '0 2rem 0 2rem',
+    margin: '0 0.3rem 0 0.3rem'
   }
 }));
 
@@ -30,22 +39,22 @@ const FavoritesPane = () => {
   const { user } = useUserContext();
 
   return (<article>
+    <Paper>
       <Typography variant="h5" className={classes.header}>{user.name}'s Favorites</Typography>
       <List component="nav" className={classes.root} aria-label="favorites">
-        <ListItem button>
+        <ListItem>
           <ListItemIcon>
-            <AudiotrackIcon/>
+            <PlaylistAddCheckIcon fontSize={'large'} color={'default'}/>
+            <Button color={'secondary'} className={classes.button} variant={'contained'}>
+              <Link href="lyrics" className={classes.icon} underline={'none'} color={'inherit'}>
+                Lyrics
+              </Link>
+            </Button>
           </ListItemIcon>
-          <ListItemText primary="Favorites1"/>
-        </ListItem>
-        <ListItem button>
-          <ListItemText inset primary="Favorites2"/>
-        </ListItem>
-        <ListItem button>
-          <ListItemText inset primary="Favorites3"/>
         </ListItem>
       </List>
-    </article>)
+    </Paper>
+  </article>);
 };
 
 export default FavoritesPane;
