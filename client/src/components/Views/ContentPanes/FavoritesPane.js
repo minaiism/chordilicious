@@ -40,8 +40,8 @@ const FavoritesPane = () => {
 
   return (<article>
     <Paper>
-      <Typography variant="h5" className={classes.header}>{user.name}'s Favorites</Typography>
-      <List component="nav" className={classes.root} aria-label="favorites">
+      <Typography variant={'h5'} className={classes.header}>{user.name}'s Favorites</Typography>
+      <List component={'nav'} className={classes.root} aria-label={'favorites'}>
         <ListItem>
           <ListItemIcon>
             <PlaylistAddCheckIcon fontSize={'large'} color={'default'}/>

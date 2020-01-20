@@ -61,19 +61,19 @@ const UserProfilePane = () => {
               <TableHead>
                 <TableRow>
                   <StyledTableCell className={classes.tableItem}>My Favorites</StyledTableCell>
-                  <StyledTableCell align="right" className={classes.tableItem}>Name</StyledTableCell>
-                  <StyledTableCell align="right" className={classes.tableItem}>Email</StyledTableCell>
-                  <StyledTableCell align="right" className={classes.tableItem}>Avatar</StyledTableCell>
+                  <StyledTableCell align={'right'} className={classes.tableItem}>Name</StyledTableCell>
+                  <StyledTableCell align={'right'} className={classes.tableItem}>Email</StyledTableCell>
+                  <StyledTableCell align={'right'} className={classes.tableItem}>Avatar</StyledTableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
                 <StyledTableRow>
-                  <StyledTableCell component="th" scope="row" className={classes.tableItem}>
-                   <Button variant="contained" color="primary"> <Link href="favorites" className={classes.favorites}>Favorites</Link></Button>
+                  <StyledTableCell component={'th'} scope={'row'} className={classes.tableItem}>
+                   <Button variant="contained" color={'primary'}> <Link href="favorites" className={classes.favorites}>Favorites</Link></Button>
                   </StyledTableCell>
-                  <StyledTableCell align="right" className={classes.tableItem}>{user.name}</StyledTableCell>
-                  <StyledTableCell align="right" className={classes.tableItem}>{user.email}</StyledTableCell>
-                  <StyledTableCell align="right" className={classes.tableItem}>
+                  <StyledTableCell align={'right'} className={classes.tableItem}>{user.name}</StyledTableCell>
+                  <StyledTableCell align={'right'} className={classes.tableItem}>{user.email}</StyledTableCell>
+                  <StyledTableCell align={'right'} className={classes.tableItem}>
                     <Avatar alt="avatar" src={user.avatar} className={classes.avatar}/>
                   </StyledTableCell>
                 </StyledTableRow>

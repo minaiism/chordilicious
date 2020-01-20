@@ -68,7 +68,7 @@ const FacebookPane = () => {
               account
             </Typography>
           </article>
-          <Button variant="contained" color="primary" className={classes.button} href="http://localhost:8080/logout">
+          <Button variant={'contained'} color={'primary'} className={classes.button} href="http://localhost:8080/logout">
             <Typography href="home"
                         style={{
                           textDecoration: 'none',

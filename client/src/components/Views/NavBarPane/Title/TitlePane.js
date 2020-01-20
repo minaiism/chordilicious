@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
 const TitlePane = () => {
   const classes = useStyles();
 
-  return (<Typography variant="h6" className={classes.title}>
+  return (<Typography variant={'h6'} className={classes.title}>
     <Link style={{ textDecoration: 'none', color: 'inherit' }} href="home"
           className={classes.anchor}>
       CHORDILICIOUS

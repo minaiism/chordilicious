@@ -65,9 +65,9 @@ const SnackBarPane = () => {
   return (
     <article className={classes.container}>
       <SnackBarPaneWrapper
-        variant="info"
+        variant={'info'}
         className={classes.snackBar}
-        message="Sign in to see your profile"
+        message={'Sign in to see your profile'}
       />
     </article>
   );

@@ -47,13 +47,13 @@ const NavBarPane = ({opened, handleDrawerOpen, handleDrawerClose}) => {
 
 
   return (<div className={classes.container}>
-      <AppBar position="static" className={classes.navBar}>
+      <AppBar position={'static'} className={classes.navBar}>
         <Toolbar>
           <IconButton
-            color="inherit"
-            aria-label="open drawer"
+            color={'inherit'}
+            aria-label={'open drawer'}
             onClick={handleDrawerOpen}
-            edge="start"
+            edge={'start'}
             className={clsx(classes.menuButton, opened && classes.hide)}
           >
             <BlurOnIcon/>
@@ -65,8 +65,8 @@ const NavBarPane = ({opened, handleDrawerOpen, handleDrawerClose}) => {
 
       <Drawer
         className={classes.drawer}
-        variant="persistent"
-        anchor="left"
+        variant={'persistent'}
+        anchor={'left'}
         open={opened}
         classes={{
           paper: classes.drawerPaper

@@ -31,9 +31,9 @@ const SearchBar = () => {
         <form className={classes.container} noValidate autoComplete="off">
             <Input
                 className={classes.input}
-                id="input-with-icon-adornment"
+                id={'input-with-icon-adornment'}
                 startAdornment={
-                    <InputAdornment position="start">
+                    <InputAdornment position={'start'}>
                         <SearchIcon />
                     </InputAdornment>
                 }

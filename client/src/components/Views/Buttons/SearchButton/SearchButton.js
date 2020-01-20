@@ -26,7 +26,7 @@ const SearchButton = () => {
 
     return (
         <article>
-            <SearchingButton variant="contained" color="primary" className={classes.margin}>
+            <SearchingButton variant={'contained'} color={'primary'} className={classes.margin}>
                 Search Lyrics
             </SearchingButton>
         </article>

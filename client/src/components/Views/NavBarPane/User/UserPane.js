@@ -47,17 +47,17 @@ const UserPane = () => {
 
   return (<article>
       <IconButton
-        aria-label="account of current user"
-        aria-controls="menu-appbar"
-        aria-haspopup="true"
+        aria-label={'account of current user'}
+        aria-controls={'menu-appbar'}
+        aria-haspopup={'true'}
         onClick={handleMenu}
-        color="inherit"
+        color={'inherit'}
       >
         <AccountCircle/>
       </IconButton>
 
       <Menu
-        id="menu-appbar"
+        id={'menu-appbar'}
         anchorEl={anchorEl}
         anchorOrigin={{
           vertical: 'top',

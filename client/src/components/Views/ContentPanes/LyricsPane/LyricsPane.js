@@ -65,16 +65,16 @@ const LyricsPane = () => {
   return (<article>
     <Paper className={classes.root}>
       <article className={classes.titleAvatarContainer}>
-        <Avatar variant="square" className={classes.square}
+        <Avatar variant={'square'} className={classes.square}
                 src="https://ocs-pl.oktawave.com/v1/AUTH_2887234e-384a-4873-8bc5-405211db13a2/splay/2017/07/lana-del-rey-lust-for-life-1180x616.jpg">
           CI
         </Avatar>
 
         <article className={classes.titleAndArtistContainer}>
-          <Typography variant="h5" component="h5" className={classes.fontFamily}>
+          <Typography variant={'h5'} component={'h5'} className={classes.fontFamily}>
             Title of the Song
           </Typography>
-          <Typography component="p" className={classes.fontFamily}>
+          <Typography component={'p'} className={classes.fontFamily}>
             Name of the Artist
           </Typography>
         </article>
@@ -156,9 +156,9 @@ const LyricsPane = () => {
       </article>
 
       <article className={classes.socialMedia}>
-        <FacebookIcon fontSize="large" className={classes.socialMediaIcon}/>
-        <InstagramIcon fontSize="large" className={classes.socialMediaIcon}/>
-        <TwitterIcon fontSize="large" className={classes.socialMediaIcon}/>
+        <FacebookIcon fontSize={'large'} className={classes.socialMediaIcon}/>
+        <InstagramIcon fontSize={'large'} className={classes.socialMediaIcon}/>
+        <TwitterIcon fontSize={'large'} className={classes.socialMediaIcon}/>
       </article>
 
     </Paper>
