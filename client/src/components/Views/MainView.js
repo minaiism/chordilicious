@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import NavBarPane from './NavBarPane/NavBarPane';
 import clsx from 'clsx';
 import { useRoutes } from 'hookrouter';
-import HomePane from './ContentPanes/HomePane';
+import HomePane from './ContentPanes/HomePane/HomePane';
 import Favorites from './ContentPanes/FavoritesPane';
 import UserProfilePane from './ContentPanes/UserProfilePane';
 import TopPane from './ContentPanes/TopPane';
@@ -35,7 +35,7 @@ const MainView = () => {
 
   const routes = {
     '/': () => <HomePane/>,
-    '/about': () => <AuthWrapper pane={<AboutPane/>}/>,
+    '/about': () => <AboutPane/>,
     '/favorites': () => <AuthWrapper pane={<Favorites/>}/>,
     '/user-profile': () => <AuthWrapper pane={<UserProfilePane/>}/>,
     '/home': () => <HomePane/>,

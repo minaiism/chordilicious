@@ -1,6 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import SearchBar from './SearchBar';
+import PaginationPane from './PaginationPane';
 
 const HomePane = () => {
   const useStyles = makeStyles(theme => ({
@@ -27,12 +29,12 @@ const HomePane = () => {
 
   const classes = useStyles();
   return (<div className={classes.container}>
-      <Typography variant={'h3'} className={classes.text}>
-        Home
+      <Typography variant={'h5'} className={classes.text}>
+        Search Lyrics & More
       </Typography>
-      <Typography variant={'body1'} className={classes.imgContainer}>
-        <img src="https://i.pinimg.com/originals/ae/50/a2/ae50a2f58cce0a65417fb3839b2b8fef.jpg" className={classes.img}
-             alt="home"/>
+      <Typography variant={'h3'} className={classes.text}>
+        <SearchBar/>
+        <PaginationPane/>
       </Typography>
     </div>
 

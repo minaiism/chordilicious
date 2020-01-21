@@ -1,10 +1,9 @@
-/* eslint react/prop-types: 0 */
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import InputAdornment from "@material-ui/core/InputAdornment";
-import Input from "@material-ui/core/Input";
-import SearchButton from "../Buttons/SearchButton/SearchButton";
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Input from '@material-ui/core/Input';
+import SearchButton from '../../Buttons/SearchButton/SearchButton';
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -12,7 +11,7 @@ const useStyles = makeStyles(theme => ({
         flexWrap: 'wrap',
         justifyContent: 'center',
         alignItems: 'center',
-        padding: '2rem',
+        padding: '0.5rem',
         flexDirection: 'column'
     },
     input: {
@@ -23,9 +22,6 @@ const useStyles = makeStyles(theme => ({
 
 const SearchBar = () => {
     const classes = useStyles();
-    const [values, setValues] = React.useState({
-        input: ''
-    });
 
     return (
         <form className={classes.container} noValidate autoComplete="off">
