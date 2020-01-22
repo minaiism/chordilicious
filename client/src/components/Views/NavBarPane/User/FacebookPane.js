@@ -31,7 +31,8 @@ const FacebookPane = () => {
       color: 'inherit'
     },
     span: {
-      fontWeight: 900
+      fontWeight: 600,
+      fontFamily: 'Montserrat, sans-serif',
     },
     button: {
       width: '100%',
