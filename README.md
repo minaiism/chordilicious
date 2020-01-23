@@ -9,17 +9,19 @@
 #### Tools & Libs :art: :
 
 - React Hooks :heavy_check_mark:
+- Material UI :heavy_check_mark:
 - Context API (Constate) :heavy_check_mark:
 - Hookrouter :heavy_check_mark:
 - Mongoose :heavy_check_mark:
 - Express :heavy_check_mark:
-- Passport-Facebook :heavy_check_mark:
+- Passport.js (Passport-Facebook) :heavy_check_mark:
 - Axios :heavy_check_mark:
 - JWT :heavy_check_mark:
 - Cors :heavy_check_mark:
 - Nodemon :heavy_check_mark:
 - Config :heavy_check_mark:
 - MongoDB Compass :heavy_check_mark:
+- Concurrently :heavy_check_mark:
 
 #### APIS :memo: :
 
