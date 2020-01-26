@@ -21,12 +21,12 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-const SearchButton = () => {
+const SearchButton = ({handleSearch}) => {
     const classes = useStyles();
 
     return (
         <article>
-            <SearchingButton variant={'contained'} color={'primary'} className={classes.margin}>
+            <SearchingButton variant={'contained'} color={'primary'} className={classes.margin} onClick={handleSearch}>
                 Search Lyrics
             </SearchingButton>
         </article>

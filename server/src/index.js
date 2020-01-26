@@ -60,6 +60,14 @@ app.get('/logout', (req, res) => {
   res.redirect('http://localhost:3000/')
 });
 
+app.get('https://api.genius.com/oauth/authorize', (req, res) => {
+  if(!req.user){
+    res.redirect('http://localhost:3000/')
+  } else {
+    res.redirect('http://localhost:3000/user-profile')
+  }
+});
+
 app.use(express.json());
 app.use('/users', Auth, Users);
 
