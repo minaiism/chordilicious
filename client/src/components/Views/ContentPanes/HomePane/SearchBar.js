@@ -8,6 +8,8 @@ import { searchSong } from './GeniusService';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { CircularProgress } from '@material-ui/core';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import PaginationPane from './PaginationPane';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -22,9 +24,22 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1)
   },
-  listItem:{
-    fontSize: '2rem',
-    textTransform: 'lowercase'
+  listItem: {
+    fontSize: '1.2rem',
+    textTransform: 'none',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '0.5rem',
+    margin: '0 1rem 0 1rem'
+  },
+  listContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  listIcon:{
+    fontSize:'1.2rem',
+    cursor: 'pointer'
   }
 }));
 
@@ -40,7 +55,7 @@ const SearchBar = () => {
 
   const handleSearch = () => {
     setLoading(true);
-    searchSong('/search?q=' + searchTerm)
+    searchSong(searchTerm)
       .then(songs => (setSearchResult(songs)));
     const results = searchResult.map(element =>
       element.toLowerCase().includes(searchTerm)
@@ -49,6 +64,7 @@ const SearchBar = () => {
   };
 
   return loading ? (
+    <section>
     <form className={classes.container} noValidate autoComplete="off">
       <Input
         className={classes.input}
@@ -62,14 +78,16 @@ const SearchBar = () => {
         value={searchTerm}
       />
       <SearchButton className={classes.input} handleSearch={handleSearch}/>
-      <List>
+      <List className={classes.listContainer}>
         {searchResult.map(item => (
           <ListItem className={classes.listItem} key={item.id}>
             {item.title}
+            <FavoriteBorderIcon className={classes.listIcon}/>
           </ListItem>
         ))}
       </List>
     </form>
+    </section>
   ) : (<CircularProgress/>);
 };
 

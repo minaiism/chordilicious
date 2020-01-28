@@ -4,7 +4,6 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
 import Pagination from 'material-ui-flat-pagination';
 
 const theme = createMuiTheme();
-
 const PaginationPane = () => {
   const [offset, setOffset] = useState(0);
 
@@ -16,10 +15,12 @@ const PaginationPane = () => {
       <MuiThemeProvider theme={theme}>
         <CssBaseline />
         <Pagination
-          limit={10}
+          limit={15}
           offset={offset}
           total={100}
           onClick={(e, offset) => handleClick(offset)}
+          otherPageColor={'secondary'}
+          size={'large'}
         />
       </MuiThemeProvider>
     );
