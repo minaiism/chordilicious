@@ -9,6 +9,7 @@ import { createToken } from './modules/Jwt';
 import Auth from './middlewares/Auth';
 import setupPassport from './modules/Passport';
 import cookieParser from 'cookie-parser';
+import Genius from './routes/Genius';
 
 const app = express();
 app.use(cookieParser());
@@ -20,7 +21,7 @@ const port = process.env.PORT || 8080;
 
 app.use(
   cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://localhost:3000',
     credentials: true
   })
 );
@@ -47,26 +48,20 @@ mongoose.connect(mongoUri, {
 app.get('/auth/facebook', passport.authenticate('facebook'),
   (req, res) => {
     if (!req.user) {
-      return res.redirect('http://localhost:3000/sign-in');
+      return res.redirect('https://localhost:3000/sign-in');
     }
     console.log('req.user', req.user);
     const token = createToken({ id: req.user._id });
     res.cookie('jwt', token, { httpOnly: true });
-    res.redirect('http://localhost:3000/sign-in-callback');
+    res.redirect('https://localhost:3000/sign-in-callback');
   });
 
 app.get('/logout', (req, res) => {
   res.cookie('jwt', '', { expires: new Date(1), path: '/', httpOnly: true });
-  res.redirect('http://localhost:3000/')
+  res.redirect('https://localhost:3000/')
 });
 
-app.get('https://api.genius.com/oauth/authorize', (req, res) => {
-  if(!req.user){
-    res.redirect('http://localhost:3000/')
-  } else {
-    res.redirect('http://localhost:3000/user-profile')
-  }
-});
+app.get('/search-song',Auth, Genius);
 
 app.use(express.json());
 app.use('/users', Auth, Users);
