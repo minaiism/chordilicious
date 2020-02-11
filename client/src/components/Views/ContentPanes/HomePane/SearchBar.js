@@ -4,12 +4,11 @@ import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Input from '@material-ui/core/Input';
 import SearchButton from '../../Buttons/SearchButton/SearchButton';
-import { searchSong } from './GeniusService';
+import { search } from './SongService';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import { CircularProgress } from '@material-ui/core';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import PaginationPane from './PaginationPane';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -55,12 +54,9 @@ const SearchBar = () => {
 
   const handleSearch = () => {
     setLoading(true);
-    searchSong(searchTerm)
+    search(searchTerm)
       .then(songs => (setSearchResult(songs)));
-    const results = searchResult.map(element =>
-      element.toLowerCase().includes(searchTerm)
-    );
-    setSearchResult(results);
+    setSearchResult(searchResult);
   };
 
   return loading ? (

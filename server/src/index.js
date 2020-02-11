@@ -10,6 +10,9 @@ import Auth from './middlewares/Auth';
 import setupPassport from './modules/Passport';
 import cookieParser from 'cookie-parser';
 import Genius from './routes/Genius';
+import https from 'https';
+import fs from 'fs';
+import path from 'path';
 
 const app = express();
 app.use(cookieParser());
@@ -17,7 +20,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const mongoUri = process.env.MONGO_URI;
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8443;
 
 app.use(
   cors({
@@ -58,14 +61,22 @@ app.get('/auth/facebook', passport.authenticate('facebook'),
 
 app.get('/logout', (req, res) => {
   res.cookie('jwt', '', { expires: new Date(1), path: '/', httpOnly: true });
-  res.redirect('https://localhost:3000/')
+  res.redirect('https://localhost:3000/');
 });
-
-app.get('/search-song',Auth, Genius);
 
 app.use(express.json());
 app.use('/users', Auth, Users);
+app.use('/songs', Auth, Genius);
 
-app.listen(port, () => {
-  console.log('App listening on port: ' + port);
+const key = fs.readFileSync(path.join(__dirname, '/../../selfsigned.key'));
+const cert = fs.readFileSync(path.join(__dirname, '/../../selfsigned.crt'));
+const options = {
+  key: key,
+  cert: cert
+};
+
+const server = https.createServer(options, app);
+
+server.listen(port, () => {
+  console.log("server starting on port : " + port)
 });

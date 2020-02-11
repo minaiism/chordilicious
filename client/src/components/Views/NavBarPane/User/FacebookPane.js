@@ -69,7 +69,7 @@ const FacebookPane = () => {
               account
             </Typography>
           </article>
-          <Button variant={'contained'} color={'primary'} className={classes.button} href="http://localhost:8080/logout">
+          <Button variant={'contained'} color={'primary'} className={classes.button} href="https://localhost:8443/logout">
             <Typography href="home"
                         style={{
                           textDecoration: 'none',
@@ -81,7 +81,7 @@ const FacebookPane = () => {
         </div>
       </article>) : (<div className={classes.buttonsContainer}>
       <Typography variant={'h6'} className={classes.buttonItem}>
-        <Button component={'button'} color={'primary'} size={'medium'} variant={'contained'} startIcon={<FacebookIcon/>} href="http://localhost:8080/auth/facebook">Login with
+        <Button component={'button'} color={'primary'} size={'medium'} variant={'contained'} startIcon={<FacebookIcon/>} href="https://localhost:8443/auth/facebook">Login with
           Facebook</Button>
       </Typography>
     </div>);

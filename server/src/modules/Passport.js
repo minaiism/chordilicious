@@ -37,10 +37,10 @@ export default () => {
   passport.use(new FacebookStrategy({
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_APP_SECRET,
-      callbackURL: 'http://localhost:8080/auth/facebook'
+      callbackURL: 'https://localhost:8443/auth/facebook'
     },
     (accessToken, refreshToken, profile, cb) => {
-      console.log('profile', profile);
+      // console.log('profile', profile);
       User.findOrCreate({
         fbId: profile.id,
         avatar: `https://graph.facebook.com/${profile.id}/picture`,
