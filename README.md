@@ -2,8 +2,6 @@
 
 ### React(Hooks) & Express & Mongoose Fullstack App :muscle:
 
-
-
 #### Lyrics & Chords in one place :dizzy_face:
 
 #### Tools & Libs :art: :
@@ -27,6 +25,10 @@
 
 - Genius API :heavy_check_mark:
 - Chords API :heavy_check_mark:
+
+#### CI :volcano: :
+
+- Travis :heavy_check_mark:
 
 #### Animations && Audio Libs :rocket: :
 
