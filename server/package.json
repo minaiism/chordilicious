@@ -13,7 +13,7 @@
     "express": "latest",
     "hookrouter": "^1.2.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.7.6",
+    "mongoose": "^5.9.2",
     "mongoose-findorcreate": "^3.0.0",
     "nodemon": "^1.19.4",
     "passport": "^0.4.1",
