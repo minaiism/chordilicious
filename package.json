@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
-    "concurrently": "^5.0.0",
+    "concurrently": "^5.1.0",
     "npm-upgrade": "^2.0.2",
     "passport": "^0.4.0",
     "passport-facebook": "^3.0.0"
