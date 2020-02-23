@@ -27,7 +27,7 @@
   },
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
-    "test": "jest"
+    "test": "./node_modules/.bin/jest"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -58,6 +58,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
+    "jest": "^25.1.0",
     "js-cookie": "^2.2.1",
     "prettier": "^1.18.2"
   },
