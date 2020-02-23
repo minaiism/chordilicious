@@ -1,0 +1,2 @@
+language: node_js
+script: cd client && npm install && npm test && cd ../server && npm install && npm test
