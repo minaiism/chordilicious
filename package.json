@@ -3,16 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.0",
-    "concurrently": "^5.1.0",
-    "npm-upgrade": "^2.0.2",
-    "passport": "^0.4.0",
-    "passport-facebook": "^3.0.0"
+    "concurrently": "^5.1.0"
   },
   "scripts": {
     "clientBuild": "cd client && npm run build",
     "clientStart": "cd client && npm run start",
     "clientTest": "cd client && npm run test",
+    "serverTest": "cd server && npm run test",
     "serverStart": "cd server && npm run start",
     "start": "concurrently \"npm run serverStart\" \" npm run clientStart\""
   },
@@ -31,12 +28,11 @@
       "last 1 safari version"
     ]
   },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
+  "description": "Parent chordilicious",
   "devDependencies": {},
   "prettier": {
     "singleQuote": true
   },
-  "author": "",
+  "author": "minaiism",
   "license": "ISC"
 }
