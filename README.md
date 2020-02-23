@@ -1,4 +1,5 @@
 # Chordilicious :musical_score: :guitar: :saxophone: :trumpet: :musical_keyboard:
+[![Build Status](https://travis-ci.com/minaiism/chordilicious.svg?branch=master)](https://travis-ci.com/minaiism/chordilicious)
 
 ### React(Hooks) & Express & Mongoose Fullstack App :muscle:
 
