@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Input from '@material-ui/core/Input';
-import SearchButton from '../../Buttons/SearchButton/SearchButton';
+import SearchButton from '../../../Buttons/SearchButton/SearchButton';
 import { search } from './SongService';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -36,8 +36,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     alignItems: 'center'
   },
-  listIcon:{
-    fontSize:'1.2rem',
+  listIcon: {
+    fontSize: '1.2rem',
     cursor: 'pointer'
   }
 }));
@@ -61,28 +61,28 @@ const SearchBar = () => {
 
   return loading ? (
     <section>
-    <form className={classes.container} noValidate autoComplete="off">
-      <Input
-        className={classes.input}
-        id={'input-with-icon-adornment'}
-        startAdornment={
-          <InputAdornment position={'start'}>
-            <SearchIcon/>
-          </InputAdornment>
-        }
-        onChange={handleChange}
-        value={searchTerm}
-      />
-      <SearchButton className={classes.input} handleSearch={handleSearch}/>
-      <List className={classes.listContainer}>
-        {searchResult.map(item => (
-          <ListItem className={classes.listItem} key={item.id}>
-            {item.title}
-            <FavoriteBorderIcon className={classes.listIcon}/>
-          </ListItem>
-        ))}
-      </List>
-    </form>
+      <form className={classes.container} noValidate autoComplete="off">
+        <Input
+          className={classes.input}
+          id={'input-with-icon-adornment'}
+          startAdornment={
+            <InputAdornment position={'start'}>
+              <SearchIcon/>
+            </InputAdornment>
+          }
+          onChange={handleChange}
+          value={searchTerm}
+        />
+        <SearchButton className={classes.input} handleSearch={handleSearch}/>
+        <List className={classes.listContainer}>
+          {searchResult.map(item => (
+            <ListItem className={classes.listItem} key={item.id}>
+              {item.title}
+              <FavoriteBorderIcon className={classes.listIcon}/>
+            </ListItem>
+          ))}
+        </List>
+      </form>
     </section>
   ) : (<CircularProgress/>);
 };

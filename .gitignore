@@ -44,3 +44,6 @@ yarn-error.log*
 /server/config/
 .idea/codeStyles/
 .idea/dictionaries/
+
+!/selfsigned.crt
+!/selfsigned.key
