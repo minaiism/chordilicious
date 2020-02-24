@@ -45,5 +45,8 @@ yarn-error.log*
 .idea/codeStyles/
 .idea/dictionaries/
 
-!/selfsigned.crt
-!/selfsigned.key
+!/selfsigned*.crt
+!/selfsigned*.key
+
+selfsigned.crt
+selfsigned.key
