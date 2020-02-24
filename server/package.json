@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/runtime": "^7.6.3",
+    "@babel/runtime": "^7.8.4",
     "@hapi/joi": "^17.1.0",
     "body-parser": "latest",
     "config": "^3.2.4",
