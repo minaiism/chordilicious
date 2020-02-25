@@ -1,11 +1,11 @@
 import React from 'react';
 import MainView from './components/Views/MainView';
-import { useUserContext } from './components/Context/Context';
+import { UserInfoProvider } from './components/Context/Context';
 
 const App = () => (
-  <useUserContext.Provider>
+  <UserInfoProvider>
     <MainView/>
-  </useUserContext.Provider>
+  </UserInfoProvider>
 );
 
 export default App;

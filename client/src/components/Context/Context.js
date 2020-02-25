@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import createUseContext from 'constate';
+import constate from 'constate';
 
 const useUserInfo = () => {
   const [user, setUser] = useState(null);
@@ -8,6 +8,6 @@ const useUserInfo = () => {
   return { user, setUser, loading, setLoading, error, setError};
 };
 
-export const useUserContext = createUseContext(useUserInfo);
+export const [UserInfoProvider, useUserContext] = constate(useUserInfo);
 
 
