@@ -29,7 +29,9 @@
     ]
   },
   "description": "Parent chordilicious",
-  "devDependencies": {},
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.1.1"
+  },
   "prettier": {
     "singleQuote": true
   },
