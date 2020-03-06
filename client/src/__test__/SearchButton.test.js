@@ -1,16 +1,22 @@
-import { cleanup, fireEvent, render } from '@testing-library/react';
-import SearchButton from '../components/Views/Buttons/SearchButton/SearchButton';
+import { fireEvent, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import React from 'react';
+import SearchButton from '../components/Views/ContentPanes/HomePane/SearchPane/SearchButton';
+import { TestIds } from '../Constants';
 
-afterEach(cleanup);
-
-describe('fire click on searchButton', () => {
-  it('displays search lyrics', () => {
-    const { getByText } = render(<SearchButton/>);
-    fireEvent.click(getByText('Search Lyrics'));
-    expect(getByText('Search Lyrics')).toHaveTextContent('Search Lyrics');
+describe('search song button', () => {
+  it('pressing the button calls the function from the handleSearch prop', done => {
+    const handleSearch = () => {
+      done();
+    };
+    const { getByTestId } = render(
+      <SearchButton dataTestId={TestIds.searchSongButton} handleSearch={handleSearch}/>
+    );
+    const node = getByTestId(TestIds.searchSongButton);
+    fireEvent.click(node);
   });
-
 });
+
+
+
 
