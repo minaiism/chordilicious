@@ -12,7 +12,7 @@ describe('LyricService', () => {
   });
 
   it('calls API with the proper endpoint', () => {
-
+    ApiClient.get.mockImplementationOnce(() => Promise.resolve({ data: searchLyricResponse }));
     search('sia');
 
     expect(ApiClient.get).toHaveBeenCalledWith(
