@@ -1,42 +1,35 @@
-# Chordilicious :musical_score: :guitar: :saxophone: :trumpet: :musical_keyboard:
+# Chordilicious :musical_score:
 [![Build Status](https://travis-ci.com/minaiism/chordilicious.svg?branch=master)](https://travis-ci.com/minaiism/chordilicious)
 
-### React(Hooks) & Express & Mongoose Fullstack App :muscle:
+### React.js & Express.js & Mongoose Fullstack App
 
 #### Lyrics & Chords in one place :dizzy_face:
 
-#### Tools & Libs :art: :
+#### Tools & Libs :
 
-- React Hooks :heavy_check_mark:
-- Material UI :heavy_check_mark:
-- Context API (Constate) :heavy_check_mark:
-- Hookrouter :heavy_check_mark:
-- Mongoose :heavy_check_mark:
-- Express :heavy_check_mark:
-- Passport.js (Passport-Facebook) :heavy_check_mark:
-- Axios :heavy_check_mark:
-- JWT :heavy_check_mark:
-- Cors :heavy_check_mark:
-- Nodemon :heavy_check_mark:
-- Config :heavy_check_mark:
-- MongoDB Compass :heavy_check_mark:
-- Concurrently :heavy_check_mark:
+- [React.js](https://reactjs.org/)
+- [Material UI](https://material-ui.com/)
+- [Context API (Constate)](https://github.com/diegohaz/constate/)
+- [Hookrouter](https://github.com/Paratron/hookrouter)
+- [Mongoose](https://mongoosejs.com/)
+- [Express.js](https://expressjs.com/)
+- [Passport.js (Passport-Facebook + JWT)](http://www.passportjs.org/docs/facebook/)
 
-#### APIS :memo: :
+#### APIS :
 
-- Genius API :heavy_check_mark:
-- Chords API :heavy_check_mark:
+- [Genius API](https://docs.genius.com/)
+- [Uberchord API](https://api.uberchord.com/)
 
-#### CI :volcano: :
+#### CI :
 
-- Travis :heavy_check_mark:
+- [Travis](https://travis-ci.org/minaiism/chordilicious/)
 
-#### Animations && Audio Libs :rocket: :
+#### Animations && Audio Libs :
 
-- React-spring :heavy_check_mark:
-- React-anime  :heavy_check_mark:
-- Howler.js :heavy_check_mark:
+- [React-spring](https://www.react-spring.io/)
+- [React-anime](https://alain.xyz/libraries/react-anime/)
+- [Howler.js](https://howlerjs.com/)
 
-#### If you play instruments and would love to have everything in :one: place only -> just take a look :eyes: :heavy_exclamation_mark:
+#### If you play instruments and would love to have everything in one place -> just have a look :eyes: :heavy_exclamation_mark:
 
-###    Have fun :revolving_hearts:
+###    Have fun!
