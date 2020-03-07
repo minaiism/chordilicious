@@ -28,14 +28,7 @@ yarn-error.log*
 
 
 #idea
-./idea
-.idea/.gitignore
-.idea/.name
-.idea/inspectionProfiles/
-.idea/misc.xml
-.idea/modules.xml
-.idea/music app.iml
-.idea/vcs.xml
+.idea
 
 #env
 .env

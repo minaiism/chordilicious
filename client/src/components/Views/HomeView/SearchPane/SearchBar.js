@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import SearchButton from './SearchButton';
-import { search } from '../../../../services/LyricService';
+import * as LyricService from '../../../../services/LyricService';
 import SearchInput from './SearchInput';
 import { TestIds } from '../../../../Constants';
 import SearchResults from './SearchResults';
@@ -30,7 +30,7 @@ const SearchBar = () => {
 
   const handleSearch = () => {
     setLoading(true);
-    search(searchTerm)
+    LyricService.search(searchTerm)
       .then(songs => (setSearchResult(songs)))
       .catch(() => setError(false));
     setSearchResult(searchResult);

@@ -12,6 +12,7 @@ import MainDrawer from './MainDrawer';
 import useTheme from '@material-ui/core/styles/useTheme';
 import KeyboardBackspaceIcon from '@material-ui/icons/KeyboardBackspace';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+import Drawer from '@material-ui/core/Drawer';
 
 const primary = red[700];
 const drawerWidth = 240;
@@ -62,7 +63,7 @@ const NavBar = ({ opened, handleDrawerOpen, handleDrawerClose }) => {
         </Toolbar>
       </AppBar>
 
-      <MainDrawer
+      <Drawer
         className={classes.drawer}
         variant={'persistent'}
         anchor={'left'}
@@ -77,7 +78,7 @@ const NavBar = ({ opened, handleDrawerOpen, handleDrawerClose }) => {
           </IconButton>
         </div>
         <MainDrawer/>
-      </MainDrawer>
+      </Drawer>
     </div>
 
   );
