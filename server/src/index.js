@@ -9,7 +9,7 @@ import { createToken } from './modules/Jwt';
 import Auth from './middlewares/Auth';
 import setupPassport from './modules/Passport';
 import cookieParser from 'cookie-parser';
-import Genius from './routes/Genius';
+import LyricRouter from './routes/LyricRouter';
 import https from 'https';
 import fs from 'fs';
 import path from 'path';
@@ -68,9 +68,9 @@ app.use(express.json());
 app.use('/users', Auth, Users);
 
 if (process.env.USER_ANARCHY_MODE) {
-  app.use('/songs', Genius);
+  app.use('/lyrics', LyricRouter);
 } else {
-  app.use('/songs', Auth, Genius);
+  app.use('/lyrics', Auth, LyricRouter);
 }
 
 const key = fs.readFileSync(path.join(__dirname, '/../../selfsigned.key'));
