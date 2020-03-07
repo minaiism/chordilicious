@@ -1,9 +1,13 @@
 # Chordilicious :musical_score:
 [![Build Status](https://travis-ci.com/minaiism/chordilicious.svg?branch=master)](https://travis-ci.com/minaiism/chordilicious)
 
-### React.js & Express.js & Mongoose Fullstack App
-
 #### Lyrics & Chords in one place :dizzy_face:
+
+From now on you can have your own chords library.
+1. Search for chords.
+2. Transpose them according to your preferences.
+3. Add it to your favorites (only for registered users - free).
+4. Don't know how to play it? Check out the animations.
 
 #### Tools & Libs :
 
