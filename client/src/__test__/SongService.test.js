@@ -1,8 +1,8 @@
-import { search } from './SongService';
-import ApiClient from '../../../../../services/ApiClient';
-import searchSongResponse from '../../../../../__test__/apiMocks/songs-search.json';
+import { search } from '../services/SongService';
+import ApiClient from '../services/ApiClient';
+import searchSongResponse from './apiMocks/songs-search.json';
 
-jest.mock('../../../../../services/ApiClient');
+jest.mock('../services/ApiClient');
 
 describe('SongService', () => {
   it('returns songs from API', async () => {
