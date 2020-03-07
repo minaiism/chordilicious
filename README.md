@@ -22,7 +22,7 @@
 
 #### CI :
 
-- [Travis](https://travis-ci.org/minaiism/chordilicious/)
+- [Travis CI](https://travis-ci.org/minaiism/chordilicious/)
 
 #### Animations && Audio Libs :
 
