@@ -66,7 +66,12 @@ app.get('/logout', (req, res) => {
 
 app.use(express.json());
 app.use('/users', Auth, Users);
-app.use('/songs', Auth, Genius);
+
+if (process.env.USER_ANARCHY_MODE) {
+  app.use('/songs', Genius);
+} else {
+  app.use('/songs', Auth, Genius);
+}
 
 const key = fs.readFileSync(path.join(__dirname, '/../../selfsigned.key'));
 const cert = fs.readFileSync(path.join(__dirname, '/../../selfsigned.crt'));
@@ -78,5 +83,5 @@ const options = {
 const server = https.createServer(options, app);
 
 server.listen(port, () => {
-  console.log("server starting on port : " + port)
+  console.log('server starting on port : ' + port);
 });
