@@ -15,11 +15,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SearchInput = ({ searchTerm, handleChange }) => {
+const SearchInput = ({ dataTestId, searchTerm, changeSearchTerm }) => {
   const classes = useStyles();
 
   return (
-    <article>
+    <React.Fragment>
       <Input
         className={classes.input}
         id={'input-with-icon-adornment'}
@@ -28,10 +28,11 @@ const SearchInput = ({ searchTerm, handleChange }) => {
             <SearchIcon/>
           </InputAdornment>
         }
-        onChange={handleChange}
+        onChange={changeSearchTerm}
         value={searchTerm}
+        data-testid={dataTestId}
       />
-    </article>
+    </React.Fragment>
   );
 };
 
