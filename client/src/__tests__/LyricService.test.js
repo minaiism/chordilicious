@@ -6,17 +6,25 @@ jest.mock('../services/ApiClient');
 
 describe('LyricService', () => {
   it('return lyrics from API', async () => {
-    ApiClient.get.mockImplementationOnce(() => Promise.resolve({ data: searchLyricResponse }));
+    ApiClient.get.mockResolvedValueOnce({ data: searchLyricResponse });
 
     await expect(search('sia')).resolves.toEqual(searchLyricResponse);
   });
 
   it('calls API with the proper endpoint', () => {
-    ApiClient.get.mockImplementationOnce(() => Promise.resolve({ data: searchLyricResponse }));
+    ApiClient.get.mockResolvedValueOnce({ data: searchLyricResponse });
     search('sia');
 
     expect(ApiClient.get).toHaveBeenCalledWith(
       '/lyrics/search', { params: { phrase: 'sia' } }
     );
   });
+
+  it('fetches erroneously data from an API', async () => {
+    const errorMessage = 'Network Error';
+    ApiClient.get.mockRejectedValueOnce(new Error(errorMessage));
+
+    await expect(search('sia')).rejects.toThrow(errorMessage);
+  });
+
 });

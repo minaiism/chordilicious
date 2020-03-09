@@ -20,31 +20,33 @@ const useStyles = makeStyles(theme => ({
 const SearchBar = () => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResult, setSearchResult] = useState([]);
 
-  const handleChange = event => {
+  const changeSearchTerm = event => {
     setSearchTerm(event.target.value);
   };
 
   const handleSearch = () => {
     setLoading(true);
     LyricService.search(searchTerm)
-      .then(songs => (setSearchResult(songs)))
-      .catch(() => setError(false));
+      .then(lyrics => (setSearchResult(lyrics)))
+      .catch((e) => setError(e));
+
     setSearchResult(searchResult);
   };
 
-  return loading && error ? (
+  return loading && error === null ? (
     <section>
       <form className={classes.container} noValidate autoComplete="off">
-        <SearchInput searchTerm={searchTerm} handleChange={handleChange}/>
-        <SearchButton dataTestId={TestIds.searchSongButton} className={classes.input} handleSearch={handleSearch}/>
+        <SearchInput dataTestId={TestIds.lyricSearchInputName} searchTerm={searchTerm}
+                     changeSearchTerm={changeSearchTerm}/>
+        <SearchButton dataTestId={TestIds.searchLyricButton} className={classes.input} handleSearch={handleSearch}/>
         <SearchResults searchResult={searchResult}/>
       </form>
     </section>
-  ) : (<div>...</div>);
+  ) : (<div>{error.code}:{error.message}</div>);
 };
 
 export default SearchBar;
