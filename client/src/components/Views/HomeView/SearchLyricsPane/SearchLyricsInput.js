@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SearchLyricsInput = ({ searchTerm, changeSearchTerm }) => {
+const SearchLyricsInput = ({ phrase, handleChange }) => {
   const classes = useStyles();
 
   return (
@@ -29,8 +29,8 @@ const SearchLyricsInput = ({ searchTerm, changeSearchTerm }) => {
             <SearchIcon/>
           </InputAdornment>
         }
-        onChange={changeSearchTerm}
-        value={searchTerm}
+        onChange={handleChange}
+        value={phrase}
         inputProps={{ 'data-testid': TestIds.searchLyricsInputId }}
       />
     </article>

@@ -1,29 +1,28 @@
 import '@testing-library/jest-dom';
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import SearchLyricsInput from '../components/Views/HomeView/SearchPane/SearchLyricsInput';
+import SearchLyricsInput from '../components/Views/HomeView/SearchLyricsPane/SearchLyricsInput';
 import { TestIds } from '../Constants';
 
 describe('SearchLyricsInput', () => {
-  it('initial input value is from props', () => {
-    let initSearchTerm = '';
+  it('initial input value should be taken from props', () => {
+    let initPhrase = '';
 
-    const changeSearchTerm = event => {
-      initSearchTerm = event.target.value;
+    const handleInputChange = event => {
+      initPhrase = event.target.value;
     };
 
-    const { getByTestId } = render(<SearchLyricsInput searchTerm={initSearchTerm}
-                                                      changeSearchTerm={changeSearchTerm}/>);
+    const { getByTestId } = render(<SearchLyricsInput phrase={initPhrase} handleChange={handleInputChange}/>);
     const searchLyricsInputId = getByTestId(TestIds.searchLyricsInputId);
-    expect(searchLyricsInputId.value).toBe(initSearchTerm);
+    expect(searchLyricsInputId.value).toBe(initPhrase);
   });
 
-  it('changeSearchTerm is called when change event fired', () => {
-    const changeSearchTerm = event => {
+  it('changeSearchTerm should be called when change event fired', () => {
+    const handleInputChange = event => {
       expect(event.target.value).toBe('Sia');
     };
 
-    const { getByTestId } = render(<SearchLyricsInput searchTerm={''} changeSearchTerm={changeSearchTerm}/>);
+    const { getByTestId } = render(<SearchLyricsInput phrase={''} handleChange={handleInputChange}/>);
     const searchLyricsInputId = getByTestId(TestIds.searchLyricsInputId);
     fireEvent.change(searchLyricsInputId, { target: { value: 'Sia' } });
   });

@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import SearchLyricsBar from './SearchPane/SearchLyricsBar';
+import SearchLyricsBar from './SearchLyricsPane/SearchLyricsBar';
 import PaginationPane from './PaginationPane';
 
 const HomeView = () => {

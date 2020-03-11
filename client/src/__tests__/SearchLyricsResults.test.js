@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import React from 'react';
-import SearchLyricsResults from '../components/Views/HomeView/SearchPane/SearchLyricsResults';
+import SearchLyricsResults from '../components/Views/HomeView/SearchLyricsPane/SearchLyricsResults';
 import { TestIds } from '../Constants';
 
 const items = [
@@ -34,13 +34,13 @@ describe('SearchLyricsResults', () => {
     expect(elem).toBeInTheDocument();
   });
 
-  it(`maps provided data into DOM elements`, async () => {
+  it(`provided data should be mapped into DOM elements`, async () => {
     const { getByTestId } = render(<SearchLyricsResults lyrics={items}/>);
     const elem = getByTestId(TestIds.searchLyricsResultsListId);
     expect(elem.children).toHaveLength(5);
   });
 
-  it(`doesn't crash when lyrics array in props is an empty array`, async () => {
+  it(`should work same when lyrics prop is empty`, async () => {
     const { getByTestId } = render(<SearchLyricsResults lyrics={[]}/>);
     const elem = getByTestId(TestIds.searchLyricsResultsListId);
     expect(elem.children).toHaveLength(0);

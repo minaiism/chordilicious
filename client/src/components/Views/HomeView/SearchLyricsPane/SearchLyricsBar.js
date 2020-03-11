@@ -23,7 +23,7 @@ const SearchLyricsBar = () => {
   const [phrase, setPhrase] = useState('');
   const [lyrics, setLyrics] = useState([]);
 
-  const changeSearchTerm = event => {
+  const handleInputChange = event => {
     setPhrase(event.target.value);
   };
 
@@ -39,7 +39,7 @@ const SearchLyricsBar = () => {
   return loading && error === null ? (
     <section>
       <form className={classes.container} noValidate autoComplete="off">
-        <SearchLyricsInput searchTerm={phrase} changeSearchTerm={changeSearchTerm}/>
+        <SearchLyricsInput phrase={phrase} handleChange={handleInputChange}/>
         <SearchLyricsButton className={classes.input} handleSearch={handleSearch}/>
         <SearchLyricsResults lyrics={lyrics}/>
       </form>

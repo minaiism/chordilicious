@@ -1,7 +1,7 @@
 import { fireEvent, render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import React from 'react';
-import SearchLyricsButton from '../components/Views/HomeView/SearchPane/SearchLyricsButton';
+import SearchLyricsButton from '../components/Views/HomeView/SearchLyricsPane/SearchLyricsButton';
 import { TestIds } from '../Constants';
 
 describe('SearchLyricsButton', () => {
