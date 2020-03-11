@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
-import SearchBar from './SearchPane/SearchBar';
+import SearchLyricsBar from './SearchPane/SearchLyricsBar';
 import PaginationPane from './PaginationPane';
 
 const HomeView = () => {
@@ -33,7 +33,7 @@ const HomeView = () => {
         Search Lyrics & More
       </Typography>
       <Typography variant={'h3'} className={classes.text}>
-        <SearchBar/>
+        <SearchLyricsBar/>
         <PaginationPane/>
       </Typography>
     </div>

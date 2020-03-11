@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import SearchButton from './SearchButton';
+import SearchLyricsButton from './SearchLyricsButton';
 import * as LyricService from '../../../../services/LyricService';
-import SearchInput from './SearchInput';
-import { TestIds } from '../../../../Constants';
-import SearchResults from './SearchResults';
+import SearchLyricsInput from './SearchLyricsInput';
+import SearchLyricsResults from './SearchLyricsResults';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -17,36 +16,35 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SearchBar = () => {
+const SearchLyricsBar = () => {
   const classes = useStyles();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [searchTerm, setSearchTerm] = useState('');
-  const [searchResult, setSearchResult] = useState([]);
+  const [phrase, setPhrase] = useState('');
+  const [lyrics, setLyrics] = useState([]);
 
   const changeSearchTerm = event => {
-    setSearchTerm(event.target.value);
+    setPhrase(event.target.value);
   };
 
   const handleSearch = () => {
     setLoading(true);
-    LyricService.search(searchTerm)
-      .then(lyrics => (setSearchResult(lyrics)))
+    LyricService.search(phrase)
+      .then(items => (setLyrics(items)))
       .catch((e) => setError(e));
 
-    setSearchResult(searchResult);
+    setLyrics(lyrics);
   };
 
   return loading && error === null ? (
     <section>
       <form className={classes.container} noValidate autoComplete="off">
-        <SearchInput dataTestId={TestIds.lyricSearchInputName} searchTerm={searchTerm}
-                     changeSearchTerm={changeSearchTerm}/>
-        <SearchButton dataTestId={TestIds.searchLyricButton} className={classes.input} handleSearch={handleSearch}/>
-        <SearchResults searchResult={searchResult}/>
+        <SearchLyricsInput searchTerm={phrase} changeSearchTerm={changeSearchTerm}/>
+        <SearchLyricsButton className={classes.input} handleSearch={handleSearch}/>
+        <SearchLyricsResults lyrics={lyrics}/>
       </form>
     </section>
   ) : (<div>{error.code}:{error.message}</div>);
 };
 
-export default SearchBar;
+export default SearchLyricsBar;
