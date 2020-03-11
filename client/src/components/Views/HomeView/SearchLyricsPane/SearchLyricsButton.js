@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { brown, red } from '@material-ui/core/colors';
+import { TestIds } from '../../../../Constants';
 
 const SearchingButton = withStyles(theme => ({
   root: {
@@ -20,17 +21,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SearchButton = ({ dataTestId, handleSearch }) => {
+const SearchLyricsButton = ({ handleSearch }) => {
   const classes = useStyles();
 
   return (
-    <article>
-      <SearchingButton data-testid={dataTestId} variant={'contained'} color={'primary'} className={classes.margin}
-                       onClick={handleSearch}>
+    <article data-testid={TestIds.searchLyricsButtonArticleId}>
+      <SearchingButton variant={'contained'} color={'primary'} className={classes.margin}
+                       onClick={handleSearch} data-testid={TestIds.searchLyricsButtonId}>
         Search Lyrics
       </SearchingButton>
     </article>
   );
 };
 
-export default SearchButton;
+export default SearchLyricsButton;

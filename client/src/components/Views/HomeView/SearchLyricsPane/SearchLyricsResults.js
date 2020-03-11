@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import { TestIds } from '../../../../Constants';
 
 const useStyles = makeStyles(theme => ({
   listItem: {
@@ -24,14 +25,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SearchResults = ({ searchResult }) => {
+const SearchLyricsResults = ({ lyrics }) => {
   const classes = useStyles();
 
   return (
-    <article>
-      <List className={classes.listContainer}>
-        {searchResult.map(item => (
-          <ListItem className={classes.listItem} key={item.id}>
+    <article data-testid={TestIds.searchLyricsResultsArticleId}>
+      <List className={classes.listContainer} data-testid={TestIds.searchLyricsResultsListId}>
+        {lyrics.map(item => (
+          <ListItem className={classes.listItem} key={item.id} data-testid={TestIds.searchLyricsResultsListItemId}>
             {item.title}
             <FavoriteBorderIcon className={classes.listIcon}/>
           </ListItem>
@@ -41,4 +42,4 @@ const SearchResults = ({ searchResult }) => {
   );
 };
 
-export default SearchResults;
+export default SearchLyricsResults;
