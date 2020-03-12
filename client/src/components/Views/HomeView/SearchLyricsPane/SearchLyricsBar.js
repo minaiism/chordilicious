@@ -4,6 +4,8 @@ import SearchLyricsButton from './SearchLyricsButton';
 import * as LyricService from '../../../../services/LyricService';
 import SearchLyricsInput from './SearchLyricsInput';
 import SearchLyricsResults from './SearchLyricsResults';
+import { TestIds } from '../../../../Constants';
+import FormControl from '@material-ui/core/FormControl';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -37,14 +39,15 @@ const SearchLyricsBar = () => {
   };
 
   return loading && error === null ? (
-    <section>
-      <form className={classes.container} noValidate autoComplete="off">
+    <>
+      <FormControl className={classes.container} noValidate autoComplete={'off'}
+                   data-testid={TestIds.searchLyricsBarFormId}>
         <SearchLyricsInput phrase={phrase} handleChange={handleInputChange}/>
         <SearchLyricsButton className={classes.input} handleSearch={handleSearch}/>
         <SearchLyricsResults lyrics={lyrics}/>
-      </form>
-    </section>
-  ) : (<div>{error.code}:{error.message}</div>);
+      </FormControl>
+    </>
+  ) : (<>{error.code}:{error.message}</>);
 };
 
 export default SearchLyricsBar;
