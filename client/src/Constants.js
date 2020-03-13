@@ -5,5 +5,6 @@ export const TestIds = {
   searchLyricsInputArticleId: 'search-lyrics-input-article-id',
   searchLyricsResultsArticleId: 'search-lyrics-results-article-id',
   searchLyricsResultsListId: 'search-lyrics-results-list-id',
-  searchLyricsResultsListItemId: 'search-lyrics-results-list-item-id'
+  searchLyricsResultsListItemId: 'search-lyrics-results-list-item-id',
+  searchLyricsBarFormId: 'search-lyrics-bar-form-id'
 };
