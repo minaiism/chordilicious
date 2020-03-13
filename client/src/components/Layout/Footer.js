@@ -7,7 +7,8 @@ const primary = red[700];
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    marginTop: '3rem'
   },
   main: {
     marginTop: theme.spacing(8),
@@ -20,7 +21,11 @@ const useStyles = makeStyles(theme => ({
     color: 'white',
     fontFamily: 'Montserrat, sans-serif',
     display: 'flex',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
+    position: 'fixed',
+    width: '100%',
+    left: 0,
+    bottom: 0
   }
 }));
 
@@ -31,7 +36,7 @@ const Footer = () => {
     <div className={classes.root}>
       <CssBaseline/>
       <footer className={classes.footer}>
-        Chordilicious &copy; Copyright 2019
+        Chordilicious &copy; Copyright 2020
       </footer>
     </div>
   );
