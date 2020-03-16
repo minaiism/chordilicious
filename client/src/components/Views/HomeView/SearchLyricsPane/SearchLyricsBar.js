@@ -38,16 +38,27 @@ const SearchLyricsBar = () => {
     setLyrics(lyrics);
   };
 
-  return loading && error === null ? (
+  return (
     <>
       <FormControl className={classes.container} noValidate autoComplete={'off'}
                    data-testid={TestIds.searchLyricsBarFormId}>
         <SearchLyricsInput phrase={phrase} handleChange={handleInputChange}/>
         <SearchLyricsButton className={classes.input} handleSearch={handleSearch}/>
-        <SearchLyricsResults lyrics={lyrics}/>
+        {
+          loading && error === null
+            ? (<SearchLyricsResults lyrics={lyrics}/>)
+            : (<article data-testid={TestIds.searchLyricsErrorArticleId}>
+              <p data-testid={TestIds.searchLyricsErrorCodeId}>
+                {error.code}
+              </p>
+              <p data-testid={TestIds.searchLyricsErrorMessageId}>
+                {error.message}
+              </p>
+            </article>)
+        }
       </FormControl>
     </>
-  ) : (<>{error.code}:{error.message}</>);
+  );
 };
 
 export default SearchLyricsBar;
