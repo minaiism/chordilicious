@@ -1,6 +1,8 @@
+import { ErrorCodes } from '../../Constants';
+
 export const LyricServiceException = message => {
   const error = new Error(message);
-  error.code = 'LYRICS_SERVICE_EXCEPTION';
+  error.code = ErrorCodes.searchLyricsServiceError;
   return error;
 };
 

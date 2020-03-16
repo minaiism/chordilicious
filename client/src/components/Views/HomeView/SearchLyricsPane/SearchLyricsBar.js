@@ -47,7 +47,14 @@ const SearchLyricsBar = () => {
         {
           loading && error === null
             ? (<SearchLyricsResults lyrics={lyrics}/>)
-            : (<>{error.code}:{error.message}</>)
+            : (<article data-testid={TestIds.searchLyricsErrorArticleId}>
+              <p data-testid={TestIds.searchLyricsErrorCodeId}>
+                {error.code}
+              </p>
+              <p data-testid={TestIds.searchLyricsErrorMessageId}>
+                {error.message}
+              </p>
+            </article>)
         }
       </FormControl>
     </>
