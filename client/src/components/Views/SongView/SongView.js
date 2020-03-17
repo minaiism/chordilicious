@@ -7,6 +7,7 @@ import { deepOrange } from '@material-ui/core/colors';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import TwitterIcon from '@material-ui/icons/Twitter';
+import { TestIds } from '../../../Constants';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -62,7 +63,7 @@ const useStyles = makeStyles(theme => ({
 const SongView = () => {
   const classes = useStyles();
 
-  return (<article>
+  return (<article data-testid={TestIds.songViewArticleId}>
     <Paper className={classes.root}>
       <article className={classes.titleAvatarContainer}>
         <Avatar variant={'square'} className={classes.square}

@@ -9,7 +9,13 @@ export const TestIds = {
   searchLyricsBarFormId: 'search-lyrics-bar-form-id',
   searchLyricsErrorArticleId: 'search-lyrics-error-article-id',
   searchLyricsErrorCodeId: 'search-lyrics-error-code-id',
-  searchLyricsErrorMessageId: 'search-lyrics-error-message-id'
+  searchLyricsErrorMessageId: 'search-lyrics-error-message-id',
+  authWrapperSpinnerArticleId: 'auth-wrapper-spinner-article-id',
+  authWrapperViewArticleId: 'auth-wrapper-view-article-id',
+  authWrapperSnackBarArticleId: 'auth-wrapper-snack-bar-article-id',
+  favoritesViewArticleId: 'favorites-view-article-id',
+  userAccountViewArticleId: 'user-account-view-article-id',
+  songViewArticleId: 'song-view-article-id'
 };
 
 export const ErrorCodes = {

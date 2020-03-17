@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import NavBar from './NavBar/NavBar';
 import clsx from 'clsx';
@@ -36,18 +36,18 @@ const MainView = () => {
   const routes = {
     '/': () => <HomeView/>,
     '/about': () => <AboutView/>,
-    '/favorites': () => <AuthWrapper pane={<Favorites/>}/>,
-    '/user-profile': () => <AuthWrapper pane={<UserAccountView/>}/>,
+    '/favorites': () => <AuthWrapper view={<Favorites/>}/>,
+    '/user-profile': () => <AuthWrapper view={<UserAccountView/>}/>,
     '/home': () => <HomeView/>,
     '/top': () => <TopView/>,
     '/sign-in-callback': () => <SignInCallbackView/>,
-    '/lyrics': () => <AuthWrapper pane={<GeniusLyricsPane/>}/>
+    '/lyrics': () => <AuthWrapper view={<GeniusLyricsPane/>}/>
   };
 
   const routeResult = useRoutes(routes);
   const classes = useStyles();
 
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
