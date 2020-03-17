@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import ApiClient from '../../../services/ApiClient';
 import NoAccessSnackBar from './NoAccessSnackBar';
 import { CircularProgress, makeStyles } from '@material-ui/core';
+import { TestIds } from '../../../Constants';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const AuthWrapper = ({ pane }) => {
+const AuthWrapper = ({ view }) => {
   const classes = useStyles();
   const { user, setUser, setError } = useUserContext();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -37,9 +38,13 @@ const AuthWrapper = ({ pane }) => {
     }
   }, [user, setUser, setError, isLoggedIn, isLoading]);
 
-  return isLoading ? user ? <div>{pane}</div> : (
-    <article className={classes.container}><CircularProgress className={classes.spinnerIcon}/></article>) : (
-    <NoAccessSnackBar/>);
+  return isLoading ? user ? <>{view}</>
+    :
+    (<article data-testid={TestIds.authWrapperSpinnerArticleId} className={classes.container}>
+      <CircularProgress className={classes.spinnerIcon}/>
+    </article>)
+    :
+    (<article data-testid={TestIds.authWrapperSnackBarArticleId}><NoAccessSnackBar/></article>);
 };
 
 export default AuthWrapper;

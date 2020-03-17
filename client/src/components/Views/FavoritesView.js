@@ -9,6 +9,8 @@ import { useUserContext } from '../Context';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
+import { TestIds } from '../../Constants';
+import ListItemText from '@material-ui/core/ListItemText';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -38,19 +40,21 @@ const FavoritesView = () => {
   const classes = useStyles();
   const { user } = useUserContext();
 
-  return (<article>
+  return (<article data-testid={TestIds.favoritesViewArticleId}>
     <Paper>
       <Typography variant={'h5'} className={classes.header}>{user.name}'s Favorites</Typography>
       <List component={'nav'} className={classes.root} aria-label={'favorites'}>
         <ListItem>
           <ListItemIcon>
-            <PlaylistAddCheckIcon fontSize={'large'} color={'default'}/>
+            <PlaylistAddCheckIcon fontSize={'large'} color={'primary'}/>
+          </ListItemIcon>
+          <ListItemText>
             <Button color={'secondary'} className={classes.button} variant={'contained'}>
               <Link href="lyrics" className={classes.icon} underline={'none'} color={'inherit'}>
                 Lyrics
               </Link>
             </Button>
-          </ListItemIcon>
+          </ListItemText>
         </ListItem>
       </List>
     </Paper>
