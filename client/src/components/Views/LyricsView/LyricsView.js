@@ -60,10 +60,10 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SongView = () => {
+const LyricsView = () => {
   const classes = useStyles();
 
-  return (<article data-testid={TestIds.songViewArticleId}>
+  return (<article data-testid={TestIds.lyricsViewArticleId}>
     <Paper className={classes.root}>
       <article className={classes.titleAvatarContainer}>
         <Avatar variant={'square'} className={classes.square}
@@ -166,4 +166,4 @@ const SongView = () => {
   </article>);
 };
 
-export default SongView;
+export default LyricsView;

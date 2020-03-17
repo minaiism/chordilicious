@@ -40,8 +40,8 @@ const FavoritesView = () => {
   const classes = useStyles();
   const { user } = useUserContext();
 
-  return (<>
-    <Paper data-testid={TestIds.favoritesViewArticleId}>
+  return (<article data-testid={TestIds.favoritesViewArticleId}>
+    <Paper>
       <Typography variant={'h5'} className={classes.header}>{user.name}'s Favorites</Typography>
       <List component={'nav'} className={classes.root} aria-label={'favorites'}>
         <ListItem>
@@ -58,7 +58,7 @@ const FavoritesView = () => {
         </ListItem>
       </List>
     </Paper>
-  </>);
+  </article>);
 };
 
 export default FavoritesView;

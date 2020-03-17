@@ -11,7 +11,7 @@ import Footer from './Footer';
 import SignInCallbackView from '../Views/SignInCallbackView';
 import AuthWrapper from './Auth/AuthWrapper';
 import AboutView from '../Views/AboutView/AboutView';
-import GeniusLyricsPane from '../Views/SongView/SongView';
+import LyricsView from '../Views/LyricsView/LyricsView';
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -41,7 +41,7 @@ const MainView = () => {
     '/home': () => <HomeView/>,
     '/top': () => <TopView/>,
     '/sign-in-callback': () => <SignInCallbackView/>,
-    '/lyrics': () => <AuthWrapper view={<GeniusLyricsPane/>}/>
+    '/lyrics': () => <AuthWrapper view={<LyricsView/>}/>
   };
 
   const routeResult = useRoutes(routes);
