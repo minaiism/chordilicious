@@ -5,8 +5,8 @@
   "dependencies": {
     "@babel/runtime": "^7.8.7",
     "@material-ui/core": "^4.9.5",
-    "@testing-library/react": "^10.0.1",
     "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/react": "^10.0.1",
     "axios": "^0.19.2",
     "constate": "^2.0.0",
     "dotenv": "^8.2.0",
@@ -26,8 +26,8 @@
     "startServer": "node build/api/index.js",
     "build": "react-scripts build",
     "runServer": "nodemon --exec babel-node api/index.js && react-scripts start",
-    "test": "react-scripts test",
-    "testCi": "cross-env CI=true react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
+    "testCi": "cross-env CI=true react-scripts test --env=jest-environment-jsdom-sixteen",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -63,6 +63,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "genius-api": "^0.4.1",
+    "jest-environment-jsdom-sixteen": "^1.0.3",
     "js-cookie": "^2.2.1",
     "prettier": "^1.19.1"
   },

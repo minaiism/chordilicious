@@ -5,7 +5,7 @@ import { ErrorCodes, TestIds } from '../Constants';
 import SearchLyricsBar from '../components/Views/HomeView/SearchLyricsPane/SearchLyricsBar';
 import * as LyricService from '../services/LyricService';
 import items from './apiMocks/lyrics-search.json';
-import { wait } from '@testing-library/dom';
+import { waitFor } from '@testing-library/dom';
 import { LyricServiceException } from '../services/exception/LyricServiceException';
 
 jest.mock('../services/LyricService');
@@ -38,7 +38,7 @@ describe('SearchLyricsBar', () => {
     const { getByTestId } = render(<SearchLyricsBar/>);
     const nativeButton = getByTestId(TestIds.searchLyricsButtonId);
     fireEvent.click(nativeButton);
-    await wait(() => expect(searchAPIMock).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(searchAPIMock).toHaveBeenCalledTimes(1));
     const nativeList = getByTestId(TestIds.searchLyricsResultsListId);
     expect(nativeList.children).toHaveLength(items.length);
   });
@@ -49,7 +49,7 @@ describe('SearchLyricsBar', () => {
     const { getByTestId } = render(<SearchLyricsBar/>);
     const nativeButton = getByTestId(TestIds.searchLyricsButtonId);
     fireEvent.click(nativeButton);
-    await wait(() => expect(searchAPIMock).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(searchAPIMock).toHaveBeenCalledTimes(1));
     expect(() => getByTestId(TestIds.searchLyricsResultsArticleId)).toThrowError();
   });
 
@@ -59,7 +59,7 @@ describe('SearchLyricsBar', () => {
     const { getByTestId } = render(<SearchLyricsBar/>);
     const nativeButton = getByTestId(TestIds.searchLyricsButtonId);
     fireEvent.click(nativeButton);
-    await wait(() => expect(searchAPIMock).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(searchAPIMock).toHaveBeenCalledTimes(1));
     expect(getByTestId(TestIds.searchLyricsErrorArticleId)).toBeInTheDocument();
   });
 
@@ -69,7 +69,7 @@ describe('SearchLyricsBar', () => {
     const { getByTestId } = render(<SearchLyricsBar/>);
     const nativeButton = getByTestId(TestIds.searchLyricsButtonId);
     fireEvent.click(nativeButton);
-    await wait(() => expect(searchAPIMock).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(searchAPIMock).toHaveBeenCalledTimes(1));
     expect(getByTestId(TestIds.searchLyricsErrorCodeId)).toBeInTheDocument();
     expect(getByTestId(TestIds.searchLyricsErrorCodeId)).toHaveTextContent(ErrorCodes.searchLyricsServiceError);
   });
@@ -80,7 +80,7 @@ describe('SearchLyricsBar', () => {
     const { getByTestId } = render(<SearchLyricsBar/>);
     const nativeButton = getByTestId(TestIds.searchLyricsButtonId);
     fireEvent.click(nativeButton);
-    await wait(() => expect(searchAPIMock).toHaveBeenCalledTimes(1));
+    await waitFor(() => expect(searchAPIMock).toHaveBeenCalledTimes(1));
     expect(getByTestId(TestIds.searchLyricsErrorMessageId)).toHaveTextContent(`Cannot find lyrics. ${errorMessage}`);
   });
 });

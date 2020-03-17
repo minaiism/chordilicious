@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import React from 'react';
-import { render, wait } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { TestIds } from '../Constants';
 import AuthWrapper from '../components/Layout/Auth/AuthWrapper';
 import { UserInfoProvider } from '../components/Context';
@@ -29,7 +29,7 @@ describe('AuthWrapper', () => {
   it(`should render view`, async () => {
     let apiClientMock = ApiClient.get.mockResolvedValueOnce({ data: userData });
     const { getByTestId } = render(<UserInfoProvider><AuthWrapper view={<Favorites/>}/></UserInfoProvider>);
-    await wait(() => expect(apiClientMock).toHaveBeenCalled());
+    await waitFor(() => expect(apiClientMock).toHaveBeenCalled());
     const elem = getByTestId(TestIds.favoritesViewArticleId);
     expect(elem).toBeInTheDocument();
   });
@@ -38,7 +38,7 @@ describe('AuthWrapper', () => {
     const errorMessage = 'Network Error';
     const apiClientMock = ApiClient.get.mockRejectedValueOnce({ errorMessage });
     const { getByTestId } = render(<UserInfoProvider><AuthWrapper view={<Favorites/>}/></UserInfoProvider>);
-    await wait(() => expect(apiClientMock).toHaveBeenCalled());
+    await waitFor(() => expect(apiClientMock).toHaveBeenCalled());
     expect(getByTestId(TestIds.authWrapperSnackBarArticleId)).toBeInTheDocument();
   });
 });
