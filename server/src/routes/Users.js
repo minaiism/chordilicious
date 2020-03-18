@@ -34,9 +34,8 @@ router.post('/', async ({ body }, res) => {
     res.send(newUser);
   }).catch(err => {
     console.error(err);
-    res.status(400).send('Register failed!', err);
+    res.status(400).send({ message: 'Register failed!', details: err });
   });
-
 });
 
 export default router;

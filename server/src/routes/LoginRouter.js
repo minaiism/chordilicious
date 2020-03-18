@@ -1,5 +1,6 @@
 import User, { validate } from '../models/User';
 import express from 'express';
+
 const router = express.Router();
 
 router.post('/', async ({ body }, res) => {
@@ -16,7 +17,8 @@ router.post('/', async ({ body }, res) => {
     res.send(newUser);
   }).catch(err => {
     console.error(err);
-    res.status(400).send('Something went wrong!', err);
+    res.status(400).send({ message: 'Something went wrong!', details: err });
   });
 });
+
 export default router;
