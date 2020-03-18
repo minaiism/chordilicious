@@ -26,6 +26,6 @@ export const search = async (phrase) => {
     validateGeniusLyricSearch(results);
     return results;
   } catch (e) {
-    throw GeniusServiceException(`Cannot get lyrics. ${e.message}`);
+    throw new GeniusServiceException(`Cannot get lyrics. ${e.message}`);
   }
 };
