@@ -4,7 +4,7 @@ import constate from 'constate';
 const useUserInfo = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState(''); //TODO: replace with null
   return { user, setUser, loading, setLoading, error, setError };
 };
 

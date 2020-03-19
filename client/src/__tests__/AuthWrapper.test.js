@@ -5,19 +5,18 @@ import { TestIds } from '../Constants';
 import AuthWrapper from '../components/Layout/Auth/AuthWrapper';
 import { UserInfoProvider } from '../components/Context';
 import userData from './apiMocks/user-data';
-import { ApiClient } from '../services/ApiClient';
+import * as UserService from '../services/UserService';
 import Favorites from '../components/Views/FavoritesView';
 
-jest.mock('../services/ApiClient');
-
-jest.useFakeTimers();
+jest.mock('../services/UserService');
 
 describe('AuthWrapper', () => {
   it(`should render spinner component by default`, () => {
-    ApiClient.get = jest.fn(async () =>
+    // noinspection JSUnresolvedVariable
+    UserService.getUser = jest.fn(async () =>
       new Promise(resolve => {
           setTimeout(() => {
-            resolve({ data: userData });
+            resolve(userData);
           }, 1000);
         }
       ));
@@ -27,7 +26,7 @@ describe('AuthWrapper', () => {
   });
 
   it(`should render view`, async () => {
-    let apiClientMock = ApiClient.get.mockResolvedValueOnce({ data: userData });
+    let apiClientMock = UserService.getUser.mockResolvedValueOnce(userData);
     const { getByTestId } = render(<UserInfoProvider><AuthWrapper view={<Favorites/>}/></UserInfoProvider>);
     await waitFor(() => expect(apiClientMock).toHaveBeenCalled());
     const elem = getByTestId(TestIds.favoritesViewArticleId);
@@ -36,7 +35,7 @@ describe('AuthWrapper', () => {
 
   it(`should render NoAccessSnackBar when cannot fetch user`, async () => {
     const errorMessage = 'Network Error';
-    const apiClientMock = ApiClient.get.mockRejectedValueOnce({ errorMessage });
+    const apiClientMock = UserService.getUser.mockRejectedValueOnce({ errorMessage });
     const { getByTestId } = render(<UserInfoProvider><AuthWrapper view={<Favorites/>}/></UserInfoProvider>);
     await waitFor(() => expect(apiClientMock).toHaveBeenCalled());
     expect(getByTestId(TestIds.authWrapperSnackBarArticleId)).toBeInTheDocument();

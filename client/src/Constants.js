@@ -19,5 +19,7 @@ export const TestIds = {
 };
 
 export const ErrorCodes = {
-  searchLyricsServiceError: 'LYRICS_SERVICE_EXCEPTION'
+  searchLyricsServiceError: 'LYRICS_SERVICE_ERROR',
+  userServiceError: 'USER_SERVICE_ERROR',
+  userValidationError: 'USER_VALIDATION_ERROR'
 };

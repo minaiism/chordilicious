@@ -59,6 +59,7 @@ const useStyles2 = makeStyles(theme => ({
   }
 }));
 
+//TODO: import error from context, check if not null, render error or warning, error should consist of error code and error message
 const NoAccessSnackBar = () => {
   const classes = useStyles2();
 
