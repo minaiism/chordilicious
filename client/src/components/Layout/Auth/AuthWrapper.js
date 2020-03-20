@@ -1,9 +1,9 @@
 import { useUserContext } from '../../Context';
 import React, { useEffect, useState } from 'react';
-import ApiClient from '../../../services/ApiClient';
 import NoAccessSnackBar from './NoAccessSnackBar';
 import { CircularProgress, makeStyles } from '@material-ui/core';
 import { TestIds } from '../../../Constants';
+import * as UserService from '../../../services/UserService';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -24,9 +24,9 @@ const AuthWrapper = ({ view }) => {
 
   useEffect(() => {
     if (user === null && isLoggedIn === false) {
-      ApiClient.get('/users/me')
-        .then(res => {
-          setUser(res.data);
+      UserService.getUser()
+        .then(user => {
+          setUser(user);
           setIsLoggedIn(true);
           setIsLoading(true);
         })
