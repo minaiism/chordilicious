@@ -23,7 +23,7 @@ const AuthWrapper = ({ view }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (isLoggedIn === false) {
+    if (user === null && isLoggedIn === false) {
       UserService.getUser()
         .then(user => {
           setUser(user);

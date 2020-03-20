@@ -26,18 +26,18 @@ describe('AuthWrapper', () => {
   });
 
   it(`should render view`, async () => {
-    let apiClientMock = UserService.getUser.mockResolvedValueOnce(userData);
+    let userServiceMock = UserService.getUser.mockResolvedValueOnce(userData);
     const { getByTestId } = render(<UserInfoProvider><AuthWrapper view={<Favorites/>}/></UserInfoProvider>);
-    await waitFor(() => expect(apiClientMock).toHaveBeenCalled());
+    await waitFor(() => expect(userServiceMock).toHaveBeenCalled());
     const elem = getByTestId(TestIds.favoritesViewArticleId);
     expect(elem).toBeInTheDocument();
   });
 
   it(`should render NoAccessSnackBar when cannot fetch user`, async () => {
     const errorMessage = 'Network Error';
-    const apiClientMock = UserService.getUser.mockRejectedValueOnce({ errorMessage });
+    const userServiceMock = UserService.getUser.mockRejectedValueOnce({ errorMessage });
     const { getByTestId } = render(<UserInfoProvider><AuthWrapper view={<Favorites/>}/></UserInfoProvider>);
-    await waitFor(() => expect(apiClientMock).toHaveBeenCalled());
+    await waitFor(() => expect(userServiceMock).toHaveBeenCalled());
     expect(getByTestId(TestIds.authWrapperSnackBarArticleId)).toBeInTheDocument();
   });
 });

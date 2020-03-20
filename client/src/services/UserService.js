@@ -5,9 +5,9 @@ import { UserValidationException } from './exception/UserValidationException';
 /**
  * Validate user response data structure
  **/
-const validateUser = (user) => {
+export const validateUser = (user) => {
   if (!user.name) {
-    throw new UserValidationException('Missing username');
+    throw new UserValidationException('Missing name');
   } else if (!user.email) {
     throw new UserValidationException('Missing email');
   } else if (!user.avatar) {
@@ -21,10 +21,10 @@ const validateUser = (user) => {
 export const getUser = async () => {
   try {
     let res = await ApiClient.get('/users/me');
-    const results = res.data;
-    validateUser(results);
-    return results;
+    const user = res.data;
+    validateUser(user);
+    return user;
   } catch (e) {
-    throw new UserServiceException(`User fetching failed, ${e.message}`);
+    throw new UserServiceException(`Fetching user failed, ${e.message}`);
   }
 };
