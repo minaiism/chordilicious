@@ -8,6 +8,7 @@ import owl from '../../../assets/owl.png';
 import SkillsList from './SkillsList';
 import GoalsList from './GoalsList';
 import Divider from '@material-ui/core/Divider';
+import { TestIds } from '../../../Constants';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -101,7 +102,7 @@ const AboutView = () => {
   const classes = useStyles();
 
   return (
-    <article className={classes.root}>
+    <article data-testid={TestIds.aboutViewArticleId} className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Typography className={classes.header} variant={'h1'}>
