@@ -15,7 +15,10 @@ export const TestIds = {
   authWrapperSnackBarArticleId: 'auth-wrapper-snack-bar-article-id',
   favoritesViewArticleId: 'favorites-view-article-id',
   userAccountViewArticleId: 'user-account-view-article-id',
-  lyricsViewArticleId: 'lyrics-view-article-id'
+  lyricsViewArticleId: 'lyrics-view-article-id',
+  aboutViewArticleId: 'about-view-article-id',
+  goalsListArticleId: 'goals-list-article-id',
+  skillsListArticleId: 'skills-list-article-id'
 };
 
 export const ErrorCodes = {
