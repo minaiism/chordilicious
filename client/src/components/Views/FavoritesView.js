@@ -9,7 +9,7 @@ import { useUserContext } from '../Context';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
-import { TestIds } from '../../Constants';
+import { Paths, TestIds } from '../../Constants';
 import ListItemText from '@material-ui/core/ListItemText';
 
 const useStyles = makeStyles(theme => ({
@@ -40,7 +40,7 @@ const FavoritesView = () => {
   const classes = useStyles();
   const { user } = useUserContext();
 
-  return (<article data-testid={TestIds.favoritesViewArticleId}>
+  return (<article data-testid={TestIds.FAVORITES_VIEW_ARTICLE_ID}>
     <Paper>
       <Typography variant={'h5'} className={classes.header}>{user.name}'s Favorites</Typography>
       <List component={'nav'} className={classes.root} aria-label={'favorites'}>
@@ -50,7 +50,7 @@ const FavoritesView = () => {
           </ListItemIcon>
           <ListItemText>
             <Button color={'secondary'} className={classes.button} variant={'contained'}>
-              <Link href="lyrics" className={classes.icon} underline={'none'} color={'inherit'}>
+              <Link href={Paths.LYRICS_PATH} className={classes.icon} underline={'none'} color={'inherit'}>
                 Lyrics
               </Link>
             </Button>

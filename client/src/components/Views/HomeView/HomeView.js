@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import SearchLyricsBar from './SearchLyricsPane/SearchLyricsBar';
 import PaginationPane from './PaginationPane';
+import { TestIds } from '../../../Constants';
 
 const HomeView = () => {
   const useStyles = makeStyles(theme => ({
@@ -28,7 +29,7 @@ const HomeView = () => {
   }));
 
   const classes = useStyles();
-  return (<div className={classes.container}>
+  return (<article className={classes.container} data-testid={TestIds.HOME_VIEW_ARTICLE_ID}>
       <Typography variant={'h5'} className={classes.text}>
         Search Lyrics & More
       </Typography>
@@ -36,7 +37,7 @@ const HomeView = () => {
         <SearchLyricsBar/>
         <PaginationPane/>
       </Typography>
-    </div>
+    </article>
 
   );
 };

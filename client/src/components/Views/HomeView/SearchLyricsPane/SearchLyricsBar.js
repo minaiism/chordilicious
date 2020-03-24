@@ -41,17 +41,17 @@ const SearchLyricsBar = () => {
   return (
     <>
       <FormControl className={classes.container} noValidate autoComplete={'off'}
-                   data-testid={TestIds.searchLyricsBarFormId}>
+                   data-testid={TestIds.SEARCH_LYRICS_BAR_FORM_ID}>
         <SearchLyricsInput phrase={phrase} handleChange={handleInputChange}/>
         <SearchLyricsButton className={classes.input} handleSearch={handleSearch}/>
         {
           loading && error === null
             ? (<SearchLyricsResults lyrics={lyrics}/>)
-            : (<article data-testid={TestIds.searchLyricsErrorArticleId}>
-              <p data-testid={TestIds.searchLyricsErrorCodeId}>
+            : (<article data-testid={TestIds.SEARCH_LYRICS_ERROR_ARTICLE_ID}>
+              <p data-testid={TestIds.SEARCH_LYRICS_ERROR_CODE_ID}>
                 {error.code}
               </p>
-              <p data-testid={TestIds.searchLyricsErrorMessageId}>
+              <p data-testid={TestIds.SEARCH_LYRICS_ERROR_MESSAGE_ID}>
                 {error.message}
               </p>
             </article>)

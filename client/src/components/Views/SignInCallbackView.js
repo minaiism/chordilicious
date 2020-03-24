@@ -6,6 +6,7 @@ import FlightLandIcon from '@material-ui/icons/FlightLand';
 import { useUserContext } from '../Context';
 import { navigate } from 'hookrouter';
 import ApiClient from '../../services/ApiClient';
+import { Paths, TestIds } from '../../Constants';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -47,24 +48,24 @@ const SignInCallbackView = () => {
         .then(res => {
           setLoading(false);
           setUser(res.data);
-          navigate('/');
+          navigate(Paths.HOME_PATH);
         })
         .catch(err => {
           setError(err.message);
         });
     } else {
-      navigate('/');
+      navigate(Paths.HOME_PATH);
     }
   }, [user, setUser, setLoading, setError]);
 
   return loading ? (
-    <div className={classes.root}>
+    <article data-testid={TestIds.SIGN_IN_CALLBACK_ARTICLE_ID} className={classes.root}>
       <Typography variant={'h6'} className={classes.text}>
         <FlightLandIcon className={classes.icon} color={'primary'}/>
         Hold on a sec...
       </Typography>
       <CircularProgress className={classes.progressIcon} color={'primary'} size={'3rem'}/>
-    </div>
+    </article>
   ) : (<div>error: {error}</div>);
 };
 

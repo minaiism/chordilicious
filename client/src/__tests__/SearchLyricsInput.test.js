@@ -13,7 +13,7 @@ describe('SearchLyricsInput', () => {
     };
 
     const { getByTestId } = render(<SearchLyricsInput phrase={initPhrase} handleChange={handleInputChange}/>);
-    const searchLyricsInputId = getByTestId(TestIds.searchLyricsInputId);
+    const searchLyricsInputId = getByTestId(TestIds.SEARCH_LYRICS_INPUT_ID);
     expect(searchLyricsInputId.value).toBe(initPhrase);
   });
 
@@ -23,7 +23,7 @@ describe('SearchLyricsInput', () => {
     };
 
     const { getByTestId } = render(<SearchLyricsInput phrase={''} handleChange={handleInputChange}/>);
-    const searchLyricsInputId = getByTestId(TestIds.searchLyricsInputId);
+    const searchLyricsInputId = getByTestId(TestIds.SEARCH_LYRICS_INPUT_ID);
     fireEvent.change(searchLyricsInputId, { target: { value: 'Sia' } });
   });
 });

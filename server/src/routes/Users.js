@@ -1,5 +1,6 @@
 import User, { validate } from '../models/User';
 import express from 'express';
+import { ClientEndpoints } from '../../Constants';
 
 const router = express.Router();
 
@@ -17,7 +18,7 @@ router.get('/me', async (req, res) => {
   getUser(req.user.fbId).then(user => res.send(user)).catch(err => res.status(404).send(err.message));
 });
 
-router.post('/', async ({ body }, res) => {
+router.post(ClientEndpoints.HOME_PATH, async ({ body }, res) => {
   /* First Validate The Request */
   const { error } = validate(body);
   if (error) {

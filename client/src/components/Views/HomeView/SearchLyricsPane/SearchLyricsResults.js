@@ -29,10 +29,10 @@ const SearchLyricsResults = ({ lyrics }) => {
   const classes = useStyles();
 
   return (
-    <article data-testid={TestIds.searchLyricsResultsArticleId}>
-      <List className={classes.listContainer} data-testid={TestIds.searchLyricsResultsListId}>
+    <article data-testid={TestIds.SEARCH_LYRICS_RESULTS_ARTICLE_ID}>
+      <List className={classes.listContainer} data-testid={TestIds.SEARCH_LYRICS_RESULTS_LIST_ID}>
         {lyrics.map(item => (
-          <ListItem className={classes.listItem} key={item.id} data-testid={TestIds.searchLyricsResultsListItemId}>
+          <ListItem className={classes.listItem} key={item.id} data-testid={TestIds.SEARCH_LYRICS_RESULTS_LIST_ITEM_ID}>
             {item.title}
             <FavoriteBorderIcon className={classes.listIcon}/>
           </ListItem>

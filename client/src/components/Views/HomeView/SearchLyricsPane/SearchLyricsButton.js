@@ -25,9 +25,9 @@ const SearchLyricsButton = ({ handleSearch }) => {
   const classes = useStyles();
 
   return (
-    <article data-testid={TestIds.searchLyricsButtonArticleId}>
+    <article data-testid={TestIds.SEARCH_LYRICS_BUTTON_ARTICLE_ID}>
       <SearchingButton variant={'contained'} color={'primary'} className={classes.margin}
-                       onClick={handleSearch} data-testid={TestIds.searchLyricsButtonId}>
+                       onClick={handleSearch} data-testid={TestIds.SEARCH_LYRICS_BUTTON_ID}>
         Search Lyrics
       </SearchingButton>
     </article>

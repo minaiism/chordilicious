@@ -35,7 +35,7 @@ const GoalsList = () => {
   const classes = useStyles();
 
   return (
-    <article data-testid={TestIds.goalsListArticleId}>
+    <article data-testid={TestIds.GOALS_LIST_ARTICLE_ID}>
       <List className={classes.root}>
         <ListItem>
           <ListItemAvatar>

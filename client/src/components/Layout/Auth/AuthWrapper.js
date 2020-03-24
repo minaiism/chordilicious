@@ -40,11 +40,11 @@ const AuthWrapper = ({ view }) => {
 
   return isLoading ? user ? <>{view}</>
     :
-    (<article data-testid={TestIds.authWrapperSpinnerArticleId} className={classes.container}>
+    (<article data-testid={TestIds.AUTH_WRAPPER_SPINNER_ARTICLE_ID} className={classes.container}>
       <CircularProgress className={classes.spinnerIcon}/>
     </article>)
     :
-    (<article data-testid={TestIds.authWrapperSnackBarArticleId}><NoAccessSnackBar/></article>);
+    (<article data-testid={TestIds.AUTH_WRAPPER_SNACKBAR_ARTICLE_ID}><NoAccessSnackBar/></article>);
 };
 
 export default AuthWrapper;

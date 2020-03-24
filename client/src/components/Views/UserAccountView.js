@@ -11,7 +11,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import { useUserContext } from '../Context';
-import { TestIds } from '../../Constants';
+import { Paths, TestIds } from '../../Constants';
 
 const StyledTableCell = withStyles(theme => ({
   head: {
@@ -56,7 +56,7 @@ const UserAccountView = () => {
   const classes = useStyles();
   const { user } = useUserContext();
 
-  return (<article data-testid={TestIds.userAccountViewArticleId}>
+  return (<article data-testid={TestIds.USER_ACCOUNT_VIEW_ARTICLE_ID}>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="customized table">
         <TableHead>
@@ -70,7 +70,7 @@ const UserAccountView = () => {
         <TableBody>
           <StyledTableRow>
             <StyledTableCell component={'th'} scope={'row'} className={classes.tableItem}>
-              <Button variant="contained" color={'primary'}> <Link href="favorites"
+              <Button variant="contained" color={'primary'}> <Link href={Paths.FAVORITES_PATH}
                                                                    className={classes.favorites}>Favorites</Link></Button>
             </StyledTableCell>
             <StyledTableCell align={'right'} className={classes.tableItem}>{user.name}</StyledTableCell>

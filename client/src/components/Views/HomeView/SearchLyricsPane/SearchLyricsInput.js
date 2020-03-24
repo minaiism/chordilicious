@@ -20,7 +20,7 @@ const SearchLyricsInput = ({ phrase, handleChange }) => {
   const classes = useStyles();
 
   return (
-    <article data-testid={TestIds.searchLyricsInputArticleId}>
+    <article data-testid={TestIds.SEARCH_LYRICS_INPUT_ARTICLE_ID}>
       <Input
         className={classes.input}
         id={'input-with-icon-adornment'}
@@ -31,7 +31,7 @@ const SearchLyricsInput = ({ phrase, handleChange }) => {
         }
         onChange={handleChange}
         value={phrase}
-        inputProps={{ 'data-testid': TestIds.searchLyricsInputId }}
+        inputProps={{ 'data-testid': TestIds.SEARCH_LYRICS_INPUT_ID }}
       />
     </article>
   );

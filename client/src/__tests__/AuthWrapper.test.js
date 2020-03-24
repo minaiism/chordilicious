@@ -21,7 +21,7 @@ describe('AuthWrapper', () => {
         }
       ));
     const { getByTestId } = render(<UserInfoProvider><AuthWrapper view={<Favorites/>}/></UserInfoProvider>);
-    const elem = getByTestId(TestIds.authWrapperSpinnerArticleId);
+    const elem = getByTestId(TestIds.AUTH_WRAPPER_SPINNER_ARTICLE_ID);
     expect(elem).toBeInTheDocument();
   });
 
@@ -29,7 +29,7 @@ describe('AuthWrapper', () => {
     let userServiceMock = UserService.getUser.mockResolvedValueOnce(userData);
     const { getByTestId } = render(<UserInfoProvider><AuthWrapper view={<Favorites/>}/></UserInfoProvider>);
     await waitFor(() => expect(userServiceMock).toHaveBeenCalled());
-    const elem = getByTestId(TestIds.favoritesViewArticleId);
+    const elem = getByTestId(TestIds.FAVORITES_VIEW_ARTICLE_ID);
     expect(elem).toBeInTheDocument();
   });
 
@@ -38,6 +38,6 @@ describe('AuthWrapper', () => {
     const userServiceMock = UserService.getUser.mockRejectedValueOnce({ errorMessage });
     const { getByTestId } = render(<UserInfoProvider><AuthWrapper view={<Favorites/>}/></UserInfoProvider>);
     await waitFor(() => expect(userServiceMock).toHaveBeenCalled());
-    expect(getByTestId(TestIds.authWrapperSnackBarArticleId)).toBeInTheDocument();
+    expect(getByTestId(TestIds.AUTH_WRAPPER_SNACKBAR_ARTICLE_ID)).toBeInTheDocument();
   });
 });

@@ -7,7 +7,7 @@ import GoalsList from '../components/Views/AboutView/GoalsList';
 describe('GoalsList', () => {
   it('GoalsList is present in the document', () => {
     const { getByTestId } = render(<GoalsList/>);
-    const elem = getByTestId(TestIds.goalsListArticleId);
+    const elem = getByTestId(TestIds.GOALS_LIST_ARTICLE_ID);
     expect(elem).toBeInTheDocument();
   });
 });
