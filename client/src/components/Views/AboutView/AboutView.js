@@ -102,7 +102,7 @@ const AboutView = () => {
   const classes = useStyles();
 
   return (
-    <article data-testid={TestIds.aboutViewArticleId} className={classes.root}>
+    <article data-testid={TestIds.ABOUT_VIEW_ARTICLE_ID} className={classes.root}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <Typography className={classes.header} variant={'h1'}>

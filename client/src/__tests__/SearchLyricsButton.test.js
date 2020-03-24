@@ -11,14 +11,14 @@ describe('SearchLyricsButton', () => {
       <SearchLyricsButton handleSearch={handleSearch}/>
     );
 
-    const nativeButton = getByTestId(TestIds.searchLyricsButtonId);
+    const nativeButton = getByTestId(TestIds.SEARCH_LYRICS_BUTTON_ID);
     fireEvent.click(nativeButton);
     expect(handleSearch).toHaveBeenCalled();
   });
 
   it('a button is present in the document', () => {
     const { getByTestId } = render(<SearchLyricsButton/>);
-    const elem = getByTestId(TestIds.searchLyricsButtonId);
+    const elem = getByTestId(TestIds.SEARCH_LYRICS_BUTTON_ID);
     expect(elem).toBeInTheDocument();
   });
 });

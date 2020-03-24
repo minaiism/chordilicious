@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { TestIds } from '../../Constants';
 
 const useStyles = makeStyles(theme => ({
   text: {
@@ -12,9 +13,9 @@ const TopView = () => {
   const classes = useStyles();
 
   return (
-    <div>
+    <article data-testid={TestIds.TOP_VIEW_ARTICLE_ID}>
       <h1 className={classes.text}>Top</h1>
-    </div>
+    </article>
   );
 };
 

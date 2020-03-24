@@ -13,6 +13,7 @@ import LyricRouter from './routes/LyricRouter';
 import https from 'https';
 import fs from 'fs';
 import path from 'path';
+import { ClientEndpoints } from '../Constants';
 
 const app = express();
 app.use(cookieParser());
@@ -56,11 +57,11 @@ app.get('/auth/facebook', passport.authenticate('facebook'),
     console.log('req.user', req.user);
     const token = createToken({ id: req.user._id });
     res.cookie('jwt', token, { httpOnly: true });
-    res.redirect('https://localhost:3000/sign-in-callback');
+    res.redirect('https://localhost:3000' + ClientEndpoints.SIGN_IN_CALLBACK_PATH);
   });
 
 app.get('/logout', (req, res) => {
-  res.cookie('jwt', '', { expires: new Date(1), path: '/', httpOnly: true });
+  res.cookie('jwt', '', { expires: new Date(1), path: ClientEndpoints.HOME_PATH, httpOnly: true });
   res.redirect('https://localhost:3000/');
 });
 
@@ -68,9 +69,9 @@ app.use(express.json());
 app.use('/users', Auth, Users);
 
 if (process.env.USER_ANARCHY_MODE) {
-  app.use('/lyrics', LyricRouter);
+  app.use(ClientEndpoints.LYRICS_PATH, LyricRouter);
 } else {
-  app.use('/lyrics', Auth, LyricRouter);
+  app.use(ClientEndpoints.LYRICS_PATH, Auth, LyricRouter);
 }
 
 const key = fs.readFileSync(path.join(__dirname, '/../../selfsigned.key'));

@@ -63,7 +63,7 @@ const useStyles = makeStyles(theme => ({
 const LyricsView = () => {
   const classes = useStyles();
 
-  return (<article data-testid={TestIds.lyricsViewArticleId}>
+  return (<article data-testid={TestIds.LYRICS_VIEW_ARTICLE_ID}>
     <Paper className={classes.root}>
       <article className={classes.titleAvatarContainer}>
         <Avatar variant={'square'} className={classes.square}

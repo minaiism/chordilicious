@@ -38,7 +38,7 @@ const SkillsList = () => {
   const classes = useStyles();
 
   return (
-    <article data-testid={TestIds.skillsListArticleId}>
+    <article data-testid={TestIds.SKILLS_LIST_ARTICLE_ID}>
       <List className={classes.root}>
         <ListItem className={classes.text}>
           <ListItemAvatar>

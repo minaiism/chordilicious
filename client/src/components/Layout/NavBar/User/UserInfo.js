@@ -9,6 +9,7 @@ import IconButton from '@material-ui/core/IconButton';
 import EmojiPeopleIcon from '@material-ui/icons/EmojiPeople';
 import { AccountCircle } from '@material-ui/icons';
 import { Typography } from '@material-ui/core';
+import { Paths } from '../../../../Constants';
 
 const useStyles = makeStyles(() => ({
   anchor: {
@@ -78,7 +79,7 @@ const UserInfo = () => {
           </MenuItem>
         </Link>
 
-        <Link style={{ textDecoration: 'none', color: 'inherit' }} href="user-profile"
+        <Link style={{ textDecoration: 'none', color: 'inherit' }} href={Paths.USER_PROFILE_PATH}
               className={classes.anchor}>
           <MenuItem onClick={handleFavorites} className={classes.button}>
             <EmojiPeopleIcon className={classes.anchor}/>
@@ -86,7 +87,7 @@ const UserInfo = () => {
           </MenuItem>
         </Link>
 
-        <Link style={{ textDecoration: 'none', color: 'inherit' }} href="favorites"
+        <Link style={{ textDecoration: 'none', color: 'inherit' }} href={Paths.FAVORITES_PATH}
               className={classes.anchor}>
           <MenuItem onClick={handleFavorites} className={classes.button}>
             <FavoriteIcon className={classes.anchor}/>

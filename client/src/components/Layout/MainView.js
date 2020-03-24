@@ -12,6 +12,7 @@ import SignInCallbackView from '../Views/SignInCallbackView';
 import AuthWrapper from './Auth/AuthWrapper';
 import AboutView from '../Views/AboutView/AboutView';
 import LyricsView from '../Views/LyricsView/LyricsView';
+import { Paths, TestIds } from '../../Constants';
 
 const useStyles = makeStyles(theme => ({
   content: {
@@ -31,19 +32,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+/* istanbul ignore next */
+const routes = {
+  [Paths.HOME_PATH]: () => <HomeView/>,
+  [Paths.ABOUT_PATH]: () => <AboutView/>,
+  [Paths.FAVORITES_PATH]: () => <AuthWrapper view={<Favorites/>}/>,
+  [Paths.USER_PROFILE_PATH]: () => <AuthWrapper view={<UserAccountView/>}/>,
+  [Paths.TOP_PATH]: () => <TopView/>,
+  [Paths.SIGN_IN_CALLBACK_PATH]: () => <SignInCallbackView/>,
+  [Paths.LYRICS_PATH]: () => <AuthWrapper view={<LyricsView/>}/>
+};
+
 const MainView = () => {
-
-  const routes = {
-    '/': () => <HomeView/>,
-    '/about': () => <AboutView/>,
-    '/favorites': () => <AuthWrapper view={<Favorites/>}/>,
-    '/user-profile': () => <AuthWrapper view={<UserAccountView/>}/>,
-    '/home': () => <HomeView/>,
-    '/top': () => <TopView/>,
-    '/sign-in-callback': () => <SignInCallbackView/>,
-    '/lyrics': () => <AuthWrapper view={<LyricsView/>}/>
-  };
-
   const routeResult = useRoutes(routes);
   const classes = useStyles();
 
@@ -52,6 +52,7 @@ const MainView = () => {
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
   };
+
   const handleDrawerClose = () => {
     setDrawerOpen(false);
   };
@@ -63,7 +64,7 @@ const MainView = () => {
         [classes.contentShift]: drawerOpen
       })}
     >
-      <article>
+      <article data-testid={TestIds.MAIN_VIEW_ARTICLE_ID}>
         {routeResult}
       </article>
     </main>

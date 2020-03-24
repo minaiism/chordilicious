@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { useUserContext } from '../../../Context';
 import FacebookIcon from '@material-ui/icons/Facebook';
+import { Paths } from '../../../../Constants';
 
 const FacebookUserInfo = () => {
   const useStyles = makeStyles(theme => ({
@@ -70,7 +71,7 @@ const FacebookUserInfo = () => {
           </Typography>
         </article>
         <Button variant={'contained'} color={'primary'} className={classes.button} href="https://localhost:8443/logout">
-          <Typography href="home"
+          <Typography href={Paths.HOME_PATH}
                       style={{
                         textDecoration: 'none',
                         color: 'inherit',

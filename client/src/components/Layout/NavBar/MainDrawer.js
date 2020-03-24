@@ -8,6 +8,7 @@ import QueueMusicIcon from '@material-ui/icons/QueueMusic';
 import VerticalAlignTopIcon from '@material-ui/icons/VerticalAlignTop';
 import { SocialIcon } from 'react-social-icons';
 import Link from '@material-ui/core/Link';
+import { Paths } from '../../../Constants';
 
 const useStyles = makeStyles(() => ({
   listIcon: {
@@ -39,21 +40,21 @@ const MainDrawer = () => {
       <List>
         <ListItem className={classes.listIcon}>
           <QueueMusicIcon/>
-          <Link style={{ textDecoration: 'none', color: 'inherit' }} href="about"
+          <Link style={{ textDecoration: 'none', color: 'inherit' }} href={Paths.ABOUT_PATH}
                 className={classes.anchor}>
             About Chordilicious
           </Link>
         </ListItem>
         <ListItem className={classes.listIcon}>
           <FavoriteIcon/>
-          <Link style={{ textDecoration: 'none', color: 'inherit' }} href="favorites"
+          <Link style={{ textDecoration: 'none', color: 'inherit' }} href={Paths.FAVORITES_PATH}
                 className={classes.anchor}>
             Top 10 Chords
           </Link>
         </ListItem>
         <ListItem className={classes.listIcon}>
           <VerticalAlignTopIcon/>
-          <Link style={{ textDecoration: 'none', color: 'inherit' }} href="top"
+          <Link style={{ textDecoration: 'none', color: 'inherit' }} href={Paths.TOP_PATH}
                 className={classes.anchor}>
             Top 10 Lyrics
           </Link>
