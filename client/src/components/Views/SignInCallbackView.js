@@ -5,8 +5,8 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import FlightLandIcon from '@material-ui/icons/FlightLand';
 import { useUserContext } from '../Context';
 import { navigate } from 'hookrouter';
-import ApiClient from '../../services/ApiClient';
 import { Paths, TestIds } from '../../Constants';
+import * as UserService from '../../services/UserService';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -44,10 +44,10 @@ const SignInCallbackView = () => {
   useEffect(() => {
     if (user === null) {
       setLoading(true);
-      ApiClient.get('/users/me')
-        .then(res => {
+      UserService.getUser()
+        .then(user => {
           setLoading(false);
-          setUser(res.data);
+          setUser(user);
           navigate(Paths.HOME_PATH);
         })
         .catch(err => {
@@ -58,7 +58,7 @@ const SignInCallbackView = () => {
     }
   }, [user, setUser, setLoading, setError]);
 
-  return loading ? (
+  return loading === true ? (
     <article data-testid={TestIds.SIGN_IN_CALLBACK_ARTICLE_ID} className={classes.root}>
       <Typography variant={'h6'} className={classes.text}>
         <FlightLandIcon className={classes.icon} color={'primary'}/>
@@ -66,7 +66,7 @@ const SignInCallbackView = () => {
       </Typography>
       <CircularProgress className={classes.progressIcon} color={'primary'} size={'3rem'}/>
     </article>
-  ) : (<div>error: {error}</div>);
+  ) : (<article data-testid={TestIds.SIGN_IN_CALLBACK_ERROR_ID}>error: {error.message}</article>);
 };
 
 export default SignInCallbackView;
