@@ -1,5 +1,5 @@
 import ApiClient from './ApiClient';
-import { LyricServiceException } from './exception/LyricServiceException';
+import { LyricServiceError } from './errors/LyricServiceError';
 
 /**
  * Validate search response data structure
@@ -23,6 +23,6 @@ export const search = async (phrase) => {
     validateLyricSearch(results);
     return results;
   } catch (e) {
-    throw LyricServiceException(`Cannot find lyrics. ${e.message}`);
+    throw LyricServiceError(`Cannot find lyrics. ${e.message}`);
   }
 };
