@@ -3,7 +3,7 @@ import React from 'react';
 import { render, waitFor } from '@testing-library/react';
 import { Paths, TestIds } from '../Constants';
 import userData from './apiMocks/user-data';
-import * as UserService from '../services/UserService';
+import { getUser } from '../services/UserService';
 import { useUserContext } from '../components/Context';
 import { navigate } from 'hookrouter';
 import SignInCallbackView from '../components/Views/SignInCallbackView';
@@ -14,8 +14,7 @@ jest.mock('../components/Context');
 
 describe('SignInCallbackView', () => {
   it(`should render spinner icon by default`, async () => {
-    // noinspection JSUnresolvedVariable
-    UserService.getUser = jest.fn(async () =>
+    getUser.mockImplementation(async () =>
       new Promise(resolve => {
           setTimeout(() => {
             resolve(userData);
@@ -24,13 +23,13 @@ describe('SignInCallbackView', () => {
       ));
     useUserContext.mockReturnValue({ user: null, error: '' });
     const { getByTestId } = render(<SignInCallbackView/>);
-    await waitFor(() => expect(UserService.getUser).toHaveBeenCalled());
+    await waitFor(() => expect(getUser).toHaveBeenCalled());
     const elem = getByTestId(TestIds.SIGN_IN_CALLBACK_ARTICLE_ID);
     expect(elem).toBeInTheDocument();
   });
 
   it(`should navigate to home page when user fetching successful`, async () => {
-    let userServiceMock = UserService.getUser.mockResolvedValueOnce(userData);
+    let userServiceMock = getUser.mockResolvedValueOnce(userData);
     navigate.mockImplementationOnce(jest.fn());
     useUserContext.mockReturnValue({ user: null, setUser: jest.fn() });
     render(<SignInCallbackView/>);
@@ -49,7 +48,7 @@ describe('SignInCallbackView', () => {
 
   it(`should render error when user fetching fails`, async () => {
     const errorMessage = 'Network Error';
-    UserService.getUser.mockRejectedValue({ errorMessage });
+    getUser.mockRejectedValue({ errorMessage });
     const setError = jest.fn();
     useUserContext.mockReturnValueOnce({ user: null, setUser: jest.fn(), error: '', setError });
     render(<SignInCallbackView/>);
