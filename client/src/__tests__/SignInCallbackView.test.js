@@ -38,11 +38,20 @@ describe('SignInCallbackView', () => {
     await (() => expect(navigate).toHaveBeenCalledWith(Paths.HOME_PATH));
   });
 
-  it(`should navigate to home page when cannot fetch user`, async () => {
+  it(`should navigate to home page when user exists`, async () => {
     navigate.mockImplementationOnce(jest.fn());
     useUserContext.mockReturnValue({ user: {} });
     render(<SignInCallbackView/>);
     await waitFor(() => expect(navigate).toHaveBeenCalled());
     await (() => expect(navigate).toHaveBeenCalledWith(Paths.HOME_PATH));
+  });
+
+  it(`should navigate to home when fetching unsuccessful`, async () => {
+    const errorMessage = 'Network Error';
+    const userServiceMock = UserService.getUser.mockRejectedValueOnce({ errorMessage });
+    navigate.mockImplementationOnce(jest.fn());
+    useUserContext.mockReturnValue({ user: null, setUser: jest.fn(), setError: jest.fn() });
+    render(<SignInCallbackView/>);
+    await waitFor(() => expect(userServiceMock).toHaveBeenCalled());
   });
 });
