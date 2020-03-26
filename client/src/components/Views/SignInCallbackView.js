@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -39,26 +39,27 @@ const useStyles = makeStyles(theme => ({
 
 const SignInCallbackView = () => {
   const classes = useStyles();
-  const { user, setUser, loading, setLoading, error, setError } = useUserContext();
+  const { user, setUser, error, setError } = useUserContext();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (user === null) {
-      setLoading(true);
+      setIsLoading(true);
       UserService.getUser()
         .then(user => {
-          setLoading(false);
           setUser(user);
           navigate(Paths.HOME_PATH);
         })
         .catch(err => {
           setError(err.message);
+          setIsLoading(false);
         });
     } else {
       navigate(Paths.HOME_PATH);
     }
-  }, [user, setUser, setLoading, setError]);
+  }, [user, setUser, setIsLoading, setError]);
 
-  return loading === true ? (
+  return isLoading === true ? (
     <article data-testid={TestIds.SIGN_IN_CALLBACK_ARTICLE_ID} className={classes.root}>
       <Typography variant={'h6'} className={classes.text}>
         <FlightLandIcon className={classes.icon} color={'primary'}/>
