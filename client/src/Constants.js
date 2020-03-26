@@ -22,7 +22,8 @@ export const TestIds = {
   MAIN_VIEW_ARTICLE_ID: 'main-view-article-id',
   HOME_VIEW_ARTICLE_ID: 'home-view-article-id',
   TOP_VIEW_ARTICLE_ID: 'top-view-article-id',
-  SIGN_IN_CALLBACK_ARTICLE_ID: 'sign-in-callback-article-id'
+  SIGN_IN_CALLBACK_ARTICLE_ID: 'sign-in-callback-article-id',
+  SIGN_IN_CALLBACK_ERROR_ID: 'sign-in-callback-error-id'
 };
 
 export const ErrorCodes = {
