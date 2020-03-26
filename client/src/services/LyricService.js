@@ -23,6 +23,6 @@ export const search = async (phrase) => {
     validateLyricSearch(results);
     return results;
   } catch (e) {
-    throw LyricServiceError(`Cannot find lyrics. ${e.message}`);
+    throw new LyricServiceError(`Cannot find lyrics. ${e.message}`);
   }
 };
