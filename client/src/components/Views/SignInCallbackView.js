@@ -56,7 +56,7 @@ const SignInCallbackView = () => {
     }
   }, [user, setUser, setError]);
 
-  return !error ? (
+  return error === '' ? (
     <article data-testid={TestIds.SIGN_IN_CALLBACK_ARTICLE_ID} className={classes.root}>
       <Typography variant={'h6'} className={classes.text}>
         <FlightLandIcon className={classes.icon} color={'primary'}/>
@@ -64,7 +64,7 @@ const SignInCallbackView = () => {
       </Typography>
       <CircularProgress className={classes.progressIcon} color={'primary'} size={'3rem'}/>
     </article>
-  ) : (<article data-testid={TestIds.SIGN_IN_CALLBACK_ERROR_ID}>error: {error.message}</article>);
+  ) : (<article data-testid={TestIds.SIGN_IN_CALLBACK_ERROR_ID}>error: {error}</article>);
 };
 
 export default SignInCallbackView;

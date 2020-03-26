@@ -13,7 +13,7 @@ jest.mock('hookrouter');
 jest.mock('../components/Context');
 
 describe('SignInCallbackView', () => {
-  it(`should render spinner icon by default`, () => {
+  it(`should render spinner icon by default`, async () => {
     // noinspection JSUnresolvedVariable
     UserService.getUser = jest.fn(async () =>
       new Promise(resolve => {
@@ -22,13 +22,14 @@ describe('SignInCallbackView', () => {
           }, 1000);
         }
       ));
-    useUserContext.mockReturnValue({ user: {} });
+    useUserContext.mockReturnValue({ user: null, error: '' });
     const { getByTestId } = render(<SignInCallbackView/>);
+    await waitFor(() => expect(UserService.getUser).toHaveBeenCalled());
     const elem = getByTestId(TestIds.SIGN_IN_CALLBACK_ARTICLE_ID);
     expect(elem).toBeInTheDocument();
   });
 
-  it(`should navigate to home page when fetching successful`, async () => {
+  it(`should navigate to home page when user fetching successful`, async () => {
     let userServiceMock = UserService.getUser.mockResolvedValueOnce(userData);
     navigate.mockImplementationOnce(jest.fn());
     useUserContext.mockReturnValue({ user: null, setUser: jest.fn() });
@@ -46,12 +47,16 @@ describe('SignInCallbackView', () => {
     await (() => expect(navigate).toHaveBeenCalledWith(Paths.HOME_PATH));
   });
 
-  it(`should navigate to home when fetching unsuccessful`, async () => {
+  it(`should render error when user fetching fails`, async () => {
     const errorMessage = 'Network Error';
-    const userServiceMock = UserService.getUser.mockRejectedValueOnce({ errorMessage });
-    navigate.mockImplementationOnce(jest.fn());
-    useUserContext.mockReturnValue({ user: null, setUser: jest.fn(), setError: jest.fn() });
+    UserService.getUser.mockRejectedValue({ errorMessage });
+    const setError = jest.fn();
+    useUserContext.mockReturnValueOnce({ user: null, setUser: jest.fn(), error: '', setError });
     render(<SignInCallbackView/>);
-    await waitFor(() => expect(userServiceMock).toHaveBeenCalled());
+    useUserContext.mockReturnValueOnce({ user: null, setUser: jest.fn(), error: errorMessage, setError });
+    const { getByTestId } = render(<SignInCallbackView/>);
+    await waitFor(() => expect(setError).toHaveBeenCalled());
+    const elem = getByTestId(TestIds.SIGN_IN_CALLBACK_ERROR_ID);
+    expect(elem).toBeInTheDocument();
   });
 });
