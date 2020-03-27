@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { GeniusServiceException } from './exception/GeniusServiceException';
+import { GeniusServiceError } from './errors/GeniusServiceError';
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -26,6 +26,6 @@ export const search = async (phrase) => {
     validateGeniusLyricSearch(results);
     return results;
   } catch (e) {
-    throw new GeniusServiceException(`Cannot get lyrics. ${e.message}`);
+    throw new GeniusServiceError(`Cannot get lyrics. ${e.message}`);
   }
 };

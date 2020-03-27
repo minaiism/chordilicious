@@ -2,7 +2,7 @@ import axios from 'axios';
 import { search } from '../services/GeniusService';
 import geniusSearchLyricResponse from './apiMocks/genius-lyrics-data';
 import parsedGeniusSearchLyricResponse from './apiMocks/parsed-genius-lyrics-data';
-import { GeniusServiceException } from '../services/exception/GeniusServiceException';
+import { GeniusServiceError } from '../services/errors/GeniusServiceError';
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -25,10 +25,10 @@ describe('GeniusService', () => {
     expect(axios.get).toHaveBeenCalledWith('https://api.genius.com/search?q=sia&access_token=' + geniusToken);
   });
 
-  it('should throw GeniusServiceException when cannot fetch lyrics', async () => {
+  it('should throw GeniusServiceError when cannot fetch lyrics', async () => {
     const errorMessage = 'Network Error';
-    axios.get.mockRejectedValueOnce(new GeniusServiceException(`Cannot get lyrics. ${errorMessage}`));
+    axios.get.mockRejectedValueOnce(new GeniusServiceError(`Cannot get lyrics. ${errorMessage}`));
 
-    await expect(search('sia')).rejects.toThrow(GeniusServiceException);
+    await expect(search('sia')).rejects.toThrow(GeniusServiceError);
   });
 });

@@ -1,17 +1,17 @@
 import ApiClient from './ApiClient';
-import { UserServiceException } from './exception/UserServiceException';
-import { UserValidationException } from './exception/UserValidationException';
+import { UserServiceError } from './errors/UserServiceError';
+import { UserValidationError } from './errors/UserValidationError';
 
 /**
  * Validate user response data structure
  **/
 export const validateUser = (user) => {
   if (!user.name) {
-    throw new UserValidationException('Missing name');
+    throw new UserValidationError('Missing name');
   } else if (!user.email) {
-    throw new UserValidationException('Missing email');
+    throw new UserValidationError('Missing email');
   } else if (!user.avatar) {
-    throw new UserValidationException('Missing avatar');
+    throw new UserValidationError('Missing avatar');
   }
 };
 /**
@@ -25,6 +25,6 @@ export const getUser = async () => {
     validateUser(user);
     return user;
   } catch (e) {
-    throw new UserServiceException(`Fetching user failed, ${e.message}`);
+    throw new UserServiceError(`Fetching user failed, ${e.message}`);
   }
 };

@@ -1,8 +1,8 @@
 import * as UserService from '../services/UserService';
 import userPayload from './apiMocks/user-data';
-import { UserServiceException } from '../services/exception/UserServiceException';
+import { UserServiceError } from '../services/errors/UserServiceError';
 import ApiClient from '../services/ApiClient';
-import { UserValidationException } from '../services/exception/UserValidationException';
+import { UserValidationError } from '../services/errors/UserValidationError';
 
 jest.mock('../services/ApiClient');
 
@@ -13,14 +13,14 @@ describe('UserService', () => {
     await expect(UserService.getUser()).resolves.toBe(userPayload);
   });
 
-  it('getUser should throw UserServiceException when fetching user fails', async () => {
+  it('getUser should throw UserServiceError when fetching user fails', async () => {
     const errorMessage = 'Network Error';
     ApiClient.get.mockRejectedValueOnce(new Error(errorMessage));
 
-    await expect(UserService.getUser()).rejects.toThrow(UserServiceException);
+    await expect(UserService.getUser()).rejects.toThrow(UserServiceError);
   });
 
-  it('getUser should throw UserServiceException with correct message when fetching user fails', async () => {
+  it('getUser should throw UserServiceError with correct message when fetching user fails', async () => {
     const errorMessage = 'Network Error';
     ApiClient.get.mockRejectedValueOnce(new Error(errorMessage));
 
@@ -38,7 +38,7 @@ describe('UserService', () => {
       avatar: 'https://graph.facebook.com/2561664193890210/picture'
     };
 
-    expect(() => UserService.validateUser(user)).not.toThrow(UserValidationException);
+    expect(() => UserService.validateUser(user)).not.toThrow(UserValidationError);
   });
 
   it('validateUser should throw error when user is missing name property', () => {
