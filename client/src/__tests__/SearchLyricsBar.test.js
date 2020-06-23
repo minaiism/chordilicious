@@ -6,7 +6,7 @@ import SearchLyricsBar from '../components/Views/HomeView/SearchLyricsPane/Searc
 import * as LyricService from '../services/LyricService';
 import items from './apiMocks/lyrics-search.json';
 import { waitFor } from '@testing-library/dom';
-import { LyricServiceError } from '../services/errors/LyricServiceError';
+import { SearchLyricsError } from '../services/errors/SearchLyricsError';
 
 jest.mock('../services/LyricService');
 
@@ -45,7 +45,7 @@ describe('SearchLyricsBar', () => {
 
   it(`doesn't render search results when data cannot be retrieved`, async () => {
     const errorMessage = 'Network Error';
-    const searchAPIMock = LyricService.search.mockRejectedValueOnce(new LyricServiceError(`Cannot find lyrics. ${errorMessage}`));
+    const searchAPIMock = LyricService.search.mockRejectedValueOnce(new SearchLyricsError(`Cannot find lyrics. ${errorMessage}`));
     const { getByTestId } = render(<SearchLyricsBar/>);
     const nativeButton = getByTestId(TestIds.SEARCH_LYRICS_BUTTON_ID);
     fireEvent.click(nativeButton);
@@ -55,7 +55,7 @@ describe('SearchLyricsBar', () => {
 
   it(`renders error's article when data cannot be retrieved`, async () => {
     const errorMessage = 'Network Error';
-    const searchAPIMock = LyricService.search.mockRejectedValueOnce(new LyricServiceError(`Cannot find lyrics. ${errorMessage}`));
+    const searchAPIMock = LyricService.search.mockRejectedValueOnce(new SearchLyricsError(`Cannot find lyrics. ${errorMessage}`));
     const { getByTestId } = render(<SearchLyricsBar/>);
     const nativeButton = getByTestId(TestIds.SEARCH_LYRICS_BUTTON_ID);
     fireEvent.click(nativeButton);
@@ -65,18 +65,18 @@ describe('SearchLyricsBar', () => {
 
   it(`renders error code when data cannot be retrieved`, async () => {
     const errorMessage = 'Network Error';
-    const searchAPIMock = LyricService.search.mockRejectedValueOnce(new LyricServiceError(`Cannot find lyrics. ${errorMessage}`));
+    const searchAPIMock = LyricService.search.mockRejectedValueOnce(new SearchLyricsError(`Cannot find lyrics. ${errorMessage}`));
     const { getByTestId } = render(<SearchLyricsBar/>);
     const nativeButton = getByTestId(TestIds.SEARCH_LYRICS_BUTTON_ID);
     fireEvent.click(nativeButton);
     await waitFor(() => expect(searchAPIMock).toHaveBeenCalledTimes(1));
     expect(getByTestId(TestIds.SEARCH_LYRICS_ERROR_CODE_ID)).toBeInTheDocument();
-    expect(getByTestId(TestIds.SEARCH_LYRICS_ERROR_CODE_ID)).toHaveTextContent(ErrorCodes.SEARCH_LYRICS_SERVICE_ERROR);
+    expect(getByTestId(TestIds.SEARCH_LYRICS_ERROR_CODE_ID)).toHaveTextContent(ErrorCodes.SEARCH_LYRICS_ERROR);
   });
 
   it(`renders error message when data cannot be retrieved`, async () => {
     const errorMessage = 'Network Error';
-    const searchAPIMock = LyricService.search.mockRejectedValueOnce(new LyricServiceError(`Cannot find lyrics. ${errorMessage}`));
+    const searchAPIMock = LyricService.search.mockRejectedValueOnce(new SearchLyricsError(`Cannot find lyrics. ${errorMessage}`));
     const { getByTestId } = render(<SearchLyricsBar/>);
     const nativeButton = getByTestId(TestIds.SEARCH_LYRICS_BUTTON_ID);
     fireEvent.click(nativeButton);

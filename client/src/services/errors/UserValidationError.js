@@ -1,8 +1,8 @@
-import { ErrorCodes } from '../../Constants';
+import {ErrorCodes} from '../../Constants';
+import {ChordiliciousError} from "./ChordiliciousError";
 
-export class UserValidationError extends Error {
+export class UserValidationError extends ChordiliciousError {
   constructor(message) {
-    super(`User validation failed. ${message}.`);
-    this.code = ErrorCodes.USER_VALIDATION_ERROR;
+    super(ErrorCodes.USER_VALIDATION_ERROR, `User validation failed. ${message}.`);
   }
 }

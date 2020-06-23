@@ -1,13 +1,15 @@
 import ApiClient from './ApiClient';
-import { LyricServiceError } from './errors/LyricServiceError';
+import {SearchLyricsError} from './errors/SearchLyricsError';
+import {ApiValidationError} from "./errors/ApiValidationError";
 
 /**
  * Validate search response data structure
  * @param searchResponseData - API response data
+ * @throws ApiValidationError - when response is not an array
  */
 const validateLyricSearch = searchResponseData => {
   if (!Array.isArray(searchResponseData)) {
-    throw new Error('Lyrics search validation failed');
+    throw new ApiValidationError('Lyrics search validation failed');
   }
 };
 
@@ -18,11 +20,11 @@ const validateLyricSearch = searchResponseData => {
  */
 export const search = async (phrase) => {
   try {
-    let res = await ApiClient.get('/lyrics/search', { params: { phrase } });
+    let res = await ApiClient.get('/lyrics/search', {params: {phrase}});
     const results = res.data;
     validateLyricSearch(results);
     return results;
   } catch (e) {
-    throw new LyricServiceError(`Cannot find lyrics. ${e.message}`);
+    throw new SearchLyricsError(`Cannot find lyrics. ${e.message}`);
   }
 };

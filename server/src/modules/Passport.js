@@ -11,7 +11,6 @@ export default () => {
   });
 
   passport.deserializeUser((id, done) => {
-    console.log(id);
     User.findById(id).then(user => {
       done(null, user);
     }).catch(err => {
@@ -21,8 +20,6 @@ export default () => {
 
   passport.use(new JwtStrategy(passportJWTStrategyConfig, (jwt_payload, done) => {
     User.findOne({ _id: jwt_payload.id }, (err, user) => {
-      console.log('jwt jwt_payload', jwt_payload);
-      console.log('jwt err', err);
       if (err) {
         return done(err, false);
       }
@@ -40,14 +37,12 @@ export default () => {
       callbackURL: 'https://localhost:8443/auth/facebook'
     },
     (accessToken, refreshToken, profile, cb) => {
-      // console.log('profile', profile);
       User.findOrCreate({
         fbId: profile.id,
         avatar: `https://graph.facebook.com/${profile.id}/picture`,
         name: profile.displayName,
         email: `${profile.id}@facebook.com`
       }, (err, user) => {
-        console.log('findOrCreate', err, user);
         cb(err, user);
       });
     }
