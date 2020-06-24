@@ -1,4 +1,4 @@
-import Users from './routes/Users';
+import UserRouter from './routes/UserRouter';
 import config from 'config';
 import mongoose from 'mongoose';
 import express from 'express';
@@ -54,7 +54,6 @@ app.get('/auth/facebook', passport.authenticate('facebook'),
     if (!req.user) {
       return res.redirect('https://localhost:3000/sign-in');
     }
-    console.log('req.user', req.user);
     const token = createToken({ id: req.user._id });
     res.cookie('jwt', token, { httpOnly: true });
     res.redirect('https://localhost:3000' + ClientEndpoints.SIGN_IN_CALLBACK_PATH);
@@ -66,7 +65,7 @@ app.get('/logout', (req, res) => {
 });
 
 app.use(express.json());
-app.use('/users', Auth, Users);
+app.use('/users', Auth, UserRouter);
 
 if (process.env.USER_ANARCHY_MODE) {
   app.use(ClientEndpoints.LYRICS_PATH, LyricRouter);

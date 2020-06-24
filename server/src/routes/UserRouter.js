@@ -15,7 +15,7 @@ const getUser = (fbId) => {
 };
 
 router.get('/me', async (req, res) => {
-  getUser(req.user.fbId).then(user => res.send(user)).catch(err => res.status(404).send(err.message));
+  getUser(req.user.fbId).then(user => res.send(user)).catch(err => res.status(500).send(err.message));
 });
 
 router.post(ClientEndpoints.HOME_PATH, async ({ body }, res) => {

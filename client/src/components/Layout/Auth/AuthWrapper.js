@@ -1,9 +1,11 @@
-import { useUserContext } from '../../Context';
-import React, { useEffect, useState } from 'react';
+import {useUserContext} from '../../Context';
+import React, {useEffect, useState} from 'react';
 import NoAccessSnackBar from './NoAccessSnackBar';
-import { CircularProgress, makeStyles } from '@material-ui/core';
-import { TestIds } from '../../../Constants';
+import {CircularProgress, makeStyles, Typography} from '@material-ui/core';
+import {ErrorCodes, TestIds} from '../../../Constants';
 import * as UserService from '../../../services/UserService';
+import ErrorInfo from "../../Views/ErrorInfo";
+import FlightLandIcon from "@material-ui/icons/FlightLand";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -11,14 +13,23 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     justifyContent: 'center'
   },
-  spinnerIcon: {
-    fontSize: '6rem'
+  text: {
+    fontFamily: 'Montserrat, sans-serif',
+    padding: '0.5rem'
+  },
+  icon: {
+    fontSize: '2.4rem',
+    margin: '0.1rem'
+  },
+  progressIcon: {
+    margin: '2rem'
   }
 }));
 
-const AuthWrapper = ({ view }) => {
+const AuthWrapper = ({view}) => {
   const classes = useStyles();
-  const { user, setUser, setError } = useUserContext();
+  const {user, setUser} = useUserContext();
+  const [error, setError] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -31,20 +42,37 @@ const AuthWrapper = ({ view }) => {
           setIsLoading(true);
         })
         .catch(err => {
-          setError(err.message);
+          setError(err);
           setIsLoggedIn(false);
           setIsLoading(false);
         });
     }
   }, [user, setUser, setError, isLoggedIn, isLoading]);
 
-  return isLoading ? user ? <>{view}</>
-    :
-    (<article data-testid={TestIds.AUTH_WRAPPER_SPINNER_ARTICLE_ID} className={classes.container}>
-      <CircularProgress className={classes.spinnerIcon}/>
-    </article>)
-    :
-    (<article data-testid={TestIds.AUTH_WRAPPER_SNACKBAR_ARTICLE_ID}><NoAccessSnackBar/></article>);
+  const conditionalContentUser =
+    user
+      ? <>{view}</>
+      : (
+        <article data-testid={TestIds.AUTH_WRAPPER_SPINNER_ARTICLE_ID} className={classes.container}>
+          <Typography variant={'h6'} className={classes.text}>
+            <FlightLandIcon className={classes.icon} color={'primary'}/>
+            Hold on a sec...
+          </Typography>
+          <CircularProgress className={classes.progressIcon} color={'primary'} size={'3rem'}/>
+        </article>
+      );
+
+  const content =
+    isLoading
+      ? conditionalContentUser
+      : <></>;
+
+  const errorContent = error && error.code === ErrorCodes.FETCH_USER_ERROR ? <article
+    data-testid={TestIds.AUTH_WRAPPER_SNACKBAR_ARTICLE_ID}>
+    <NoAccessSnackBar/>
+  </article> : null;
+
+  return (<ErrorInfo error={error} content={content} errorContent={errorContent}/>)
 };
 
 export default AuthWrapper;

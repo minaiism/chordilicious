@@ -1,5 +1,5 @@
 import ApiClient from './ApiClient';
-import { UserServiceError } from './errors/UserServiceError';
+import { FetchUserError } from './errors/FetchUserError';
 import { UserValidationError } from './errors/UserValidationError';
 
 /**
@@ -25,6 +25,6 @@ export const getUser = async () => {
     validateUser(user);
     return user;
   } catch (e) {
-    throw new UserServiceError(`Fetching user failed, ${e.message}`);
+    throw new FetchUserError(e.response.status, `Fetching user failed, ${e.message}`);
   }
 };

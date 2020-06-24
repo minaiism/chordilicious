@@ -1,6 +1,6 @@
 import * as UserService from '../services/UserService';
 import userPayload from './apiMocks/user-data';
-import { UserServiceError } from '../services/errors/UserServiceError';
+import { FetchUserError } from '../services/errors/FetchUserError';
 import ApiClient from '../services/ApiClient';
 import { UserValidationError } from '../services/errors/UserValidationError';
 
@@ -13,16 +13,22 @@ describe('UserService', () => {
     await expect(UserService.getUser()).resolves.toBe(userPayload);
   });
 
-  it('getUser should throw UserServiceError when fetching user fails', async () => {
+  it('getUser should throw FetchUserError when fetching user fails', async () => {
     const errorMessage = 'Network Error';
-    ApiClient.get.mockRejectedValueOnce(new Error(errorMessage));
+    let err = new Error(errorMessage);
+    err.response = {};
+    err.response.status = 500;
+    ApiClient.get.mockRejectedValueOnce(err);
 
-    await expect(UserService.getUser()).rejects.toThrow(UserServiceError);
+    await expect(UserService.getUser()).rejects.toThrow(FetchUserError);
   });
 
-  it('getUser should throw UserServiceError with correct message when fetching user fails', async () => {
+  it('getUser should throw FetchUserError with correct message when fetching user fails', async () => {
     const errorMessage = 'Network Error';
-    ApiClient.get.mockRejectedValueOnce(new Error(errorMessage));
+    let err = new Error(errorMessage);
+    err.response = {};
+    err.response.status = 500;
+    ApiClient.get.mockRejectedValueOnce(err);
 
     try {
       await UserService.getUser();

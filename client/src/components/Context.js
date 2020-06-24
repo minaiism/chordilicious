@@ -3,8 +3,7 @@ import constate from 'constate';
 
 const useUserInfo = () => {
   const [user, setUser] = useState(null);
-  const [error, setError] = useState('');
-  return { user, setUser, error, setError };
+  return { user, setUser};
 };
 
 export const [UserInfoProvider, useUserContext] = constate(useUserInfo);
