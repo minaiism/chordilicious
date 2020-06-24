@@ -5,11 +5,11 @@ import {ApiValidationError} from "./errors/ApiValidationError";
 /**
  * Validate search response data structure
  * @param searchResponseData - API response data
- * @throws ApiValidationError - when response is not an array
+ * @throws ApiValidationError - when searchResponseData is not an array
  */
 const validateLyricSearch = searchResponseData => {
   if (!Array.isArray(searchResponseData)) {
-    throw new ApiValidationError('Lyrics search validation failed');
+    throw new ApiValidationError('Lyrics search response has an invalid type or format.');
   }
 };
 
