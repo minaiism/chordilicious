@@ -4,6 +4,7 @@ node__js:
 cache:
   npm: false
   directories:
+    - node_modules
     - client/ node_modules
     - server/ node_modules
-script: cd client && npm install && npm run testCi && cd ../server && npm install && npm test
+script: npm i && cd client && npm i && npm run eslint && npm run testCi && cd ../server && npm i && npm test && cd ..

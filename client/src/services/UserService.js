@@ -1,10 +1,10 @@
-import ApiClient from './ApiClient';
+import { ApiClient } from './ApiClient';
 import { FetchUserError } from './errors/FetchUserError';
 import { UserValidationError } from './errors/UserValidationError';
 
 /**
  * Validate user response data structure
- **/
+ * */
 export const validateUser = (user) => {
   if (!user.name) {
     throw new UserValidationError('Missing name');
@@ -20,11 +20,14 @@ export const validateUser = (user) => {
  */
 export const getUser = async () => {
   try {
-    let res = await ApiClient.get('/users/me');
+    const res = await ApiClient.get('/users/me');
     const user = res.data;
     validateUser(user);
     return user;
   } catch (e) {
-    throw new FetchUserError(e.response.status, `Fetching user failed, ${e.message}`);
+    throw new FetchUserError(
+      e.response.status,
+      `Fetching user failed, ${e.message}`
+    );
   }
 };

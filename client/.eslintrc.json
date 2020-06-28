@@ -1,7 +1,0 @@
-{
-  "extends": ["airbnb", "airbnb/hooks", "eslint-config-airbnb/whitespace", "prettier"],
-  "plugins": ["prettier"],
-  "rules": {
-    "prettier/prettier": ["error"]
-  }
-}

@@ -28,21 +28,21 @@ export const TestIds = {
   SIGN_IN_CALLBACK_ARTICLE_ID: 'sign-in-callback-article-id',
   SKILLS_LIST_ARTICLE_ID: 'skills-list-article-id',
   TOP_VIEW_ARTICLE_ID: 'top-view-article-id',
-  USER_ACCOUNT_VIEW_ARTICLE_ID: 'user-account-view-article-id'
+  USER_ACCOUNT_VIEW_ARTICLE_ID: 'user-account-view-article-id',
 };
 
 export const TestIdsUtils = {
-  getErrorArticleId: (name) => TestIds[name + "_ARTICLE_ID"],
-  getErrorCodeId: (name) => TestIds[name + "_CODE_ID"],
-  getErrorMessageId: (name) => TestIds[name + "_MESSAGE_ID"],
-}
+  getErrorArticleId: (name) => TestIds[`${name}_ARTICLE_ID`],
+  getErrorCodeId: (name) => TestIds[`${name}_CODE_ID`],
+  getErrorMessageId: (name) => TestIds[`${name}_MESSAGE_ID`],
+};
 
 export const ErrorCodes = {
   SEARCH_LYRICS_ERROR: 'SEARCH_LYRICS_ERROR',
   FETCH_USER_ERROR: 'FETCH_USER_ERROR',
   API_VALIDATION_ERROR: 'API_VALIDATION_ERROR',
   USER_VALIDATION_ERROR: 'USER_VALIDATION_ERROR',
-  INTERNAL_SERVER_ERROR: 'INTERNAL_SERVER_ERROR'
+  INTERNAL_SERVER_ERROR: 'INTERNAL_SERVER_ERROR',
 };
 
 export const Paths = {
@@ -52,5 +52,5 @@ export const Paths = {
   USER_PROFILE_PATH: '/user-profile',
   SIGN_IN_CALLBACK_PATH: '/sing-in-callback',
   LYRICS_PATH: '/lyrics',
-  TOP_PATH: '/top'
+  TOP_PATH: '/top',
 };
