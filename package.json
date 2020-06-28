@@ -3,12 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "concurrently": "^5.1.0"
+    "concurrently": "^5.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.0",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.0"
   },
   "scripts": {
     "clientBuild": "cd client && npm run build",
     "clientStart": "cd client && npm run start",
     "clientTest": "cd client && npm run test",
+    "eslint": "npm run clientEslint",
+    "clientEslint": "cd client && npm run eslint",
+    "clientEslint:fix": "cd client && npm run eslint:fix",
+    "serverEslint": "cd server && npm run eslint",
+    "serverEslint:fix": "cd server && npm run eslint:fix",
     "serverTest": "cd server && npm run test",
     "serverStart": "cd server && npm run start",
     "start": "concurrently \"npm run serverStart\" \" npm run clientStart\""
@@ -26,12 +40,6 @@
     ]
   },
   "description": "Parent chordilicious",
-  "devDependencies": {
-    "@testing-library/jest-dom": "^5.1.1"
-  },
-  "prettier": {
-    "singleQuote": true
-  },
   "author": "minaiism",
   "license": "ISC"
 }
