@@ -1,0 +1,63 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/client"
+  schedule:
+    interval: monthly
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: "@testing-library/react"
+    versions:
+    - 11.2.2
+    - 11.2.3
+  - dependency-name: "@material-ui/core"
+    versions:
+    - 4.11.2
+  - dependency-name: "@babel/cli"
+    versions:
+    - 7.12.10
+  - dependency-name: "@babel/plugin-transform-runtime"
+    versions:
+    - 7.12.10
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.12.10
+  - dependency-name: "@babel/preset-env"
+    versions:
+    - 7.12.11
+  - dependency-name: "@babel/node"
+    versions:
+    - 7.12.10
+  - dependency-name: "@babel/runtime"
+    versions:
+    - 7.12.5
+- package-ecosystem: npm
+  directory: "/server"
+  schedule:
+    interval: monthly
+    time: "04:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: mongoose
+    versions:
+    - 5.11.14
+    - 5.11.9
+  - dependency-name: "@babel/cli"
+    versions:
+    - 7.12.10
+  - dependency-name: "@babel/core"
+    versions:
+    - 7.12.10
+  - dependency-name: "@babel/plugin-transform-runtime"
+    versions:
+    - 7.12.10
+  - dependency-name: "@babel/node"
+    versions:
+    - 7.12.10
+  - dependency-name: "@babel/runtime"
+    versions:
+    - 7.12.5
+  - dependency-name: elliptic
+    versions:
+    - 6.5.3
